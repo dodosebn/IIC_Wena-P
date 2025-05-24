@@ -1,18 +1,17 @@
 'use client';
-import React, { useState } from 'react';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import { TbArrowsDiagonal } from 'react-icons/tb';
-import Image from 'next/image';
-import SlideModall from '@/app/utils/slidalModall'; // make sure the path is correct!
-import ImageSlider from '@/app/utils/imageslider';
+import React from 'react';
+import ImageSlider from "@/app/utils/imageslider";
+import img1 from '@/public/images/temp/header-image.jpg';
+import img2 from '@/public/images/temp/download.webp';
+import img3 from '@/public/images/temp/promo-1.jpg';
+import img4 from '@/public/images/temp/promo-2.jpg';
 
 const images = [
-  '/assets/images/temp/header-image.jpg',
-  '/assets/images/temp/download.webp',
-  '/assets/images/temp/promo-1.jpg',
-  '/assets/images/temp/promo-2.jpg',
+  img1,
+  img2,
+  img3,
+ img4,
 ];
-
 const Slider = () => {
   return (
     <ImageSlider images={images} />
