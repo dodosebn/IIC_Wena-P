@@ -44,7 +44,7 @@ const NavBar: React.FC<NavBarProps> = ({ isSidebarOpen, toggleSidebar, pageTitle
   return (
     <>
       <header className="relative">
-        <nav className="left-[4rem]  bg-white border-b border-gray-200">
+        <nav className="left-[4rem]  bg-white border-b py-[0.1rem] border-gray-200">
           {showTitleOnly ? (
             <div className="flex items-center justify-between px-4 py-3">
               <div className="flex items-center">
@@ -99,7 +99,7 @@ const NavBar: React.FC<NavBarProps> = ({ isSidebarOpen, toggleSidebar, pageTitle
                       height={12} 
                     />
                   </div>
-                  <div className="absolute right-0 mt-2 w-40 bg-white rounded shadow-lg hidden group-hover:block">
+                  <div className="absolute z-30 right-0 mt-2 w-40 bg-white rounded shadow-lg hidden group-hover:block">
                     <div className="grid grid-cols-2 gap-4 py-3">
                       <div className="flex flex-col items-center">
                         <FaXTwitter className="w-6 h-6" />
@@ -121,8 +121,8 @@ const NavBar: React.FC<NavBarProps> = ({ isSidebarOpen, toggleSidebar, pageTitle
                   </div>
                 </div>
 
-                <div className="relative group">
-                  <div className="flex items-center space-x-1 cursor-pointer">
+                <div className="relative group z-30 cursor-pointer">
+                  <div className="flex items-center space-x-1 ">
                     <span className="text-sm">INFO</span>
                     <Image 
                       src="/assets/icons/ios-arrow-down.svg" 
