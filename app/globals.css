@@ -5,6 +5,17 @@
   --foreground: #171717;
 }
 
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+@font-face {
+  font-family: 'avenir-next';
+  src: url('/public/assets/fonts/avenir-next-regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -19,8 +30,41 @@
   }
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  font-family: 'avenir-next', sans-serif !important;
+
+  padding: 0;
+
+  /* scrollbar-width: none;     */
+  -ms-overflow-style: none;
+}
+
+
+
+h1, h2, h3,h4,h5,h6, a, span, p, button, label{
+  font-family: 'avenir-next', sans-serif !important;
+}
+
+input{
+  font-family: 'avenir-next', sans-serif !important;
+}
+section, div{
+  font-family: 'avenir-next', sans-serif !important;
+}
+@layer{
+  .logo {
+  font-size: 28px;
+  font-weight: 300;
+  letter-spacing: 3px;
+  text-wrap: nowrap;
+  text-decoration: none;
+}
 }

@@ -68,7 +68,7 @@ export default function MainLayoutRootLayout({
           activeIndex={activeIndex} 
           setActiveIndex={setActiveIndex}
         />
-        <main className="flex-1 ml-[280px] transition-all duration-300">
+        <main className="flex-1 ml-[280px] transition-all duration-300 overflow-y-auto">
           {children}
         </main>
       </div>

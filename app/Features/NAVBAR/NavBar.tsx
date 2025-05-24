@@ -9,6 +9,7 @@ import {
 } from "react-icons/fa";
 import MobileMenu from "./MobileMenu";
 import Image from "next/image";
+import { FaXTwitter } from "react-icons/fa6";
 
 interface NavBarProps {
   isSidebarOpen: boolean;
@@ -42,133 +43,126 @@ const NavBar: React.FC<NavBarProps> = ({ isSidebarOpen, toggleSidebar, pageTitle
 
   return (
     <>
-      <nav className="sticky top-0 z-30 bg-white border-b border-gray-200">
-        {showTitleOnly ? (
-          <div className="flex items-center justify-between px-4 py-3">
-            <div className="flex items-center">
-              <h1 className="text-xl font-bold mr-2">W</h1>
-              <p className="text-sm">
-                <span className="text-gray-500 mr-1">NOW READING:</span> 
-                {pageTitle}
-              </p>
-            </div>
-            <div className="flex items-center">
-              <span className="text-gray-500 text-sm mr-2">SHARE THIS:</span>
-              <div className="flex space-x-3">
-                <Image 
-                  src="/assets/icons/x-icon-black.png" 
-                  className="w-5 h-5" 
-                  alt="X" 
-                  width={20}  
-                  height={20} 
-                />
-                <FaFacebookF className="w-4 h-4" />
+      <header className="relative">
+        <nav className="left-[4rem]  bg-white border-b border-gray-200">
+          {showTitleOnly ? (
+            <div className="flex items-center justify-between px-4 py-3">
+              <div className="flex items-center">
+                <h1 className="text-xl font-bold mr-2">W</h1>
+                <p className="text-sm">
+                  <span className="text-gray-500 mr-1">NOW READING:</span> 
+                  {pageTitle}
+                </p>
               </div>
-            </div>
-          </div>
-        ) : (
-          <div className="flex items-center justify-between px-4 py-3">
-            {/* Left section */}
-            <div className="flex items-center space-x-6">
-              <button onClick={toggleSidebar} className="p-1">
-                <FaBars className="w-5 h-5 text-gray-700" />
-              </button>
-              <a href="/" className="text-sm font-medium hover:text-gray-600">INTRO</a>
-            </div>
-
-            {/* Center logo */}
-            <div className="absolute left-1/2 transform -translate-x-1/2">
-              <a href="/" className="text-lg font-bold">WENA ANEW</a>
-            </div>
-
-            {/* Right section */}
-            <div className="flex items-center space-x-6">
-              <div className="relative group">
-                <div className="flex items-center space-x-3 cursor-pointer">
-                  <FaInstagram className="w-4 h-4" />
+              <div className="flex items-center">
+                <span className="text-gray-500 text-sm mr-2">SHARE THIS:</span>
+                <div className="flex space-x-3">
                   <Image 
                     src="/assets/icons/x-icon-black.png" 
-                    className="w-4 h-4" 
+                    className="w-5 h-5" 
                     alt="X" 
-                    width={16}  
-                    height={16} 
+                    width={20}  
+                    height={20} 
                   />
-                  <FaYoutube className="w-4 h-4" />
-                  <Image 
-                    src="/assets/icons/ios-arrow-down.svg" 
-                    className="w-3 h-3" 
-                    alt="arrow-down" 
-                    width={12}  
-                    height={12} 
-                  />
-                </div>
-                <div className="absolute right-0 mt-2 w-40 bg-white rounded shadow-lg hidden group-hover:block">
-                  <div className="p-2 space-y-2">
-                    <div className="flex items-center space-x-2 p-2 hover:bg-gray-50 rounded">
-                      <Image 
-                        src="/assets/icons/x-icon-black.png" 
-                        className="w-4 h-4" 
-                        alt="X" 
-                        width={16}  
-                        height={16} 
-                      />
-                      <span>X</span>
-                    </div>
-                    <div className="flex items-center space-x-2 p-2 hover:bg-gray-50 rounded">
-                      <FaYoutube className="w-4 h-4" />
-                      <span>YouTube</span>
-                    </div>
-                    <div className="flex items-center space-x-2 p-2 hover:bg-gray-50 rounded">
-                      <FaInstagram className="w-4 h-4" />
-                      <span>Instagram</span>
-                    </div>
-                    <div className="flex items-center space-x-2 p-2 hover:bg-gray-50 rounded">
-                      <FaTiktok className="w-4 h-4" />
-                      <span>Tiktok</span>
-                    </div>
-                  </div>
+                  <FaFacebookF className="w-4 h-4" />
                 </div>
               </div>
-
-              <div className="relative group">
-                <div className="flex items-center space-x-1 cursor-pointer">
-                  <span className="text-sm">INFO</span>
-                  <Image 
-                    src="/assets/icons/ios-arrow-down.svg" 
-                    className="w-3 h-3" 
-                    alt="arrow-down" 
-                    width={12}  
-                    height={12} 
-                  />
-                </div>
-                <div className="absolute right-0 mt-2 w-40 bg-white rounded shadow-lg hidden group-hover:block">
-                  <div className="p-2 space-y-2">
-                    <a 
-                      href="#" 
-                      className="block p-2 hover:bg-gray-50 rounded"
-                      onClick={() => setIsAboutOpen(true)}
-                    >
-                      WENA
-                    </a>
-                    <a href="/" className="block p-2 hover:bg-gray-50 rounded">Sponsors</a>
-                    <a href="/" className="block p-2 hover:bg-gray-50 rounded">Partners</a>
-                    <a href="/" className="block p-2 hover:bg-gray-50 rounded">Support</a>
-                  </div>
-                </div>
-              </div>
-
-              <button 
-                onClick={toggleMenu}
-                className="md:hidden flex flex-col"
-              >
-                <span>ME</span>
-                <span>NU</span>
-              </button>
             </div>
-          </div>
-        )}
-      </nav>
+          ) : (
+            <div className="flex justify-between items-center px-4 py-3">
+              {/* Left section - Empty for balance */}
+              <div className="w-1/3"></div>
 
+              {/* Center logo */}
+              <div className="w-1/3 flex justify-center">
+                <a href="/" className="text-lg font-bold">WENA ANEW</a>
+              </div>
+
+              {/* Right section */}
+              <div className="w-1/3 flex justify-end items-center space-x-6">
+                <div className="relative group">
+                  <div className="flex items-center space-x-3 cursor-pointer">
+                    <FaInstagram className="w-4 h-4" />
+                    <Image 
+                      src="/assets/icons/x-icon-black.png" 
+                      className="w-4 h-4" 
+                      alt="X" 
+                      width={16}  
+                      height={16} 
+                    />
+                    <FaYoutube className="w-4 h-4" />
+                    <Image 
+                      src="/assets/icons/ios-arrow-down.svg" 
+                      className="w-3 h-3" 
+                      alt="arrow-down" 
+                      width={12}  
+                      height={12} 
+                    />
+                  </div>
+                  <div className="absolute right-0 mt-2 w-40 bg-white rounded shadow-lg hidden group-hover:block">
+                    <div className="grid grid-cols-2 gap-4 py-3">
+                      <div className="flex flex-col items-center">
+                        <FaXTwitter className="w-6 h-6" />
+                        <span className="text-sm pt-2">X</span>
+                      </div>
+                      <div className="flex flex-col items-center">
+                        <FaYoutube className="w-6 h-6" />
+                        <span className="text-sm pt-2">YouTube</span>
+                      </div>
+                      <div className="flex flex-col items-center">
+                        <FaInstagram className="w-6 h-6" />
+                        <span className="text-sm pt-2">Instagram</span>
+                      </div>
+                      <div className="flex flex-col items-center">
+                        <FaTiktok className="w-6 h-6" />
+                        <span className="text-sm pt-2">Tiktok</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="relative group">
+                  <div className="flex items-center space-x-1 cursor-pointer">
+                    <span className="text-sm">INFO</span>
+                    <Image 
+                      src="/assets/icons/ios-arrow-down.svg" 
+                      className="w-3 h-3" 
+                      alt="arrow-down" 
+                      width={12}  
+                      height={12} 
+                    />
+                  </div>
+                  <div className="absolute right-0 mt-2 w-40 bg-white rounded shadow-lg hidden group-hover:block">
+                    <div className="p-2 space-y-2">
+                      <a 
+                        href="#" 
+                        className="block p-2 hover:bg-gray-50 rounded"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setIsAboutOpen(true);
+                        }}
+                      >
+                        WENA
+                      </a>
+                      <a href="/" className="block p-2 hover:bg-gray-50 rounded">Sponsors</a>
+                      <a href="/" className="block p-2 hover:bg-gray-50 rounded">Partners</a>
+                      <a href="/" className="block p-2 hover:bg-gray-50 rounded">Support</a>
+                    </div>
+                  </div>
+                </div>
+
+                <button 
+                  onClick={toggleMenu}
+                  className="md:hidden flex flex-col text-xs"
+                >
+                  <span>ME</span>
+                  <span>NU</span>
+                </button>
+              </div>
+            </div>
+          )}
+        </nav>
+      </header>
       <AboutModal isOpen={isAboutOpen} onClose={() => setIsAboutOpen(false)} />
       <MobileMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} />
     </>

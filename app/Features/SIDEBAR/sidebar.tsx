@@ -57,6 +57,7 @@ const Sidebar: React.FC<SidebarProps> = ({
       >
         {items.map((item, index) => (
           <Link href={item.path} key={index}>
+         
               <div className={`
                 p-4 border-b border-gray-100 hover:bg-gray-50 transition-colors
                 ${index === activeIndex ? "bg-gray-50" : ""}
@@ -84,6 +85,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                   {item.text}
                 </p>
               </div>
+          
           </Link>
         ))}
       </div>
