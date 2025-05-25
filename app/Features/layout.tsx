@@ -54,8 +54,7 @@ export default function MainLayoutRootLayout({
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  return (
+return (
     <div className="min-h-screen flex flex-col">
       <NavBar
         isSidebarOpen={isSidebarOpen}
@@ -64,14 +63,16 @@ export default function MainLayoutRootLayout({
       />
       <div className="flex flex-1">
         <Sidebar 
-          isOpen={isSidebarOpen} 
-          activeIndex={activeIndex} 
+          toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
+          activeIndex={activeIndex}
           setActiveIndex={setActiveIndex}
+          isOpen={isSidebarOpen} // Changed from false to isSidebarOpen
         />
-        <main className="flex-1 ml-[280px] transition-all duration-300 overflow-y-auto">
+        <main className="flex-1 md:ml-[280px] mt-2 transition-all duration-300 overflow-y-auto">
           {children}
         </main>
       </div>
     </div>
   );
 }
+
