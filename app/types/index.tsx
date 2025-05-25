@@ -7,8 +7,18 @@ export interface SlideModalProps {
   initialIndex: number;
   showSocialLinks?: boolean;
 }
+export type SidebarProps = {
+  isOpen: boolean;
+  toggleSidebar: () => void;
+  setActiveIndex: (index: number) => void;
+  activeIndex: number;
+};
 
-
+export interface BtnBgProps {
+  // children: ReactNode;
+  btnName: string;
+  btnpath: string;
+}
 export interface ImageSliderProps {
   images: StaticImageData[]; 
   showSocialLinks?: boolean;

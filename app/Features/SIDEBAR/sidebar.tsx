@@ -2,16 +2,11 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import items from "./mapps";
-import { BiMenuAltLeft } from "react-icons/bi";
+import { BiMenuAltRight } from "react-icons/bi";
+import TransitionLink from "@/app/utils/transitionLink";
+import { SidebarProps } from "@/app/types";
 
-type SidebarProps = {
-  isOpen: boolean;
-  toggleSidebar: () => void;
-  setActiveIndex: (index: number) => void;
-  activeIndex: number;
-};
 
 const Sidebar: React.FC<SidebarProps> = ({
   isOpen,
@@ -55,10 +50,10 @@ const Sidebar: React.FC<SidebarProps> = ({
     >
       <div className="p-4 flex justify-between items-center border-b border-gray-200 sticky top-0 bg-white z-10">
         <div className="text-xs uppercase tracking-wider text-gray-500 font-medium">
-          WENA PROJECT
+          WENA WORK
         </div>
         {isMobile && (
-          <BiMenuAltLeft
+          <BiMenuAltRight
             size={28}
             className="text-gray-700 cursor-pointer"
             onClick={toggleSidebar} // Removed the ! operator
@@ -68,7 +63,7 @@ const Sidebar: React.FC<SidebarProps> = ({
 
       <div ref={sidebarListRef} className="flex-1 overflow-y-auto">
         {items.map((item, index) => (
-          <Link href={item.path} key={index}>
+          <TransitionLink href={item.path} key={index}>
             <div
               className={`
                 p-4 border-b border-gray-100 hover:bg-gray-50 transition-colors
@@ -95,7 +90,7 @@ const Sidebar: React.FC<SidebarProps> = ({
               </div>
               <p className="text-sm text-gray-800 mt-2 text-center">{item.text}</p>
             </div>
-          </Link>
+          </TransitionLink >
         ))}
       </div>
     </aside>

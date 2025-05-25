@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Loading from '../Loading';
 import AboutModal from '../../Features/NAVBAR/about-modal/AboutModal';
 import Link from 'next/link';
+import BtnBg from '@/app/utils/btnBg';
 
 const videoUrl = '/assets/videos/section-bg-video.mp4';
 
@@ -10,15 +11,10 @@ const Hero = () => {
   const [isAboutOpen, setIsAboutOpen] = useState(false);
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
-      {/* Features Link styled as a navigation button */}
+    <div className="relative w-full h-screen overflow-hidden bg-black/70">
       <div className="absolute top-6 left-6 z-20">
-        <Link 
-          href='/Features' 
-          className="bg-teal-600 hover:bg-teal-700 text-white font-medium px-6 py-3 rounded-lg transition-colors duration-300 shadow-lg"
-        >
-          Features
-        </Link>
+        <BtnBg btnpath='/Features'btnName='Features'/>
+       
       </div>
       
       <video
