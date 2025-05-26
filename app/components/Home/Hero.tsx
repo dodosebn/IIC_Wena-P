@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import Loading from '../Loading';
 import AboutModal from '../../Features/NAVBAR/about-modal/AboutModal';
-import Link from 'next/link';
 import BtnBg from '@/app/utils/btnBg';
 
 const videoUrl = '/assets/videos/section-bg-video.mp4';
