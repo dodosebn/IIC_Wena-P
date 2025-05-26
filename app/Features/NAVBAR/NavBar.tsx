@@ -138,7 +138,7 @@ const NavBar: React.FC<NavBarProps> = ({ isSidebarOpen, toggleSidebar, pageTitle
           )}
 
           {showTitleOnly && (
-            <div className="flex md:flex-row flex-col justify-between items-center px-4 py-3 border-b border-gray-200">
+            <div className="flex md:flex-row md:hidden flex-col justify-between items-center px-4 py-3 border-b border-gray-200">
               <div className="hidden md:block">
                 <h1 className="text-xl font-bold ">W</h1>
               </div>

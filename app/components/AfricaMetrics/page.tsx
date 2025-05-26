@@ -22,7 +22,7 @@ const Page = () => {
       {/* Top Content (Links and Africa Metrics) */}
       <div className="relative z-10 min-h-screen">
         {/* Navigation Links */}
-        <div className="absolute bg-black/60 rounded-md flex top-6 left-6 z-20 gap-1">
+        {/* <div className="absolute bg-black/60 rounded-md flex top-6 left-6 z-20 gap-1">
           <button className=" text-white font-medium px-6 py-2 rounded-lg transition-colors duration-300 shadow-lg"
 >
           <TransitionLink  href="/"> Home          </TransitionLink>
@@ -33,7 +33,7 @@ const Page = () => {
                    <TransitionLink  href="/Features"> Features   </TransitionLink>
 
            </button>
-        </div>
+        </div> */}
 
         {/* Africa Metrics Section */}
         <AfricaMetrics />
