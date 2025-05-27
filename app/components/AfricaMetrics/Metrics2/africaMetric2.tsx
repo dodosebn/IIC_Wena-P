@@ -37,7 +37,7 @@ export const MetricCard: React.FC<MetricCardProps> = ({
 
   return (
     <div
-      className="w-full sm:w-64 h-40 perspective"
+      className="w-[90vw] sm:w-64 h-52 sm:h-40 perspective cursor-pointer"
       onClick={() => setFlipped(!flipped)}
     >
       <div
