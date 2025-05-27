@@ -1,5 +1,16 @@
 import { StaticImageData } from "next/image";
 
+export type MetricCard = {
+  id: string;
+  title: string;
+  value: string | number;
+  icon: string;
+  change: string;
+  trend: 'up' | 'down' | 'neutral';
+  description: string;
+  color: string;
+};
+
 export interface SlideModalProps {
   isOpen: boolean;
   onClose: () => void;

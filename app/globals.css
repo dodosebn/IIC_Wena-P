@@ -49,7 +49,9 @@ body {
 
 
 
-h1, h2, h3,h4,h5,h6, a, span, p, button, label{
+
+@layer{
+  h1, h2, h3,h4,h5,h6, a, span, p, button, label{
   font-family: 'avenir-next', sans-serif !important;
 }
 
@@ -59,7 +61,39 @@ input{
 section, div{
   font-family: 'avenir-next', sans-serif !important;
 }
-@layer{
+  .metric-card {
+  position: relative;
+  border: 2px solid transparent;
+  --u-size: 20px;
+  clip-path: polygon(
+    0% var(--u-size),
+    var(--u-size) 0%,
+    calc(100% - var(--u-size)) 0%,
+    100% var(--u-size),
+    100% calc(100% - var(--u-size)),
+    calc(100% - var(--u-size)) 100%,
+    var(--u-size) 100%,
+    0% calc(100% - var(--u-size))
+  );
+background: linear-gradient(#1f2937, #111827);
+  border-image: linear-gradient(to right, #3A86FF, #3A86FF) 1; 
+}
+/* Metrics 2 */
+/* Flip card essentials */
+.perspective {
+  perspective: 1000px;
+}
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+}
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+
   .logo {
   font-size: 28px;
   font-weight: 300;

@@ -160,7 +160,7 @@ const InfoOne = () => {
           <button 
             type="submit" 
             className="w-full bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition-colors font-medium"
-          >
+          > 
             Send
           </button>
         </form>

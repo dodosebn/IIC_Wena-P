@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
-import AfricaMetrics from "./africaMetrics";
 import Link from "next/link";
 import TransitionLink from "@/app/utils/transitionLink";
+import AfricaMetrics from "./africaMetrics";
 
 const Page = () => {
   const videoUrl = "/assets/videos/section-bg-video.mp4";
