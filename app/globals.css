@@ -44,7 +44,8 @@ body {
 body {
   margin: 0;
   font-family: 'avenir-next', sans-serif !important;
-
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   padding: 0;
 
   /* scrollbar-width: none;     */
