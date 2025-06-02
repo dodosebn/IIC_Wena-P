@@ -168,5 +168,4 @@ const InfoOne = () => {
     </div>
   );
 };
-
 export default InfoOne;

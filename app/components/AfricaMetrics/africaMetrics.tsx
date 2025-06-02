@@ -121,6 +121,8 @@ const AfricaMetrics = () => {
                   </motion.h1>
 <TransitionLink href="/components/AfricaMetrics/Metrics2" >Africa Metrics 2 </TransitionLink>
  <TransitionLink href="/components/AfricaMetrics/Metrics3" >Africa Metrics 3  </TransitionLink>
+  <TransitionLink href="/components/AfricaMetrics/Metrics4" >Africa Metrics 4  </TransitionLink>
+
 
 
                 </div>
