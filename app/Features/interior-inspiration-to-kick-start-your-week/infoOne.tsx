@@ -67,7 +67,7 @@ const InfoOne = () => {
 
       {/* Single Image Section */}
       <div className="mb-20">
-        <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden shadow-md">
+        <div className="relative w-full aspect-[4/3]  overflow-hidden shadow-md">
           <Image 
             src={sameple_1} 
             alt="home" 
@@ -109,7 +109,7 @@ const InfoOne = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[...Array(4)].map((_, i) => (
             <div key={i} className="group cursor-pointer">
-              <div className="relative aspect-square rounded-xl overflow-hidden shadow-md mb-4">
+              <div className="relative aspect-square overflow-hidden shadow-md mb-4">
                 <Image 
                   src={sameple_1} 
                   alt="product" 

@@ -128,11 +128,9 @@ const AfricaMetrics = () => {
         <div className="bg-gray-900 p-6 flex justify-between items-center">
           <div>
             <h1 className="text-2xl md:text-3xl font-bold text-white">
-              Africa Metrics 
+              Africa Metrics 1
             </h1>
-            {/* <p className="text-gray-300 mt-1">
-              Comprehensive analysis of continental indicators
-            </p> */}
+          
           </div>
           <TransitionLink href="/">
             <ImCancelCircle className="text-gray-300 hover:text-white text-2xl cursor-pointer" />

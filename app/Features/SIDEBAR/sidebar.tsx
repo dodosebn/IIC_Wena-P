@@ -71,7 +71,7 @@ const Sidebar: React.FC<SidebarProps> = ({
               `}
               onClick={() => handleClick(index)}
             >
-              <div className="relative w-full aspect-[4/3] overflow-hidden rounded">
+              <div className="relative w-full aspect-[4/3] overflow-hidden">
                 <Image
                   src={item.img}
                   alt={item.text || "Sidebar Item"}

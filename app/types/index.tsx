@@ -1,6 +1,6 @@
 import { StaticImageData } from "next/image";
 
-export type MetricCard = {
+export type MetricCardProps = {
   id: string;
   title: string;
   value: string | number;

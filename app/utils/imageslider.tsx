@@ -25,7 +25,7 @@ const ImageSlider = ({ images, showSocialLinks = true }: ImageSliderProps) => {
               alt={`Preview ${index + 1}`}
               width={300}
               height={200}
-              className="object-cover rounded-lg"
+              className="object-cover"
             />
           </div>
         ))}

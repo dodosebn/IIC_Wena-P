@@ -7,7 +7,6 @@ import {
   FaFacebookF,
   FaTiktok,
 } from "react-icons/fa";
-import MobileMenu from "./MobileMenu";
 import Image from "next/image";
 import { FaXTwitter } from "react-icons/fa6";
 import { BiMenuAltLeft } from "react-icons/bi";
@@ -167,7 +166,7 @@ const NavBar: React.FC<NavBarProps> = ({ isSidebarOpen, toggleSidebar, pageTitle
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:block bg-white border-b border-gray-200">
+        <nav className="hidden md:block bg-white border-b  border-gray-200">
           {showTitleOnly ? (
             <div className="flex items-center justify-between px-4 py-3">
               <div className="w-1/3"></div>

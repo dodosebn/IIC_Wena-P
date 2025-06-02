@@ -2,7 +2,7 @@
 import React from 'react';
 // import '../../style/InfoStyle.css'
 import Slider from './slider/Slider';
-
+import header6 from '@/public/assets/images/temp/header-image-6.jpg';
 import { FaGlobe, FaInstagram, FaTiktok } from "react-icons/fa";
 import Image from 'next/image';
 
@@ -19,7 +19,7 @@ const InfoSix = () => {
               </div>
             </div>
             <div  className='info-one-header-image'>
-                <Image  src="/assets/images/temp/header-image-6.jpg" alt="header-image" width={24}  
+                <Image  src={header6} alt="header-image" width={24}  
   height={24} />
                 <div className='header-image-info'>
                     <span>Photography: Pablo Enriquez</span>

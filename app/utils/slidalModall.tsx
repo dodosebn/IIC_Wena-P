@@ -72,7 +72,7 @@ const SlideModall = ({
               </div>
             </div>
           )}
-        </div>s
+        </div>
       </div>
     </div>
   );
