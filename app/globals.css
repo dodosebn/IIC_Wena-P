@@ -56,6 +56,26 @@ body {
 
 
 @layer{
+  @keyframes lineanim {
+  0% {
+    transform: scaleY(0);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+  100% {
+    transform: scaleY(0);
+  }
+}
+@keyframes lineGrow {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
   h1, h2, h3,h4,h5,h6, a, span, p, button, label{
   font-family: 'avenir-next', sans-serif !important;
 }

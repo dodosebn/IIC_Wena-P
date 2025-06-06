@@ -4,7 +4,7 @@ import BtnBg from "../utils/btnBg";
 const Loading = () => {
   return (
     <>
-    <BtnBg btnpath='/components/AfricaMetrics' btnName="View Africa's Metrics" />
+    <BtnBg btnpath='/components/AltMetrics' btnName="View Africa's Metrics" />
     </>
   );
 };
