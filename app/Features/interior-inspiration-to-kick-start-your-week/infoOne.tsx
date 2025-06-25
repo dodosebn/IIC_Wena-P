@@ -7,30 +7,32 @@ import sameple_1 from '@/public/assets/images/temp/sample-1.jpg';
 
 const InfoOne = () => {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
       <div className="mb-16">
         <div className="mb-8 text-center">
-          <span className="text-sm uppercase tracking-wider text-gray-500 font-medium">
+          <span className="text-[11px] uppercase tracking-wider text-gray-500 font-medium">
             Interiors, Travel | by The Spaces Team
           </span>
-          <h1 className="mt-4 text-4xl md:text-5xl font-serif font-bold text-gray-900 leading-tight">
+          <h1 className="mt-4 text-[36px] text-gray-900 leading-tight">
             This new Mediterranean restaurant in Miami has Michelin cred
           </h1>
-          <p className="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="mt-4 text-[18px] text-gray-600 max-w-3xl mx-auto">
             Chef Michael White helms the kitchen at Mika in Coral Gables
           </p>
         </div>
 
-        <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden shadow-lg">
-          <Image 
-            src={pabloImg} 
-            alt="header-image" 
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute bottom-4 left-4 bg-black/70 text-white px-3 py-1 rounded text-sm">
-            Photography: Pablo Enriquez
+        <div className="-mx-4 sm:-mx-6 lg:-mx-8">
+          <div className="relative w-full aspect-[16/9] overflow-hidden">
+            <Image 
+              src={pabloImg} 
+              alt="header-image" 
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute bottom-4 left-4 bg-black/70 text-white px-3 py-1 rounded text-sm">
+              Photography: Pablo Enriquez
+            </div>
           </div>
         </div>
       </div>
@@ -66,8 +68,8 @@ const InfoOne = () => {
       </div>
 
       {/* Single Image Section */}
-      <div className="mb-20">
-        <div className="relative w-full aspect-[4/3]  overflow-hidden shadow-md">
+          <div className="-mx-4 sm:-mx-6 lg:-mx-8">
+          <div className="relative w-full aspect-[16/9] overflow-hidden">
           <Image 
             src={sameple_1} 
             alt="home" 
@@ -168,4 +170,5 @@ const InfoOne = () => {
     </div>
   );
 };
+
 export default InfoOne;

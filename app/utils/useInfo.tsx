@@ -19,24 +19,24 @@ const UseInfo: React.FC<UseInfoProps> = ({
   Slider
 }) => {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
       {/* Header Section */}
       <div className="mb-16">
         <div className="mb-8 text-center">
-          <span className="text-sm uppercase tracking-wider text-gray-500 font-medium">
+          <span className="text-[11px] uppercase tracking-wider text-gray-500 font-medium">
             {headerfirstSpan}
           </span>
-          <h1 className="mt-4 text-4xl md:text-5xl font-serif font-bold text-gray-900 leading-tight">
+          <h1 className="mt-4 text-[36px] text-gray-900 leading-tight">
             {headerfirstH1}
           </h1>
-          <p className="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="mt-4 text-[18px] text-gray-600 max-w-3xl mx-auto">
             {headerfirstP}
           </p>
         </div>
 
-        {/* Main Image - Fixed blur issue */}
-        <div className="relative w-full aspect-[16/9]  overflow-hidden shadow-lg">
-          <Image
+  <div className="-mx-4 sm:-mx-6 lg:-mx-8">
+          <div className="relative w-full aspect-[16/9] overflow-hidden">  
+                  <Image
             src={imgforPhotocite1 || pabloImg} // Fallback to pabloImg if not provided
             alt="header-image"
             fill
@@ -49,6 +49,7 @@ const UseInfo: React.FC<UseInfoProps> = ({
           <div className="absolute bottom-4 left-4 bg-black/70 text-white px-3 py-1 rounded text-sm">
             {photoCite}
           </div>
+        </div>
         </div>
       </div>
 
@@ -68,7 +69,8 @@ const UseInfo: React.FC<UseInfoProps> = ({
 
       {/* Single Image Section - Also fixed blur */}
       <div className="mb-20">
-        <div className="relative w-full aspect-[4/3] overflow-hidden shadow-md">
+        <div className="-mx-4 sm:-mx-6 lg:-mx-8">
+          <div className="relative w-full aspect-[16/9] overflow-hidden">  
           <Image 
             src={imgforphotocite2 || sameple_1}
             alt="home"
@@ -80,6 +82,7 @@ const UseInfo: React.FC<UseInfoProps> = ({
           <div className="absolute bottom-4 left-4 bg-black/70 text-white px-3 py-1 rounded text-sm">
             {photoCite}
           </div>
+        </div>
         </div>
       </div>
 
@@ -117,7 +120,7 @@ const UseInfo: React.FC<UseInfoProps> = ({
 
       {/* Recommended Products */}
       <div className="mb-20">
-        <h2 className="text-2xl font-serif font-bold text-gray-900 mb-8 text-center">
+        <h2 className="text-2xl font-serif  text-gray-900 mb-8 text-center">
           SUPPORT US BY BUYING ONE OF THESE PRODUCTS
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -149,7 +152,7 @@ const UseInfo: React.FC<UseInfoProps> = ({
 
       {/* CTA Section */}
       <div className="bg-gray-50 rounded-xl p-8 md:p-12">
-        <h3 className="text-xl font-serif font-bold text-gray-900 mb-6 text-center">
+        <h3 className="text-xl font-serif  text-gray-900 mb-6 text-center">
           SHARE WITH A FRIEND OR LOVED ONE
         </h3>
         <form className="max-w-2xl mx-auto">

@@ -103,7 +103,7 @@ const NavBar: React.FC<NavBarProps> = ({ isSidebarOpen, toggleSidebar, pageTitle
                     <div className="p-2 space-y-2">
                       <a
                         href="#"
-                        className="block p-2 hover:bg-gray-50 rounded"
+                        className="block p-2 hover:bg-gray-50 rounded tracking-[0.5rem] text-[28px]"
                         onClick={(e) => {
                           e.preventDefault();
                           setIsAboutOpen(true);
@@ -166,18 +166,18 @@ const NavBar: React.FC<NavBarProps> = ({ isSidebarOpen, toggleSidebar, pageTitle
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:block bg-white border-b  border-gray-200">
+        <nav className="hidden md:block bg-white border-b px-4 py-3  border-gray-200">
           {showTitleOnly ? (
-            <div className="flex items-center justify-between px-4 py-3">
+            <div className="flex">
               <div className="w-1/3"></div>
-              <div className="w-1/3 flex justify-center">
+              <div className="flex flex-2">
                 <h1 className="text-xl font-bold mr-2">W</h1>
                 <p className="text-sm pt-[0.2rem]">
                   <span className="text-gray-500">NOW READING:</span>
-                  <span>{pageTitle}</span>
+                  <span className="flex-nowrap pl-2.5">{pageTitle}</span>
                 </p>
               </div>
-              <div className="w-1/3 flex justify-end items-center">
+              <div className="flex items-center">
                 <span className="text-gray-500 text-sm mr-2">SHARE THIS:</span>
                 <div className="flex space-x-3">
                   <Image
@@ -192,11 +192,11 @@ const NavBar: React.FC<NavBarProps> = ({ isSidebarOpen, toggleSidebar, pageTitle
               </div>
             </div>
           ) : (
-            <div className="flex justify-between items-center px-4 py-3">
+            <div className="flex justify-between items-center px-4 py-[0.5]">
               <div className="w-1/3"></div>
               <div className="w-1/3 flex justify-center">
-                <button className="text-lg font-bold">
-                  <TransitionLink href="/">WENA ANEW</TransitionLink>
+                <button>
+                  <TransitionLink href="/"><span className="tracking-[0.5rem] text-[28px]">WENA ANEW</span></TransitionLink>
                 </button>
               </div>
               <div className="w-1/3 flex justify-end items-center space-x-6">

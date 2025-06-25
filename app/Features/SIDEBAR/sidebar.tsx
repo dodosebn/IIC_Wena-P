@@ -42,14 +42,15 @@ const Sidebar: React.FC<SidebarProps> = ({
   return (
        <aside
       className={`
-        fixed h-screen w-[280px] bg-white border-r border-gray-200
+        fixed h-screen w-[280px] bg-[#f5f5f5] border-r border-gray-200
         flex flex-col z-50 top-0 left-0
         ${isMobile ? (isOpen ? "translate-x-0" : "-translate-x-full") : ""}
         transition-transform duration-300 ease-in-out shadow-sm
       `}
     >
-      <div className="p-4 flex justify-between items-center border-b border-gray-200 sticky top-0 bg-white z-10">
-        <div className="text-xs uppercase tracking-wider text-gray-500 font-medium">
+      <div className="p-4 md:px-20 md:py-[1.57rem] flex justify-between items-center border-b
+       border-gray-200 sticky top-0 bg-[#f5f5f5] z-10">
+        <div className="text-xs uppercase tracking-wider text-gray-500 font-medium text-center mx-auto">
           WENA WORK
         </div>
         {isMobile && (
@@ -61,7 +62,7 @@ const Sidebar: React.FC<SidebarProps> = ({
         )}
       </div>
 
-      <div ref={sidebarListRef} className="flex-1 overflow-y-auto">
+      <div ref={sidebarListRef} className="flex-1 overflow-y-auto p-1">
         {items.map((item, index) => (
           <TransitionLink href={item.path} key={index}>
             <div
@@ -71,24 +72,24 @@ const Sidebar: React.FC<SidebarProps> = ({
               `}
               onClick={() => handleClick(index)}
             >
-              <div className="relative w-full aspect-[4/3] overflow-hidden">
+              <div className="relative w-full aspect-[5/3] overflow-hidden">
                 <Image
                   src={item.img}
                   alt={item.text || "Sidebar Item"}
                   fill
                   sizes="(max-width: 768px) 100vw, 240px"
-                  className="object-cover"
+                  className="object-cover "
                   priority={index < 3}
                 />
                 {index === activeIndex && (
                   <div className="absolute inset-0 bg-black/60 flex justify-center items-center">
-                    <span className="text-white text-xs uppercase tracking-wider font-bold">
+                    <span className="text-white text-xs uppercase tracking-wider">
                       {item.activeLabel}
                     </span>
                   </div>
                 )}
               </div>
-              <p className="text-sm text-gray-800 mt-2 text-center">{item.text}</p>
+              <p className="text-gray-800 text-sm mt-2 text-start ">{item.text}</p>
             </div>
           </TransitionLink >
         ))}
