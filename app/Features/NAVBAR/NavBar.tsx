@@ -168,9 +168,9 @@ const NavBar: React.FC<NavBarProps> = ({ isSidebarOpen, toggleSidebar, pageTitle
         {/* Desktop Navigation */}
         <nav className="hidden md:block bg-white border-b px-4 py-3  border-gray-200">
           {showTitleOnly ? (
-            <div className="flex">
-              <div className="w-1/3"></div>
-              <div className="flex flex-2">
+            <div className="flex ">
+              <div className="w-1/4"></div>
+              <div className="flex flex-2 h-[2.6rem]">
                 <h1 className="text-xl font-bold mr-2">W</h1>
                 <p className="text-sm pt-[0.2rem]">
                   <span className="text-gray-500">NOW READING:</span>
@@ -193,7 +193,7 @@ const NavBar: React.FC<NavBarProps> = ({ isSidebarOpen, toggleSidebar, pageTitle
             </div>
           ) : (
             <div className="flex justify-between items-center px-4 py-[0.5]">
-              <div className="w-1/3"></div>
+              <div className="w-3/5"></div>
               <div className="w-1/3 flex justify-center">
                 <button>
                   <TransitionLink href="/"><span className="tracking-[0.5rem] text-[28px]">WENA ANEW</span></TransitionLink>
