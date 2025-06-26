@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { ImCancelCircle } from "react-icons/im";
-import metrics from "./africaMaps";
+import mMetrics from "./africaMaps";
 import { Bar, Pie, Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -18,6 +18,7 @@ import {
 import TransitionLink from "@/app/utils/transitionLink";
 import { motion, AnimatePresence } from "framer-motion";
 import IntroAnima from "../introAnima";
+import metrics from "./africaMaps";
 
 ChartJS.register(
   CategoryScale,

@@ -196,7 +196,7 @@ const AfricaMetrics = () => {
                     </div>
                     <div className="mt-2 flex items-baseline justify-between">
                       <p className="text-3xl font-bold text-gray-900">{metric.value}</p>
-                      <div
+                      {/* <div
                         className={`inline-flex items-baseline px-2.5 py-0.5 rounded-full text-sm font-medium ${
                           metric.trend === "up"
                             ? "bg-green-100 text-green-800"
@@ -204,7 +204,7 @@ const AfricaMetrics = () => {
                         }`}
                       >
                         {metric.change} {metric.trend === "up" ? "↑" : "↓"}
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 ))}
@@ -222,14 +222,14 @@ const AfricaMetrics = () => {
                         legend: {
                           display: false,
                         },
-                        tooltip: {
-                          callbacks: {
-                            label: (context) => {
-                              const metric = metrics[context.dataIndex];
-                              return `${metric.title}: ${metric.value} (${metric.change} ${metric.trend === "up" ? "↑" : "↓"})`;
-                            },
-                          },
-                        },
+                        // tooltip: {
+                        //   callbacks: {
+                        //     label: (context) => {
+                        //       const metric = metrics[context.dataIndex];
+                        //       return `${metric.title}: ${metric.value} (${metric.change} ${metric.trend === "up" ? "↑" : "↓"})`;
+                        //     },
+                        //   },
+                        // },
                       },
                       scales: {
                         y: {
