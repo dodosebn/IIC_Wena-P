@@ -73,6 +73,7 @@ body {
   to {
     transform: scaleY(1);
   }
+  
 }
 
   h1, h2, h3,h4,h5,h6, a, span, p, button, label{
@@ -124,5 +125,30 @@ background: linear-gradient(#1f2937, #111827);
   letter-spacing: 3px;
   text-wrap: nowrap;
   text-decoration: none;
+}
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.3s ease-out forwards;
+}
+
+.animate-slideOutRight {
+  animation: slideOutRight 0.3s ease-out forwards;
 }
 }
