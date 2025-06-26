@@ -63,9 +63,9 @@ const UseInfo: React.FC<UseInfoProps> = ({
       </div>
 
       {/* Slider Section */}
-      <div className="mb-20">
+      {/* <div className="mb-20">
         <Slider />
-      </div>
+      </div> */}
 
       {/* Single Image Section - Also fixed blur */}
       <div className="mb-20">

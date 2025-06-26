@@ -63,9 +63,9 @@ const InfoOne = () => {
       </div>
 
       {/* Slider Section */}
-      <div className="mb-20">
+      {/* <div className="mb-20">
         <Slider />
-      </div>
+      </div> */}
 
       {/* Single Image Section */}
           <div className="-mx-4 sm:-mx-6 lg:-mx-8">
