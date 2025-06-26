@@ -2,18 +2,17 @@ import React, { useEffect, useState } from "react";
 import AboutModal from "./about-modal/AboutModal";
 import {
   FaInstagram,
-  FaYoutube,
-  FaBars,
-  FaFacebookF,
-  FaTiktok,
   FaFacebookSquare,
 } from "react-icons/fa";
-import { FaSquareXTwitter } from "react-icons/fa6";
-import { IoIosArrowDropdown } from "react-icons/io";
+import {
+  FaSquareXTwitter,
+  FaTelegram,
+  FaWhatsapp,
+} from "react-icons/fa6";
+import { AiFillTikTok } from "react-icons/ai";
 import Image from "next/image";
 import TransitionLink from "@/app/utils/transitionLink";
 import MobileNav from "./mobileNav";
-import { AiFillTikTok } from "react-icons/ai";
 import InfoDrop from "@/app/utils/infodrop";
 
 interface NavBarProps {
@@ -21,6 +20,11 @@ interface NavBarProps {
   toggleSidebar: () => void;
   pageTitle: string;
 }
+
+const getShareMessage = () => {
+  const url = typeof window !== "undefined" ? window.location.href : "";
+  return encodeURIComponent(`Hey! Check this out : ${url}`);
+};
 
 const NavBar: React.FC<NavBarProps> = ({
   isSidebarOpen,
@@ -69,22 +73,58 @@ const NavBar: React.FC<NavBarProps> = ({
                   <span className="flex-nowrap pl-2.5">{pageTitle}</span>
                 </p>
               </div>
-               <div className="w-1/3 flex justify-end items-center space-x-6">
+              <div className="flex justify-end items-center space-x-6">
                 <div className="relative group flex items-center space-x-6">
                   <div className="flex items-center space-x-3 cursor-pointer">
                     <p className="text-gray-600">SHARE THIS:</p>
-                    <div className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3">
+                    <a
+                      href="https://www.instagram.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
+                    >
                       <FaInstagram className="text-xl" />
-                    </div>
-                    <div className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3">
+                    </a>
+                    <a
+                      href={`https://twitter.com/intent/tweet?text=${getShareMessage()}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
+                    >
                       <FaSquareXTwitter className="text-xl" />
-                    </div>
-                    <div className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3">
+                    </a>
+                    <a
+                      href="https://www.tiktok.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
+                    >
                       <AiFillTikTok className="text-xl" />
-                    </div>
-                    <div className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3">
+                    </a>
+                    <a
+                      href={`https://www.facebook.com/sharer/sharer.php?u=${getShareMessage()}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
+                    >
                       <FaFacebookSquare className="text-xl" />
-                    </div>
+                    </a>
+                    <a
+                      href={`https://wa.me/?text=${getShareMessage()}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
+                    >
+                      <FaWhatsapp className="text-xl" />
+                    </a>
+                    <a
+                      href={`https://t.me/share/url?url=${getShareMessage()}&text=Hey! Check this out :`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
+                    >
+                      <FaTelegram className="text-xl" />
+                    </a>
                   </div>
                   <div className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3">
                     <InfoDrop setIsAboutOpen={setIsAboutOpen} />
@@ -105,18 +145,39 @@ const NavBar: React.FC<NavBarProps> = ({
               <div className="w-1/3 flex justify-end items-center space-x-6">
                 <div className="relative group flex items-center space-x-6">
                   <div className="flex items-center space-x-3 cursor-pointer">
-                    <div className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3">
+                    <a
+                      href="https://www.instagram.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
+                    >
                       <FaInstagram className="text-xl" />
-                    </div>
-                    <div className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3">
+                    </a>
+                    <a
+                      href={`https://twitter.com/intent/tweet?text=${getShareMessage()}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
+                    >
                       <FaSquareXTwitter className="text-xl" />
-                    </div>
-                    <div className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3">
+                    </a>
+                    <a
+                      href="https://www.tiktok.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
+                    >
                       <AiFillTikTok className="text-xl" />
-                    </div>
-                    <div className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3">
+                    </a>
+                    <a
+                      href={`https://www.facebook.com/sharer/sharer.php?u=${getShareMessage()}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
+                    >
                       <FaFacebookSquare className="text-xl" />
-                    </div>
+                    </a>
+
                   </div>
                   <div className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3">
                     <InfoDrop setIsAboutOpen={setIsAboutOpen} />
