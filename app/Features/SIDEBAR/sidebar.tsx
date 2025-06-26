@@ -48,16 +48,20 @@ const Sidebar: React.FC<SidebarProps> = ({
         transition-transform duration-300 ease-in-out shadow-sm
       `}
     >
-      <div className="p-4 md:px-20 md:py-[1.57rem] flex justify-between items-center border-b
+      <div className="p-4 md:px-5 md:py-[1.1rem] flex justify-between items-center border-b
        border-gray-200 sticky top-0 bg-[#f5f5f5] z-10">
-        <div className="text-xs uppercase tracking-wider text-gray-500 font-medium text-center mx-auto">
-          WENA WORK
+        <div className="uppercase  text-gray-500 font-medium 
+         tracking-[0.2rem] text-lg text-center 
+        mx-auto">
+          <TransitionLink href={"/"}>
+          WENA PROJECT
+          </TransitionLink>
         </div>
         {isMobile && (
           <BiMenuAltRight
-            size={28}
-            className="text-gray-700 cursor-pointer"
-            onClick={toggleSidebar} // Removed the ! operator
+            // size={28}
+            className="text-gray-700 cursor-pointer text-3xl"
+            onClick={toggleSidebar} 
           />
         )}
       </div>
