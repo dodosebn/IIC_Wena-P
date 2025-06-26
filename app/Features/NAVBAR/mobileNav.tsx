@@ -51,7 +51,7 @@ const MobileNav: React.FC<MobileNavProps> = ({
             <h1 className="text-xl font-bold">W</h1>
           </div>
           <div className="h-full border-l border-gray-400 flex items-center px-3">
-            <span className="text-gray-500 text-sm pr-4">SHARE THIS:</span>
+            <span className="text-gray-500 text-sm pr-2">SHARE THIS:</span>
             <div className='space-x-4 flex'>
                <div className="h-[3.5rem] border-l border-gray-200 flex justify-center items-center pl-3">
                                     <FaInstagram size={24} />
