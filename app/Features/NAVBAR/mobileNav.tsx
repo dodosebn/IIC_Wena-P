@@ -53,16 +53,19 @@ const MobileNav: React.FC<MobileNavProps> = ({
           <div className="h-full border-l border-gray-400 flex items-center px-3">
             <span className="text-gray-500 text-sm pr-2">SHARE THIS:</span>
             <div className='space-x-4 flex'>
-               <div className="h-[3.5rem] border-l border-gray-200 flex justify-center items-center pl-3">
+               <div className="h-[3.5rem] border-l border-gray-200 flex justify-center items-center pl-2">
                                     <FaInstagram size={24} />
                                   </div>
-                                  <div className="h-[3.5rem] border-l border-gray-200 flex justify-center items-center pl-3">
+                                  <div className="h-[3.5rem] border-l border-gray-200 flex justify-center
+                                   items-center pl-2">
                                     <FaSquareXTwitter size={24} />
                                   </div>
-                                  <div className="h-[3.5rem] border-l border-gray-200 flex justify-center items-center pl-3">
+                                  <div className="h-[3.5rem] border-l border-gray-200 flex justify-center
+                                   items-center pl-2">
                                     <AiFillTikTok size={24}/>
                                   </div>
-                                  <div className="h-[3.5rem] border-l border-gray-200 flex justify-center items-center pl-3">
+                                  <div className="h-[3.5rem] border-l border-gray-200 flex justify-center 
+                                  items-center pl-2">
                                     <FaFacebookSquare size={24} />
                                   </div>
 
