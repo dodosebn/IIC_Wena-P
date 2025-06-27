@@ -6,7 +6,7 @@ import {
   FaInstagram,
   FaTiktok,
 } from 'react-icons/fa';
-import { IoClose, IoMenu } from 'react-icons/io5';
+import { IoClose, IoMail, IoMenu } from 'react-icons/io5';
 import TransitionLink from '@/app/utils/transitionLink';
 import {
   FaSquareXTwitter,
@@ -92,13 +92,13 @@ const MobileNav: React.FC<MobileNavProps> = ({
                 <FaWhatsapp size={24} />
               </a>
               <a
-                href={`https://t.me/share/url?url=${getShareMessage()}&text=Hey! Check this out : `}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="h-[3.5rem] border-l border-gray-200 flex justify-center items-center pl-2"
-              >
-                <FaTelegram size={24} />
-              </a>
+               href={`mailto:?subject=Check this out!&body=${encodeURIComponent(getShareMessage())}`}
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
+               >
+                 <IoMail className="text-xl" />
+               </a>
             </div>
           </div>
         </div>
