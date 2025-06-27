@@ -13,7 +13,7 @@ import { AiFillTikTok } from "react-icons/ai";
 import Image from "next/image";
 import TransitionLink from "@/app/utils/transitionLink";
 import MobileNav from "./mobileNav";
-import InfoDrop from "@/app/utils/infodrop";
+import InfoDrop from "@/app/utils/customs/infodrop";
 
 interface NavBarProps {
   isSidebarOpen: boolean;

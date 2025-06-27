@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Slider from './slider/Slider';
 import pabloImg from '@/public/assets/images/temp/download.webp';
 import sameple_1 from '@/public/assets/images/temp/sample-1.jpg';
+import Formalin from '@/app/utils/customs/formalin';
 
 const InfoOne = () => {
   return (
@@ -129,44 +130,8 @@ const InfoOne = () => {
           ))}
         </div>
       </div>
-
-      {/* CTA Section */}
-      <div className="bg-gray-50 rounded-xl p-8 md:p-12">
-        <h3 className="text-xl font-serif font-bold text-gray-900 mb-6 text-center">
-          SHARE WITH A FRIEND OR LOVED ONE
-        </h3>
-        <form className="max-w-2xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-            <div>
-              <input 
-                type="text" 
-                placeholder="Sender's name" 
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent"
-              />
-            </div>
-            <div>
-              <input 
-                type="text" 
-                placeholder="Receiver's name" 
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent"
-              />
-            </div>
-          </div>
-          <div className="mb-6">
-            <input 
-              type="email" 
-              placeholder="Receiver's email" 
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent"
-            />
-          </div>
-          <button 
-            type="submit" 
-            className="w-full bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition-colors font-medium"
-          > 
-            Send
-          </button>
-        </form>
-      </div>
+<Formalin />
+     
     </div>
   );
 };

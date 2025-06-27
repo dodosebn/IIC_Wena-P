@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
-import TransitionLink from './transitionLink';
 import { motion, AnimatePresence } from 'framer-motion';
+import TransitionLink from '../transitionLink';
 
 interface InfoProps {
   setIsAboutOpen: (value: boolean) => void;
