@@ -1,5 +1,6 @@
 'use client';
 import React, { useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Formalin = () => {
   const [senderName, setSenderName] = useState('');
@@ -21,21 +22,21 @@ const Formalin = () => {
           senderName,
           receiverName,
           receiverEmail,
-              url: window.location.href 
+          url: window.location.href,
         }),
       });
 
       const data = await res.json();
       if (res.ok) {
-        alert('Email sent!');
+        toast.success('Email sent!');
         setSenderName('');
         setReceiverName('');
         setReceiverEmail('');
       } else {
-        alert(data?.error || 'Failed to send email.');
+        toast.error(data?.error?.message || 'Failed to send email.');
       }
-    } catch (err) {
-      alert('Something went wrong. Please try again.');
+    } catch (err: any) {
+      toast.error(err?.message || 'Something went wrong. Please try again.');
     } finally {
       setIsSending(false);
     }
@@ -43,6 +44,7 @@ const Formalin = () => {
 
   return (
     <div className="bg-gray-50 rounded-xl p-8 md:p-12">
+      <Toaster position="top-right" />
       <h3 className="text-xl font-serif font-bold text-gray-900 mb-6 text-center">
         SHARE WITH A FRIEND OR LOVED ONE
       </h3>

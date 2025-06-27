@@ -16,7 +16,7 @@ export async function POST(req: Request) {
     const emailComponent = FormalinShare({ senderName, receiverName, url });
 
     const { data, error } = await resend.emails.send({
-from: "IDEAISCAPITAL LTD <onboarding@resend.dev>",
+from: "IDEAISCAPITAL LTD <noreply@ideaiscapital.africa>",
       to: receiverEmail,
       subject: "IDEAISCAPITAL LTD | CHECK OUT THIS POST",
       react: emailComponent,
