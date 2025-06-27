@@ -3,6 +3,7 @@ import AboutModal from "./about-modal/AboutModal";
 import {
   FaInstagram,
   FaFacebookSquare,
+  FaMailBulk,
 } from "react-icons/fa";
 import {
   FaSquareXTwitter,
@@ -14,6 +15,7 @@ import Image from "next/image";
 import TransitionLink from "@/app/utils/transitionLink";
 import MobileNav from "./mobileNav";
 import InfoDrop from "@/app/utils/customs/infodrop";
+import { IoMail } from "react-icons/io5";
 
 interface NavBarProps {
   isSidebarOpen: boolean;
@@ -77,14 +79,14 @@ const NavBar: React.FC<NavBarProps> = ({
                 <div className="relative group flex items-center space-x-6">
                   <div className="flex items-center space-x-3 cursor-pointer">
                     <p className="text-gray-600">SHARE THIS:</p>
-                    <a
-                      href="https://www.instagram.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
-                    >
-                      <FaInstagram className="text-xl" />
-                    </a>
+                  <a
+  href={`mailto:?subject=Check this out!&body=${encodeURIComponent(getShareMessage())}`}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
+>
+  <IoMail className="text-xl" />
+</a>
                     <a
                       href={`https://twitter.com/intent/tweet?text=${getShareMessage()}`}
                       target="_blank"
@@ -93,14 +95,7 @@ const NavBar: React.FC<NavBarProps> = ({
                     >
                       <FaSquareXTwitter className="text-xl" />
                     </a>
-                    <a
-                      href="https://www.tiktok.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
-                    >
-                      <AiFillTikTok className="text-xl" />
-                    </a>
+                
                     <a
                       href={`https://www.facebook.com/sharer/sharer.php?u=${getShareMessage()}`}
                       target="_blank"

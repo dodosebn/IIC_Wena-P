@@ -5,6 +5,7 @@ import pabloImg from "@/public/assets/images/temp/download.webp";
 import sameple_1 from "@/public/assets/images/temp/sample-1.jpg";
 import { UseInfoProps } from "../types";
 import Formalin from "./customs/formalin";
+import Shar from "./shar";
 
 const UseInfo: React.FC<UseInfoProps> = ({
   headerfirstSpan,
@@ -87,38 +88,7 @@ const UseInfo: React.FC<UseInfoProps> = ({
         </div>
       </div>
 
-      {/* Share Section */}
-      <div className="mb-20 py-8 border-t border-b border-gray-200">
-        <div className="max-w-3xl mx-auto">
-          <p className="text-sm uppercase tracking-wider text-gray-500 mb-4">
-            Share this story
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <a
-              href="#"
-              className="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors"
-            >
-              <FaInstagram className="text-gray-700" />
-              <span className="text-gray-700">Instagram</span>
-            </a>
-            <a
-              href="#"
-              className="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors"
-            >
-              <FaTiktok className="text-gray-700" />
-              <span className="text-gray-700">TikTok</span>
-            </a>
-            <a
-              href="#"
-              className="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors"
-            >
-              <FaGlobe className="text-gray-700" />
-              <span className="text-gray-700">Visit website</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
+     <Shar />
       {/* Recommended Products */}
       <div className="mb-20">
         <h2 className="text-2xl font-serif  text-gray-900 mb-8 text-center">
