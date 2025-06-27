@@ -95,9 +95,9 @@ const MobileNav: React.FC<MobileNavProps> = ({
                href={`mailto:?subject=Check this out!&body=${encodeURIComponent(getShareMessage())}`}
                  target="_blank"
                  rel="noopener noreferrer"
-                 className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
+                 className="h-[3.5rem] border-l border-gray-200 flex justify-center items-center pl-2"
                >
-                 <IoMail className="text-xl" />
+                 <IoMail size={24} />
                </a>
             </div>
           </div>
