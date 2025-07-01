@@ -3,9 +3,9 @@ import InfoFour from './infoFour';
 
 const page = () => {
   return (
-    <div>
+    <section id='another-stunning-modern-home-with-breathtaking-outdoor-space'>
       <InfoFour />
-    </div>
+    </section>
   )
 }
 

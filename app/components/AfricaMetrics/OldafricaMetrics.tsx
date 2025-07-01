@@ -222,14 +222,14 @@ const AfricaMetrics = () => {
                         legend: {
                           display: false,
                         },
-                        // tooltip: {
-                        //   callbacks: {
-                        //     label: (context) => {
-                        //       const metric = metrics[context.dataIndex];
-                        //       return `${metric.title}: ${metric.value} (${metric.change} ${metric.trend === "up" ? "↑" : "↓"})`;
-                        //     },
-                        //   },
-                        // },
+                        tooltip: {
+                          callbacks: {
+                            label: (context) => {
+                              const metric = metrics[context.dataIndex];
+                              return `${metric.title}: ${metric.value} (${metric.change} ${metric.trend === "up" ? "↑" : "↓"})`;
+                            },
+                          },
+                        },
                       },
                       scales: {
                         y: {

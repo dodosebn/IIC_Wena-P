@@ -4,10 +4,10 @@ import InfoThree from './infoThree'
 
 const page = () => {
   return (
-    <div>
+    <section id='stunning-modern-home-with-breathtaking-outdoor-space'>
       <InfoThree />
-    </div>
+    </section>
   )
 }
 
-export default page
+export default page;

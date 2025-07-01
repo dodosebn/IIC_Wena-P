@@ -3,9 +3,9 @@ import InfoFive from './infoFive'
 
 const page = () => {
   return (
-    <div>
+    <section id='interior-six-inspiration-to-kick-start-your-week'>
      <InfoFive /> 
-    </div>
+    </section>
   )
 }
 

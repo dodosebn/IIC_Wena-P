@@ -1,21 +1,20 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import items from "./mapps";
 import { BiMenuAltRight } from "react-icons/bi";
-import TransitionLink from "@/app/utils/transitionLink";
 import { SidebarProps } from "@/app/types";
-
+import TransitionLink from "@/app/utils/transitionLink";
 
 const Sidebar: React.FC<SidebarProps> = ({
   isOpen,
   toggleSidebar,
   setActiveIndex,
   activeIndex,
-}) =>  {
-  const sidebarListRef = useRef<HTMLDivElement>(null);
+}) => {
   const [isMobile, setIsMobile] = useState(false);
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     setIsMobile(window.innerWidth <= 768);
@@ -26,76 +25,86 @@ const Sidebar: React.FC<SidebarProps> = ({
 
   const handleClick = (index: number) => {
     setActiveIndex(index);
-    if (isMobile) {
-      toggleSidebar(); // Close sidebar after click on mobile
-    }
-    const sidebarList = sidebarListRef.current;
-    const clickedItem = sidebarList?.children[index] as HTMLElement;
-    if (sidebarList && clickedItem) {
-      sidebarList.scrollTo({
-        top: clickedItem.offsetTop - sidebarList.offsetTop,
+    if (isMobile) toggleSidebar();
+
+    const nextItem = itemRefs.current[index + 1];
+    if (nextItem) {
+      nextItem.scrollIntoView({
         behavior: "smooth",
+        block: "nearest",
+      });
+    } else {
+      itemRefs.current[index]?.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
       });
     }
   };
 
   return (
-       <aside
-      className={`
-        fixed h-screen w-[280px] bg-[#f5f5f5] border-r border-gray-200
+    <aside
+      className={`fixed h-screen w-[280px] bg-[#f5f5f5] border-r border-gray-200
         flex flex-col z-50 top-0 left-0
         ${isMobile ? (isOpen ? "translate-x-0" : "-translate-x-full") : ""}
-        transition-transform duration-300 ease-in-out shadow-sm
-      `}
+        transition-transform duration-300 ease-in-out shadow-sm`}
     >
-      <div className="p-4 md:px-5 md:py-[1.1rem] flex justify-between items-center border-b
-       border-gray-200 sticky top-0 bg-[#f5f5f5] z-10">
-        <div className="uppercase  text-gray-500 font-medium 
-         tracking-[0.2rem] text-lg text-center 
-        mx-auto">
-          <TransitionLink href={"/"}>
-          WENA PROJECT
-          </TransitionLink>
+      <div
+        className="p-4 md:px-5 md:py-[1.1rem] flex justify-between items-center border-b
+       border-gray-200 sticky top-0 bg-[#f5f5f5] z-10"
+      >
+        <div className="uppercase text-gray-500 font-medium 
+         tracking-[0.2rem] text-lg text-center mx-auto">
+          <a href="/">WENA PROJECT</a>
         </div>
         {isMobile && (
           <BiMenuAltRight
-            // size={28}
             className="text-gray-700 cursor-pointer text-3xl"
-            onClick={toggleSidebar} 
+            onClick={toggleSidebar}
           />
         )}
       </div>
 
-      <div ref={sidebarListRef} className="flex-1 overflow-y-auto p-1">
+      <div className="flex-1 p-1 overflow-y-auto">
         {items.map((item, index) => (
-          <TransitionLink href={item.path} key={index}>
-            <div
-              className={`
-                p-4 border-b border-gray-100 hover:bg-gray-50 transition-colors
-                ${index === activeIndex ? "bg-gray-50" : ""}
-              `}
-              onClick={() => handleClick(index)}
-            >
-              <div className="relative w-full aspect-[5/3] overflow-hidden">
-                <Image
-                  src={item.img}
-                  alt={item.text || "Sidebar Item"}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 240px"
-                  className="object-cover "
-                  priority={index < 3}
-                />
-                {index === activeIndex && (
-                  <div className="absolute inset-0 bg-black/60 flex justify-center items-center">
-                    <span className="text-white text-xs uppercase tracking-wider">
-                      {item.activeLabel}
-                    </span>
+          <div
+            key={index}
+            ref={(el) => {
+              itemRefs.current[index] = el;
+            }}
+          >
+            <TransitionLink href={item.path}>
+              <button
+                onClick={() => handleClick(index)}
+                className="w-full text-left cursor-pointer"
+              >
+                <div
+                  className={`p-4 border-b border-gray-100 hover:bg-gray-50 transition-colors
+                    ${index === activeIndex ? "bg-gray-50" : ""}`}
+                >
+                  <div className="relative w-full aspect-[5/3] overflow-hidden">
+                    <Image
+                      src={item.img}
+                      alt={item.text || "Sidebar Item"}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 240px"
+                      className="object-cover"
+                      priority={index < 3}
+                    />
+                    {index === activeIndex && (
+                      <div className="absolute inset-0 bg-black/60 flex justify-center items-center">
+                        <span className="text-white text-xs uppercase tracking-wider">
+                          {item.activeLabel}
+                        </span>
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
-              <p className="text-gray-800 text-sm mt-2 text-start ">{item.text}</p>
-            </div>
-          </TransitionLink >
+                  <p className="text-gray-800 text-sm mt-2 text-start">
+                    {item.text}
+                  </p>
+                </div>
+              </button>
+            </TransitionLink>
+          </div>
         ))}
       </div>
     </aside>

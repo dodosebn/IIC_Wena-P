@@ -3,9 +3,9 @@ import InfoSix from './infoSix'
 
 const page = () => {
   return (
-    <div>
+    <section id='this-new-mediterranean-restaurant-in-miami-has-michelin-cred-six'>
       <InfoSix />
-    </div>
+    </section>
   )
 }
 

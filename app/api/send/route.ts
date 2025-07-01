@@ -8,7 +8,7 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { senderName, receiverName, receiverEmail, url } = body;
 
-    console.log("Email payload:", { senderName, receiverName, receiverEmail, url });
+    // console.log("Email payload:", { senderName, receiverName, receiverEmail, url });
 
     const resend = new Resend(process.env.RESEND_API_KEY)
     console.log("Resend API Key:", process.env.WENA_PRO_API as string);

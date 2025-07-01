@@ -2,9 +2,9 @@ import InfoOne from "./infoOne";
 
 const page = () => {
   return (
-    <div>
+    <section id="interior-inspiration-to-kick-start-your-week">
         <InfoOne/>
-    </div>
+    </section>
   )
 }
 
