@@ -12,44 +12,45 @@ const ImgShowComp = () => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [activeTextIndex, setActiveTextIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
-
-  const nextTextIndex = (activeTextIndex + 1) % textOptions.length;
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
-    const imgInterval = setInterval(() => {
+    const imageInterval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % imgers.length);
     }, 10000);
-    return () => clearInterval(imgInterval);
+    return () => clearInterval(imageInterval);
   }, []);
 
   useEffect(() => {
     const textInterval = setInterval(() => {
-      setIsAnimating(true);
+      setIsTransitioning(true);
       setTimeout(() => {
         setActiveTextIndex((prev) => (prev + 1) % textOptions.length);
-        setIsAnimating(false);
-      }, 1000);
+        setIsTransitioning(false);
+      }, 1000); // Transition duration
     }, 5000);
     return () => clearInterval(textInterval);
   }, []);
+
+  const nextTextIndex = (activeTextIndex + 1) % textOptions.length;
 
   return (
     <div className="relative h-[30rem] overflow-hidden">
       {/* Backgrounds */}
       {imgers.map((img, index) => (
-        <div
-          key={index}
-          className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
-            index === currentIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-110'
-          }`}
-          style={{
-            backgroundImage: `url(${img.src})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            zIndex: 1,
-          }}
-        />
+       <div
+  key={index}
+  className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
+    index === currentIndex ? 'opacity-100 scale-100 animate-zoom-forward' : 'opacity-0 scale-110'
+  }`}
+  style={{
+    backgroundImage: `url(${img.src})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    zIndex: 1
+  }}
+/>
+
       ))}
 
       {/* Overlay */}
@@ -79,31 +80,38 @@ const ImgShowComp = () => {
           </div>
         </nav>
 
-        {/* Slide-Up Text Animation */}
+        {/* ACTUAL SLIDE-UP TEXT */}
         <div className="flex flex-col mt-10 relative">
           <h1 className="text-9xl font-extrabold">Building</h1>
 
-          <div className="relative h-32 overflow-hidden mt-4 text-9xl font-extrabold">
-            {/* Current text */}
+          <div className="relative h-32 overflow-hidden text-9xl font-extrabold mt-4">
+            {/* Current text - Slide out upwards */}
             <div
-              className={`absolute w-full transition-all duration-1000 ${
-                isAnimating ? '-translate-y-full opacity-0' : 'translate-y-0 opacity-100'
+              className={`absolute w-full transition-transform duration-1000 ${
+                isTransitioning ? '-translate-y-full' : 'translate-y-0'
               }`}
+              style={{ top: 0 }}
             >
-              <div className="h-32 flex items-center">{textOptions[activeTextIndex]}</div>
+              <div className="h-32 flex items-center">
+                {textOptions[activeTextIndex]}
+              </div>
             </div>
 
-            {/* Next text */}
             <div
-              className={`absolute w-full transition-all duration-1000 ${
-                isAnimating ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
+              className={`absolute w-full transition-transform duration-1000 ${
+                isTransitioning ? 'translate-y-0' : 'translate-y-full'
               }`}
+              style={{ top: 0 }}
             >
-              <div className="h-32 flex items-center">{textOptions[nextTextIndex]}</div>
+              <div className="h-32 flex items-center">
+                {textOptions[nextTextIndex]}
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+     
     </div>
   );
 };
