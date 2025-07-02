@@ -1,5 +1,6 @@
+'use client';
+
 import React, { useEffect, useState } from "react";
-import AboutModal from "./about-modal/AboutModal";
 import {
   FaInstagram,
   FaFacebookSquare,
@@ -23,11 +24,6 @@ interface NavBarProps {
   pageTitle: string;
 }
 
-const getShareMessage = () => {
-  const url = typeof window !== "undefined" ? window.location.href : "";
-  return encodeURIComponent(`Hey! Check this out : ${url}`);
-};
-
 const NavBar: React.FC<NavBarProps> = ({
   isSidebarOpen,
   toggleSidebar,
@@ -37,10 +33,16 @@ const NavBar: React.FC<NavBarProps> = ({
   const [showTitleOnly, setShowTitleOnly] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
+  const [shareMessage, setShareMessage] = useState("");
 
   const handleMenu = () => {
     setIsMenuOpen((prev) => !prev);
   };
+
+  useEffect(() => {
+    const url = window.location.href;
+    setShareMessage(encodeURIComponent(`Hey! Check this out : ${url}`));
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -79,47 +81,50 @@ const NavBar: React.FC<NavBarProps> = ({
                 <div className="relative group flex items-center space-x-6">
                   <div className="flex items-center space-x-3 cursor-pointer">
                     <p className="text-gray-600">SHARE THIS:</p>
-                  <a
-  href={`mailto:?subject=Check this out!&body=${encodeURIComponent(getShareMessage())}`}
-  target="_blank"
-  rel="noopener noreferrer"
-  className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
->
-  <IoMail className="text-xl" />
-</a>
-                    <a
-                      href={`https://twitter.com/intent/tweet?text=${getShareMessage()}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
-                    >
-                      <FaSquareXTwitter className="text-xl" />
-                    </a>
-                
-                    <a
-                      href={`https://www.facebook.com/sharer/sharer.php?u=${getShareMessage()}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
-                    >
-                      <FaFacebookSquare className="text-xl" />
-                    </a>
-                    <a
-                      href={`https://wa.me/?text=${getShareMessage()}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
-                    >
-                      <FaWhatsapp className="text-xl" />
-                    </a>
-                    <a
-                      href={`https://t.me/share/url?url=${getShareMessage()}&text=Hey! Check this out :`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
-                    >
-                      <FaTelegram className="text-xl" />
-                    </a>
+                    {shareMessage && (
+                      <>
+                        <a
+                          href={`mailto:?subject=Check this out!&body=${shareMessage}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
+                        >
+                          <IoMail className="text-xl" />
+                        </a>
+                        <a
+                          href={`https://twitter.com/intent/tweet?text=${shareMessage}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
+                        >
+                          <FaSquareXTwitter className="text-xl" />
+                        </a>
+                        <a
+                          href={`https://www.facebook.com/sharer/sharer.php?u=${shareMessage}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
+                        >
+                          <FaFacebookSquare className="text-xl" />
+                        </a>
+                        <a
+                          href={`https://wa.me/?text=${shareMessage}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
+                        >
+                          <FaWhatsapp className="text-xl" />
+                        </a>
+                        <a
+                          href={`https://t.me/share/url?url=${shareMessage}&text=Hey! Check this out :`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
+                        >
+                          <FaTelegram className="text-xl" />
+                        </a>
+                      </>
+                    )}
                   </div>
                   <div className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3">
                     <InfoDrop setIsAboutOpen={setIsAboutOpen} />
@@ -148,31 +153,34 @@ const NavBar: React.FC<NavBarProps> = ({
                     >
                       <FaInstagram className="text-xl" />
                     </a>
-                    <a
-                      href={`https://twitter.com/intent/tweet?text=${getShareMessage()}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
-                    >
-                      <FaSquareXTwitter className="text-xl" />
-                    </a>
-                    <a
-                      href="https://www.tiktok.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
-                    >
-                      <AiFillTikTok className="text-xl" />
-                    </a>
-                    <a
-                      href={`https://www.facebook.com/sharer/sharer.php?u=${getShareMessage()}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
-                    >
-                      <FaFacebookSquare className="text-xl" />
-                    </a>
-
+                    {shareMessage && (
+                      <>
+                        <a
+                          href={`https://twitter.com/intent/tweet?text=${shareMessage}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
+                        >
+                          <FaSquareXTwitter className="text-xl" />
+                        </a>
+                        <a
+                          href="https://www.tiktok.com"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
+                        >
+                          <AiFillTikTok className="text-xl" />
+                        </a>
+                        <a
+                          href={`https://www.facebook.com/sharer/sharer.php?u=${shareMessage}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
+                        >
+                          <FaFacebookSquare className="text-xl" />
+                        </a>
+                      </>
+                    )}
                   </div>
                   <div className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3">
                     <InfoDrop setIsAboutOpen={setIsAboutOpen} />
@@ -184,9 +192,9 @@ const NavBar: React.FC<NavBarProps> = ({
         </nav>
       </header>
 
-      {isAboutOpen && (
+      {/* {isAboutOpen && (
         <AboutModal onClose={() => setIsAboutOpen(false)} isOpen={isAboutOpen} />
-      )}
+      )} */}
     </>
   );
 };

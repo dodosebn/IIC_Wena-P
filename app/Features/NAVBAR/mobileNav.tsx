@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { BiMenuAltLeft } from 'react-icons/bi';
@@ -22,11 +24,6 @@ interface MobileNavProps {
   showTitleOnly: boolean;
 }
 
-const getShareMessage = () =>
-  typeof window !== 'undefined'
-    ? encodeURIComponent(`Hey! Check this out : ${window.location.href}`)
-    : '';
-
 const MobileNav: React.FC<MobileNavProps> = ({
   toggleSidebar,
   handleMenu,
@@ -34,6 +31,12 @@ const MobileNav: React.FC<MobileNavProps> = ({
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [shareMessage, setShareMessage] = useState('');
+
+  useEffect(() => {
+    const url = window.location.href;
+    setShareMessage(encodeURIComponent(`Hey! Check this out : ${url}`));
+  }, []);
 
   const toggleMenuOverlay = () => {
     if (!isAnimating) {
@@ -67,38 +70,42 @@ const MobileNav: React.FC<MobileNavProps> = ({
           <div className="h-full border-l border-gray-400 flex items-center px-3">
             <span className="text-gray-500 text-sm pr-2">SHARE THIS:</span>
             <div className="space-x-4 flex">
-              <a
-                href={`https://twitter.com/intent/tweet?text=${getShareMessage()}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="h-[3.5rem] border-l border-gray-200 flex justify-center items-center pl-2"
-              >
-                <FaSquareXTwitter size={24} />
-              </a>
-              <a
-                href={`https://www.facebook.com/sharer/sharer.php?u=${getShareMessage()}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="h-[3.5rem] border-l border-gray-200 flex justify-center items-center pl-2"
-              >
-                <FaFacebookSquare size={24} />
-              </a>
-              <a
-                href={`https://wa.me/?text=${getShareMessage()}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="h-[3.5rem] border-l border-gray-200 flex justify-center items-center pl-2"
-              >
-                <FaWhatsapp size={24} />
-              </a>
-              <a
-               href={`mailto:?subject=Check this out!&body=${encodeURIComponent(getShareMessage())}`}
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 className="h-[3.5rem] border-l border-gray-200 flex justify-center items-center pl-2"
-               >
-                 <IoMail size={24} />
-               </a>
+              {shareMessage && (
+                <>
+                  <a
+                    href={`https://twitter.com/intent/tweet?text=${shareMessage}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="h-[3.5rem] border-l border-gray-200 flex justify-center items-center pl-2"
+                  >
+                    <FaSquareXTwitter size={24} />
+                  </a>
+                  <a
+                    href={`https://www.facebook.com/sharer/sharer.php?u=${shareMessage}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="h-[3.5rem] border-l border-gray-200 flex justify-center items-center pl-2"
+                  >
+                    <FaFacebookSquare size={24} />
+                  </a>
+                  <a
+                    href={`https://wa.me/?text=${shareMessage}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="h-[3.5rem] border-l border-gray-200 flex justify-center items-center pl-2"
+                  >
+                    <FaWhatsapp size={24} />
+                  </a>
+                  <a
+                    href={`mailto:?subject=Check this out!&body=${shareMessage}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="h-[3.5rem] border-l border-gray-200 flex justify-center items-center pl-2"
+                  >
+                    <IoMail size={24} />
+                  </a>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -147,14 +154,10 @@ const MobileNav: React.FC<MobileNavProps> = ({
               <li>Contact</li>
             </ul>
             <div className="flex pt-5 gap-6 text-3xl text-gray-700">
-            
-                <FaXTwitter />
-              
-                <FaFacebookSquare />
-             
-                <FaInstagram />
-          
-                <FaTiktok />
+              <FaXTwitter />
+              <FaFacebookSquare />
+              <FaInstagram />
+              <FaTiktok />
             </div>
           </div>
         </div>

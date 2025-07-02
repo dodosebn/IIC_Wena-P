@@ -55,6 +55,12 @@ body {
 
 
 @layer{
+  /* .transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 1000ms;
+} */
+
   @keyframes lineanim {
   0% {
     transform: scaleY(0);

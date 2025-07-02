@@ -1,78 +1,22 @@
-'use client';
+import type { Metadata } from "next";
+import "./globals.css";
+import ClientLayout from "./clientLayout";
 
-import '../globals.css';  
-import { useState, useEffect } from "react";
-import Sidebar from "./SIDEBAR/sidebar";
-import NavBar from "./NAVBAR/NavBar";
-import { usePathname } from "next/navigation";
+// export const metadata: Metadata = {
+//   title: "Wena Project",
+//   description: "A project from IDEAISCAPITAL",
+// };
 
-export default function MainLayoutRootLayout({
+export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
-  const pathname = usePathname();
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(-1);
-  const [pageTitle, setPageTitle] = useState("Welcome to Home");
-  const [showTitle, setShowTitle] = useState(false);
+}) {
+  return (
+    <html lang="en">
+            <body className="font-sans antialiased">
 
-  const pageConfig = [
-    {
-      path: "/Features/interior-inspiration-to-kick-start-your-week",
-      title: "Interior inspiration to kick-start your week"
-    },
-    {
-      path: "/Features/this-new-mediterranean-restaurant-in-miami-has-michelin-cred",
-      title: "This new Mediterranean restaurant in Miami has Michelin cred"
-    },
-    {
-      path: "/Features/stunning-modern-home-with-breathtaking-outdoor-space",
-      title: "Stunning modern home with breathtaking outdoor space"
-    },
-    {
-      path: "/Features/interior-six-inspiration-to-kick-start-your-week",
-      title: "Interior six inspiration to kick-start your week"
-    },
-  ];
-
-  useEffect(() => {
-    const index = pageConfig.findIndex(page => pathname?.startsWith(page.path));
-    setActiveIndex(index);
-  }, [pathname]);
-
-  useEffect(() => {
-    setPageTitle(
-      activeIndex === -1 
-        ? "Welcome to Home" 
-        : pageConfig[activeIndex]?.title || ""
-    );
-  }, [activeIndex]);
-
-  useEffect(() => {
-    const onScroll = () => setShowTitle(window.scrollY > 100);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-return (
-    <div className="min-h-screen flex flex-col">
-      <NavBar
-        isSidebarOpen={isSidebarOpen}
-        toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
-        pageTitle={showTitle ? pageTitle : ""}
-      />
-      <div className="flex flex-1">
-        <Sidebar 
-          toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
-          activeIndex={activeIndex}
-          setActiveIndex={setActiveIndex}
-          isOpen={isSidebarOpen} // Changed from false to isSidebarOpen
-        />
-        <main className="flex-1 md:ml-[280px] mt-2 transition-all duration-300 overflow-y-auto">
-          {children}
-        </main>
-      </div>
-    </div>
-  );
+  <ClientLayout>{children}</ClientLayout>
+  </body>
+  </html>);
 }
-

@@ -2,7 +2,8 @@
 
 import React, { useRef, useEffect, useState } from "react";
 import InfoOne from "./interior-inspiration-to-kick-start-your-week/infoOne";
-import { FaArrowUp } from "react-icons/fa";
+import { FaArrowUp } from "react-icons/fa6";
+
 
 const Page = () => {
   const topRef = useRef<HTMLDivElement | null>(null);
