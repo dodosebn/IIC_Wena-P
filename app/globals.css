@@ -76,6 +76,7 @@ body {
   animation: zoomForward 12s ease-in-out infinite;
 }
 
+
   @keyframes lineanim {
   0% {
     transform: scaleY(0);

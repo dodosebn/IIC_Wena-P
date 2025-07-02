@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Logo from '@/public/images/homeimg/Logo-1.svg';
 import { IoCall } from 'react-icons/io5';
@@ -11,8 +11,9 @@ const ImgShowComp = () => {
   const textOptions = ['The Features', 'Your Dream'];
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [activeTextIndex, setActiveTextIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const imageInterval = setInterval(() => {
@@ -22,35 +23,41 @@ const ImgShowComp = () => {
   }, []);
 
   useEffect(() => {
-    const textInterval = setInterval(() => {
-      setIsTransitioning(true);
+    const interval = setInterval(() => {
+      setIsAnimating(true);
       setTimeout(() => {
-        setActiveTextIndex((prev) => (prev + 1) % textOptions.length);
-        setIsTransitioning(false);
-      }, 1000); // Transition duration
+        setIsAnimating(false);
+        setActiveIndex((prev) => (prev + 1) % textOptions.length);
+        // Reset wrapper back to top after animation completes
+        if (containerRef.current) {
+          containerRef.current.style.transition = 'none';
+          containerRef.current.style.transform = 'translateY(0%)';
+          void containerRef.current.offsetHeight; // force reflow
+          containerRef.current.style.transition = 'transform 1s ease-in-out';
+        }
+      }, 1000); // match transition duration
     }, 5000);
-    return () => clearInterval(textInterval);
+    return () => clearInterval(interval);
   }, []);
 
-  const nextTextIndex = (activeTextIndex + 1) % textOptions.length;
+  const nextIndex = (activeIndex + 1) % textOptions.length;
 
   return (
     <div className="relative h-[30rem] overflow-hidden">
       {/* Backgrounds */}
       {imgers.map((img, index) => (
-       <div
-  key={index}
-  className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
-    index === currentIndex ? 'opacity-100 scale-100 animate-zoom-forward' : 'opacity-0 scale-110'
-  }`}
-  style={{
-    backgroundImage: `url(${img.src})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    zIndex: 1
-  }}
-/>
-
+        <div
+          key={index}
+          className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
+            index === currentIndex ? 'opacity-100 scale-100 animate-zoom-forward' : 'opacity-0 scale-110'
+          }`}
+          style={{
+            backgroundImage: `url(${img.src})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            zIndex: 1,
+          }}
+        />
       ))}
 
       {/* Overlay */}
@@ -80,38 +87,24 @@ const ImgShowComp = () => {
           </div>
         </nav>
 
-        {/* ACTUAL SLIDE-UP TEXT */}
+        {/* SLIDING TEXT */}
         <div className="flex flex-col mt-10 relative">
           <h1 className="text-9xl font-extrabold">Building</h1>
 
           <div className="relative h-32 overflow-hidden text-9xl font-extrabold mt-4">
-            {/* Current text - Slide out upwards */}
             <div
-              className={`absolute w-full transition-transform duration-1000 ${
-                isTransitioning ? '-translate-y-full' : 'translate-y-0'
-              }`}
-              style={{ top: 0 }}
+              ref={containerRef}
+              className={`transition-transform duration-1000 ease-in-out`}
+              style={{
+                transform: isAnimating ? 'translateY(-60%)' : 'translateY(0%)',
+              }}
             >
-              <div className="h-32 flex items-center">
-                {textOptions[activeTextIndex]}
-              </div>
-            </div>
-
-            <div
-              className={`absolute w-full transition-transform duration-1000 ${
-                isTransitioning ? 'translate-y-0' : 'translate-y-full'
-              }`}
-              style={{ top: 0 }}
-            >
-              <div className="h-32 flex items-center">
-                {textOptions[nextTextIndex]}
-              </div>
+              <div className="h-32 flex items-center">{textOptions[activeIndex]}</div>
+              <div className="h-32 flex items-center">{textOptions[nextIndex]}</div>
             </div>
           </div>
         </div>
       </div>
-
-     
     </div>
   );
 };
