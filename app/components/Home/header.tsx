@@ -18,30 +18,25 @@ const Header = () => {
       <div className='md:block hidden'>
         <div className='py-7'>
           <div className='flex justify-between px-14'>
-            <div className='flex flex-row space-x-5 items-stretch'>
+            <div className='flex flex-row space-x-5 items-stretch relative'>
               <div className='flex space-x-2 items-center'>
+                <CiLocationOn className='text-[#f19383]' size={35} />
                 <div>
-                  <CiLocationOn className='text-[#f19383]' size={35} />
-                </div>
-                <div>
-                  <h1 className='text-[#002C5F] text-[15px] font-bold'>
-                    Street 27, Londom
-                  </h1>
+                  <h1 className='text-[#002C5F] text-[15px] font-bold'>Street 27, Londom</h1>
                   <p className='text-[#002C5FCC] text-[13px]'>Visit Our site</p>
                 </div>
               </div>
 
-              <div className='border-l border-gray-400 self-stretch mx-4'></div>
+              <div className="relative mx-4">
+                <div className="absolute top-0 bottom-0 h-[20rem] left-1/2 
+                w-[0.5px] bg-gray-400/40 transform -translate-x-1/2 -translate-y-1/2" />
+              </div>
 
               <div className='flex space-x-2 items-center'>
+                <LuPhoneCall className='text-[#f19383]' size={35} />
                 <div>
-                  <LuPhoneCall className='text-[#f19383]' size={35} />
-                </div>
-                <div>
-                  <h1 className='text-[#002C5F] text-[15px] font-bold'>
-                    Street 27, Londom
-                  </h1>
-                  <p className='text-[#002C5FCC] text-[13px]'>Visit Our site</p>
+                  <h1 className='text-[#002C5F] text-[15px] font-bold'>+234 9444 4994 4994</h1>
+                  <p className='text-[#002C5FCC] text-[13px]'>Information center</p>
                 </div>
               </div>
             </div>
@@ -52,19 +47,17 @@ const Header = () => {
                 <IoLogoTwitter size={24} className='text-gray-400 hover:text-[#f19387]' />
                 <FaYoutube size={24} className='text-gray-400 hover:text-[#f19387]' />
               </div>
-              <div>
-                <button className='bg-[#B23E3E] gap-4 flex items-center text-white font-bold px-5 py-3 rounded-sm transition-all duration-300 transform hover:scale-105 group'>
-                  <TransitionLink href='/Features'>
-                    <div className='relative h-6 overflow-hidden'>
-                      <div className='transition-transform duration-800 ease-in-out group-hover:-translate-y-6'>
-                        <span className='block h-6'>Go to Wena</span>
-                        <span className='block h-6'>Features</span>
-                      </div>
+              <button className='bg-[#B23E3E] gap-4 flex items-center text-white font-bold px-5 py-3 rounded-sm transition-all duration-300 transform hover:scale-105 group'>
+                <TransitionLink href='/Features'>
+                  <div className='relative h-6 overflow-hidden'>
+                    <div className='transition-transform duration-800 ease-in-out group-hover:-translate-y-6'>
+                      <span className='block h-6'>Go to Wena</span>
+                      <span className='block h-6'>Features</span>
                     </div>
-                  </TransitionLink>
-                  <FaAngleRight className='text-lg' />
-                </button>
-              </div>
+                  </div>
+                </TransitionLink>
+                <FaAngleRight className='text-lg' />
+              </button>
             </div>
           </div>
         </div>
@@ -72,11 +65,14 @@ const Header = () => {
 
       <div className='relative flex flex-col md:hidden'>
         <div className='flex py-5 justify-between items-center z-50 relative'>
-          <div>
-            <Image src={Logo} alt="logo" />
-          </div>
-          <div onClick={() => setIsMenuOpen(!isMenuOpen)} className="cursor-pointer">
-            {isMenuOpen ? <IoClose size={32} /> : <RiMenu2Fill size={32} />}
+          <Image src={Logo} alt="logo" />
+          <div
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="cursor-pointer transition-transform duration-300 transform"
+          >
+            <div className={`transition-all duration-500 ease-in-out ${isMenuOpen ? 'rotate-90 scale-110' : 'rotate-0'}`}>
+              {isMenuOpen ? <IoClose size={32} /> : <RiMenu2Fill size={32} />}
+            </div>
           </div>
         </div>
 
@@ -87,7 +83,7 @@ const Header = () => {
                 (item, index) => (
                   <li
                     key={index}
-                    className="text-[14px] font-bold capitalize px-7 py-4 border-b-1 border-gray-300/40"
+                    className="text-[14px] font-bold capitalize px-7 py-4 border-b border-gray-300/40"
                   >
                     {item}
                   </li>
