@@ -121,7 +121,7 @@ const UseInfo: React.FC<UseInfoProps> = ({
         </div>
       </div>
 
-<Formalin />
+{/* <Formalin /> */}
     </div>
   );
 };

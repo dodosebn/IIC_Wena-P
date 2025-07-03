@@ -111,7 +111,7 @@ const InfoOne = () => {
           ))}
         </div>
       </div>
-<Formalin />
+{/* <Formalin /> */}
      
     </div>
   );

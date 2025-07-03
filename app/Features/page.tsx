@@ -81,7 +81,7 @@ const Page = () => {
       </div>
 
       {/* Floating navigation buttons */}
-      <div className="fixed bottom-6 left-6 flex flex-col gap-3 z-50">
+      {/* <div className="fixed bottom-6 left-6 flex flex-col gap-3 z-50">
         <button
           onClick={() => scrollToElement(topRef, 'top')}
           className={`px-4 py-3 rounded-full shadow-lg transition-all duration-300 ${
@@ -102,7 +102,7 @@ const Page = () => {
         >
           <span className="font-medium">Resources</span>
         </button>
-      </div>
+      </div> */}
 
       {/* Scroll to top button */}
       {showScrollButton && (

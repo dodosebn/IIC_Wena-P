@@ -1,33 +1,30 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
 import { BiMenuAltLeft } from 'react-icons/bi';
 import {
   FaFacebookSquare,
   FaInstagram,
   FaTiktok,
+  FaWhatsapp,
+  FaTwitter,
 } from 'react-icons/fa';
 import { IoClose, IoMail, IoMenu } from 'react-icons/io5';
 import TransitionLink from '@/app/utils/transitionLink';
-import {
-  FaSquareXTwitter,
-  FaTelegram,
-  FaWhatsapp,
-  FaXTwitter,
-} from 'react-icons/fa6';
-import { AiFillTikTok } from 'react-icons/ai';
+import { FaXTwitter } from 'react-icons/fa6';
 
 interface MobileNavProps {
   toggleSidebar: () => void;
   handleMenu: () => void;
   showTitleOnly: boolean;
+  handleMenuItemClick: (path: string) => void;
 }
 
 const MobileNav: React.FC<MobileNavProps> = ({
   toggleSidebar,
   handleMenu,
   showTitleOnly,
+  handleMenuItemClick,
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -62,6 +59,7 @@ const MobileNav: React.FC<MobileNavProps> = ({
 
   return (
     <div className="md:hidden relative">
+      {/* 
       {showTitleOnly ? (
         <div className="flex items-center justify-between px-4 border-b border-gray-400 h-14">
           <div className="flex justify-center">
@@ -110,30 +108,32 @@ const MobileNav: React.FC<MobileNavProps> = ({
           </div>
         </div>
       ) : (
-        <div className="flex justify-between items-center border-b border-gray-400 h-14">
-          <div className="h-full border-r border-gray-400 flex items-center px-4">
-            <button onClick={toggleSidebar} aria-label="Toggle sidebar">
-              <BiMenuAltLeft className="text-gray-700 text-3xl" />
-            </button>
-          </div>
-          <div className="flex justify-center">
-            <TransitionLink href="/">
-              <span className="text-lg tracking-[0.2rem] text-[20px]">
-                WENA PROJECT
-              </span>
-            </TransitionLink>
-          </div>
-          <div className="h-full border-l border-gray-400 flex items-center text-center justify-center px-4">
-            <button
-              onClick={toggleMenuOverlay}
-              className="flex flex-col items-center"
-              aria-label="Toggle mobile menu"
-            >
-              <IoMenu className="transform rotate-90 text-3xl" />
-            </button>
-          </div>
+      */}
+      <div className="flex justify-between items-center border-b border-gray-400 h-14">
+        <div className="h-full border-r border-gray-400 flex items-center px-4">
+          <button onClick={toggleSidebar} aria-label="Toggle sidebar">
+            <BiMenuAltLeft className="text-gray-700 text-3xl" />
+          </button>
         </div>
-      )}
+        <div className="flex justify-center">
+          <TransitionLink href="/">
+            <span className=" tracking-[0.2rem] text-[1rem]">
+           THE WENA PROJECT
+            </span>
+          </TransitionLink>
+        </div>
+        <div className="h-full border-l border-gray-400 flex items-center text-center justify-center px-4">
+          <button
+            onClick={toggleMenuOverlay}
+            className="flex flex-col items-center"
+            aria-label="Toggle mobile menu"
+          >
+            <IoMenu className="transform rotate-90 text-3xl" />
+          </button>
+        </div>
+      </div>
+      {/* ) */}
+
 
       {(isMenuOpen || isAnimating) && (
         <div
@@ -148,9 +148,16 @@ const MobileNav: React.FC<MobileNavProps> = ({
           </div>
           <div className="flex flex-col items-center space-y-6 text-xl font-medium text-gray-800 mt-16">
             <ul className="flex flex-col items-center space-y-6">
-              <li>Intro</li>
-              <li>About</li>
-              <li>Services</li>
+              {['WENA', 'Sponsors', 'Partners', 'Supports'].map((itm, ndx) => (
+                <li key={ndx}>
+                  <button
+                    onClick={() => handleMenuItemClick('/features')}
+                    className="hover:text-blue-400 tracking-[3px] text-xl text-black transition block w-full bg-transparent border-none"
+                  >
+                    {itm}
+                  </button>
+                </li>
+              ))}
               <li>Contact</li>
             </ul>
             <div className="flex pt-5 gap-6 text-3xl text-gray-700">

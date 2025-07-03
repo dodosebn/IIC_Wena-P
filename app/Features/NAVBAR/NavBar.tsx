@@ -1,22 +1,18 @@
-'use client';
+"use client";
 
 import React, { useEffect, useState } from "react";
 import {
   FaInstagram,
   FaFacebookSquare,
-  FaMailBulk,
 } from "react-icons/fa";
-import {
-  FaSquareXTwitter,
-  FaTelegram,
-  FaWhatsapp,
-} from "react-icons/fa6";
+import { FaSquareXTwitter } from "react-icons/fa6";
 import { AiFillTikTok } from "react-icons/ai";
-import Image from "next/image";
-import TransitionLink from "@/app/utils/transitionLink";
+import { IoMail, IoMenu } from "react-icons/io5";
+import { GrClose } from "react-icons/gr";
+import { motion, AnimatePresence, Variants } from "framer-motion";
+import { useRouter } from "next/navigation";
 import MobileNav from "./mobileNav";
-import InfoDrop from "@/app/utils/customs/infodrop";
-import { IoMail } from "react-icons/io5";
+import { useNavbarStore } from "@/app/store/useNavStore";
 
 interface NavBarProps {
   isSidebarOpen: boolean;
@@ -24,20 +20,31 @@ interface NavBarProps {
   pageTitle: string;
 }
 
-const NavBar: React.FC<NavBarProps> = ({
-  isSidebarOpen,
-  toggleSidebar,
-  pageTitle,
-}) => {
+const containerVariant: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.3, delayChildren: 0.7 },
+  },
+};
+
+const itemVariant: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", bounce: 0.4 },
+  },
+};
+
+const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, pageTitle }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showTitleOnly, setShowTitleOnly] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [shareMessage, setShareMessage] = useState("");
 
-  const handleMenu = () => {
-    setIsMenuOpen((prev) => !prev);
-  };
+  const { menuOpen, setMenuOpen } = useNavbarStore();
+  const router = useRouter();
 
   useEffect(() => {
     const url = window.location.href;
@@ -46,17 +53,38 @@ const NavBar: React.FC<NavBarProps> = ({
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > lastScrollY && window.scrollY > 100) {
-        setShowTitleOnly(true);
-      } else {
-        setShowTitleOnly(false);
-      }
+      setShowTitleOnly(window.scrollY > lastScrollY && window.scrollY > 100);
       setLastScrollY(window.scrollY);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
+
+  const handleMenu = () => setIsMenuOpen((prev) => !prev);
+  const closeAllMenus = () => setMenuOpen(false);
+
+  const handleMenuItemClick = (path: string = "/") => {
+    setMenuOpen(false);
+    router.push(path);
+  };
+
+  const renderShareIcons = () => (
+    <>
+      <a href={`https://www.instagram.com/sharer/sharer.php?u=${shareMessage}`} target="_blank" rel="noopener noreferrer" className="h-[4rem] flex justify-center items-center">
+        <FaInstagram size={30} />
+      </a>
+      <a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer" className="h-[4rem] flex justify-center items-center">
+        <AiFillTikTok size={30} />
+      </a>
+      <a href={`https://twitter.com/intent/tweet?text=${shareMessage}`} target="_blank" rel="noopener noreferrer" className="h-[4rem] flex justify-center items-center">
+        <FaSquareXTwitter size={30} />
+      </a>
+      <a href={`mailto:?subject=Check this out!&body=${shareMessage}`} target="_blank" rel="noopener noreferrer" className="h-[4rem] flex justify-center items-center">
+        <IoMail size={30} />
+      </a>
+    </>
+  );
 
   return (
     <>
@@ -65,136 +93,67 @@ const NavBar: React.FC<NavBarProps> = ({
           toggleSidebar={toggleSidebar}
           handleMenu={handleMenu}
           showTitleOnly={showTitleOnly}
+          handleMenuItemClick={handleMenuItemClick }
         />
 
         <nav className="hidden md:block bg-white border-b px-4 py-3 border-gray-200">
-          {showTitleOnly ? (
-            <div className="flex items-center justify-between h-[2.5rem]">
-              <div className="w-1/4" />
-              <div className="flex flex-[2] h-[2.6rem] items-center">
-                <h1 className="text-xl font-bold mr-2">W</h1>
-                <p className="text-sm pt-[0.2rem]">
-                  <span className="flex-nowrap pl-2.5">{pageTitle}</span>
-                </p>
-              </div>
-              <div className="flex justify-end items-center space-x-6">
-                <div className="relative group flex items-center space-x-6">
-                  <div className="flex items-center space-x-3 cursor-pointer">
-                    <p className="text-gray-600">SHARE THIS:</p>
-                    {shareMessage && (
-                      <>
-                        <a
-                          href={`mailto:?subject=Check this out!&body=${shareMessage}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
-                        >
-                          <IoMail className="text-xl" />
-                        </a>
-                        <a
-                          href={`https://twitter.com/intent/tweet?text=${shareMessage}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
-                        >
-                          <FaSquareXTwitter className="text-xl" />
-                        </a>
-                        <a
-                          href={`https://www.facebook.com/sharer/sharer.php?u=${shareMessage}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
-                        >
-                          <FaFacebookSquare className="text-xl" />
-                        </a>
-                        <a
-                          href={`https://wa.me/?text=${shareMessage}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
-                        >
-                          <FaWhatsapp className="text-xl" />
-                        </a>
-                        <a
-                          href={`https://t.me/share/url?url=${shareMessage}&text=Hey! Check this out :`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
-                        >
-                          <FaTelegram className="text-xl" />
-                        </a>
-                      </>
-                    )}
-                  </div>
-                  <div className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3">
-                    <InfoDrop setIsAboutOpen={setIsAboutOpen} />
-                  </div>
+          <div className="flex items-center justify-between h-[2.5rem]">
+            <div className="w-1/4" />
+            <div className="flex flex-[2] h-[2.6rem] items-center">
+              <h1 className="text-xl font-bold mr-2">W</h1>
+              <p className="text-sm pt-[0.2rem]">
+                <span className="flex-nowrap pl-2.5">{pageTitle}</span>
+              </p>
+            </div>
+            <div className="flex justify-end items-center space-x-6">
+              <div className="relative group flex items-center space-x-6">
+                <div className="flex items-center space-x-3 cursor-pointer">
+                  <p className="text-gray-600">SHARE THIS:</p>
+                  {shareMessage && renderShareIcons()}
+                </div>
+                <div className="text-3xl text-gray-700 cursor-pointer rotate-90 block" onClick={() => setMenuOpen(true)}>
+                  <IoMenu />
                 </div>
               </div>
             </div>
-          ) : (
-            <div className="flex justify-between items-center px-4 h-[2.5rem]">
-              <div className="w-3/5" />
-              <div className="w-1/3 flex justify-center">
-                <TransitionLink href="/">
-                  <span className="tracking-[0.5rem] text-[28px]">
-                    WENA PROJECT
-                  </span>
-                </TransitionLink>
-              </div>
-              <div className="w-1/3 flex justify-end items-center space-x-6">
-                <div className="relative group flex items-center space-x-6">
-                  <div className="flex items-center space-x-3 cursor-pointer">
-                    <a
-                      href="https://www.instagram.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
-                    >
-                      <FaInstagram className="text-xl" />
-                    </a>
-                    {shareMessage && (
-                      <>
-                        <a
-                          href={`https://twitter.com/intent/tweet?text=${shareMessage}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
-                        >
-                          <FaSquareXTwitter className="text-xl" />
-                        </a>
-                        <a
-                          href="https://www.tiktok.com"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
-                        >
-                          <AiFillTikTok className="text-xl" />
-                        </a>
-                        <a
-                          href={`https://www.facebook.com/sharer/sharer.php?u=${shareMessage}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3"
-                        >
-                          <FaFacebookSquare className="text-xl" />
-                        </a>
-                      </>
-                    )}
-                  </div>
-                  <div className="h-[4rem] border-l border-gray-200 flex justify-center items-center pl-3">
-                    <InfoDrop setIsAboutOpen={setIsAboutOpen} />
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
+          </div>
         </nav>
-      </header>
 
-      {/* {isAboutOpen && (
-        <AboutModal onClose={() => setIsAboutOpen(false)} isOpen={isAboutOpen} />
-      )} */}
+        <AnimatePresence>
+          {menuOpen && (
+            <motion.div
+              className="fixed inset-0 bg-[#fff] z-[999] flex items-center justify-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="absolute top-8 right-12 text-3xl cursor-pointer" onClick={closeAllMenus}>
+                <GrClose />
+              </div>
+
+              <motion.ul
+                className="w-full text-xl sm:text-3xl space-y-6 text-center"
+                variants={containerVariant}
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
+              >
+                {["WENA", "Sponsors", "Partners", "Support"].map((item, idx) => (
+                  <motion.li key={idx} variants={itemVariant}>
+                    <button
+                      onClick={() => handleMenuItemClick("/features")}
+                      className="hover:text-blue-400 tracking-[3px] text-xl text-black transition block w-full bg-transparent border-none"
+                    >
+                      {item}
+                    </button>
+                  </motion.li>
+                ))}
+              </motion.ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </header>
     </>
   );
 };

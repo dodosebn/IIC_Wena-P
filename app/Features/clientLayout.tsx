@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import NavBar from "./NAVBAR/NavBar";
 import Sidebar from "./SIDEBAR/sidebar";
+import MobFoot from "../utils/mobFoot";
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -56,6 +57,9 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
         toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
         pageTitle={showTitle ? pageTitle : ""}
       />
+<div className="md:hidden  px-4 py-6 border-t border-gray-300">
+        <MobFoot />
+      </div>
       <div className="flex flex-1">
         <Sidebar
           toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
@@ -63,10 +67,13 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
           setActiveIndex={setActiveIndex}
           isOpen={isSidebarOpen}
         />
+
         <main className="flex-1 md:ml-[280px] mt-2 transition-all duration-300 overflow-y-auto">
           {children}
         </main>
       </div>
+
+      
     </div>
   );
 }

@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import Sidebar from "./SIDEBAR/sidebar";
 import NavBar from "./NAVBAR/NavBar";
 import { usePathname } from "next/navigation";
+import MobFoot from '../utils/mobFoot';
 
 export default function MainLayoutRootLayout({
   children,
@@ -71,6 +72,9 @@ return (
         <main className="flex-1 md:ml-[280px] mt-2 transition-all duration-300 overflow-y-auto">
           {children}
         </main>
+      </div>
+      <div className="md:hidden  px-4 py-6 border-t border-gray-300">
+        <MobFoot />
       </div>
     </div>
   );

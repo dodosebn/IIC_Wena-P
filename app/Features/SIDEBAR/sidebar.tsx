@@ -6,6 +6,7 @@ import items from "./mapps";
 import { BiMenuAltRight } from "react-icons/bi";
 import { SidebarProps } from "@/app/types";
 import TransitionLink from "@/app/utils/transitionLink";
+import { useNavbarStore } from "@/app/store/useNavStore";
 
 const Sidebar: React.FC<SidebarProps> = ({
   isOpen,
@@ -15,6 +16,8 @@ const Sidebar: React.FC<SidebarProps> = ({
 }) => {
   const [isMobile, setIsMobile] = useState(false);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+    const { menuOpen, setMenuOpen } = useNavbarStore();
+  
 
   useEffect(() => {
     setIsMobile(window.innerWidth <= 768);
@@ -40,7 +43,7 @@ const Sidebar: React.FC<SidebarProps> = ({
       });
     }
   };
-
+if (menuOpen) return null;
   return (
     <aside
       className={`fixed h-screen w-[280px] bg-[#f5f5f5] border-r border-gray-200
@@ -54,7 +57,7 @@ const Sidebar: React.FC<SidebarProps> = ({
       >
         <div className="uppercase text-gray-500 font-medium 
          tracking-[0.2rem] text-lg text-center mx-auto">
-          <a href="/">WENA PROJECT</a>
+          <a href="/">THE WENA PROJECT</a>
         </div>
         {isMobile && (
           <BiMenuAltRight
