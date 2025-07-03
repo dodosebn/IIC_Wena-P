@@ -5,10 +5,11 @@ import Logo from '@/public/images/homeimg/Logo-1.svg';
 import { IoCall } from 'react-icons/io5';
 import box1 from '@/public/images/homeimg/box-1.jpg';
 import asset1 from '@/public/images/homeimg/asset-21.jpeg';
+import BtnBg from '@/app/utils/btnBg';
 
 const ImgShowComp = () => {
   const imgers = [box1, asset1];
-  const textOptions = ['The Features', 'Your Dream'];
+  const textOptions = ['The Future', 'Your Dream', 'New House'];
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -88,20 +89,35 @@ const ImgShowComp = () => {
         </nav>
 
         {/* SLIDING TEXT */}
-        <div className="flex flex-col mt-10 relative">
-          <h1 className="text-9xl font-extrabold">Building</h1>
-
-          <div className="relative h-32 overflow-hidden text-9xl font-extrabold mt-4">
+        <div className="flex flex-col relative bottom-9">
+          <h1 className="text-[95px] font-extrabold capitalize">Building</h1>
+          <div className="relative h-32 bottom-3 overflow-hidden text-[95px] text-[#FAA45B] font-extrabold">
             <div
               ref={containerRef}
-              className={`transition-transform duration-1000 ease-in-out`}
+              className={`transition-transform duration-1000 ease-in`}
               style={{
-                transform: isAnimating ? 'translateY(-60%)' : 'translateY(0%)',
+                transform: isAnimating ? 'translateY(-50%)' : 'translateY(0%)',
               }}
             >
-              <div className="h-32 flex items-center">{textOptions[activeIndex]}</div>
-              <div className="h-32 flex items-center">{textOptions[nextIndex]}</div>
+              <div className=" flex items-center">{textOptions[activeIndex]}</div>
+              <div className=" flex items-center">{textOptions[nextIndex]}</div>
             </div>
+          </div>
+         
+          <div>
+            <p className='text-[18px] text-[#FFFFFFB3] max-w-xl'>Honoring architectural vision, delivers exceptional execution and outstanding client services.</p>
+          </div>
+          <div className='flex space-x-3 pt-6'>
+            <div>
+              <BtnBg btnName={'Go to Wena'} btnpath={'/Features'} />
+            </div>
+              <div className="flex space-x-3 items-center">
+            <IoCall className="text-[#FAA45B]" size={35} />
+            <div>
+              <h1 className="text-[13px] font-bold">Call us now</h1>
+              <p className="text-[15px]">+234 875 855</p>
+            </div>
+          </div>
           </div>
         </div>
       </div>
