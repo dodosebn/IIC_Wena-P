@@ -5,7 +5,7 @@ import ImgShowComp from './components/Home/imgShowComp'
 
 const page = () => {
   return (
-    <div>
+    <div className='overflow-hidden'>
         <Header />
         <ImgShowComp />
     </div>

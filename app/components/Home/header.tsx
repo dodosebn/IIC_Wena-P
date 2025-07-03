@@ -48,7 +48,7 @@ const Header = () => {
                 <FaYoutube size={24} className='text-gray-400 hover:text-[#f19387]' />
               </div>
               <button className='bg-[#B23E3E] gap-4 flex items-center text-white font-bold px-5 py-3 rounded-sm transition-all duration-300 transform hover:scale-105 group'>
-                <TransitionLink href='/Features'>
+                <TransitionLink href='/features'>
                   <div className='relative h-6 overflow-hidden'>
                     <div className='transition-transform duration-800 ease-in-out group-hover:-translate-y-6'>
                       <span className='block h-6'>Go to Wena</span>
