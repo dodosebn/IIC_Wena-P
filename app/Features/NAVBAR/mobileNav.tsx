@@ -158,7 +158,6 @@ const MobileNav: React.FC<MobileNavProps> = ({
                   </button>
                 </li>
               ))}
-              <li>Contact</li>
             </ul>
             <div className="flex pt-5 gap-6 text-3xl text-gray-700">
               <FaXTwitter />
