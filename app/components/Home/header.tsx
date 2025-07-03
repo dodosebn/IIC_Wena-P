@@ -14,10 +14,10 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div className='bg-[#f5f5f5] px-4'>
-      <div className='md:block hidden'>
+    <div className='bg-[#f5f5f5] px-4 '>
+      <div className='md:block hidden  max-w-7xl mx-auto md:px-12'>
         <div className='py-7'>
-          <div className='flex justify-between px-14'>
+          <div className='flex justify-between'>
             <div className='flex flex-row space-x-5 items-stretch relative'>
               <div className='flex space-x-2 items-center'>
                 <CiLocationOn className='text-[#f19383]' size={35} />
