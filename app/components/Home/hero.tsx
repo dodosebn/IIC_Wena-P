@@ -55,7 +55,7 @@ const textOptions = [
   return (
     <div className="relative w-full h-screen overflow-hidden bg-black/70">
       <div className="absolute top-6 left-6 z-20">
-        <BtnBg btnpath='/features'btnName='Features'/>
+        <BtnBg btnpath='/features' btnName='Features'/>
        
       </div>
       
