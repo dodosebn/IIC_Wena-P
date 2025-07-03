@@ -31,14 +31,13 @@ const ImgShowComp = () => {
       setTimeout(() => {
         setIsAnimating(false);
         setActiveIndex((prev) => (prev + 1) % textOptions.length);
-        // Reset wrapper back to top after animation completes
         if (containerRef.current) {
           containerRef.current.style.transition = 'none';
           containerRef.current.style.transform = 'translateY(0%)';
-          void containerRef.current.offsetHeight; // force reflow
+          void containerRef.current.offsetHeight; 
           containerRef.current.style.transition = 'transform 1s ease-in-out';
         }
-      }, 1000); // match transition duration
+      }, 1000); 
     }, 5000);
     return () => clearInterval(interval);
   }, []);
@@ -47,7 +46,6 @@ const ImgShowComp = () => {
 
   return (
     <div className="relative h-[30rem] overflow-hidden">
-      {/* Backgrounds */}
       {imgers.map((img, index) => (
         <div
           key={index}
@@ -63,15 +61,14 @@ const ImgShowComp = () => {
         />
       ))}
 
-      {/* Overlay */}
       <div className="absolute inset-0 bg-red-700/70 z-10" />
 
-      {/* Content */}
-      <div className="relative z-20 px-14 h-full flex flex-col justify-start cursor-pointer text-white">
-        <nav className="flex justify-between items-center border-b border-white/30 py-5">
+      <div className="relative z-20 md:px-14 px-3 pt-20 md:pt-0 h-full flex flex-col justify-start cursor-pointer text-white">
+        <nav className="md:flex hidden  justify-between items-center border-b border-white/30 py-5">
           <div>
             <Image src={Logo} alt="logo" />
           </div>
+          <div>
           <ul className="flex space-x-4 text-sm font-medium">
             {['home', 'about us', 'solutions', 'why wrc?', 'case studies', 'help center'].map(
               (item, index) => (
@@ -81,8 +78,9 @@ const ImgShowComp = () => {
               )
             )}
           </ul>
+          </div>
           <div className="flex space-x-3 items-center">
-            <IoCallOutline  className="text-[#FAA45B]" size={35} />
+            <IoCallOutline  className="text-[hsl(28,94%,67%)]" size={35} />
             <div>
               <h1 className="text-[13px] font-bold">Call us now</h1>
               <p className="text-[15px]">+234 875 855</p>
@@ -90,10 +88,9 @@ const ImgShowComp = () => {
           </div>
         </nav>
 
-        {/* SLIDING TEXT */}
-        <div className="flex flex-col relative bottom-9 ">
-          <h1 className="text-[95px] font-extrabold capitalize">Building</h1>
-<div className="relative h-32 -translate-y-9 overflow-hidden text-[95px] text-[#FAA45B] font-extrabold">
+        <div className="flex flex-col relative bottom-9">
+          <h1 className="md:text-[95px] text-[65px] font-extrabold capitalize">Building</h1>
+<div className="relative h-32 md:-translate-y-9 -translate-y-6 overflow-hidden md:text-[95px] text-[66px]  text-[#FAA45B] font-extrabold">
             <div
               ref={containerRef}
               className={`transition-transform duration-1000 ease-in`}
@@ -105,7 +102,7 @@ const ImgShowComp = () => {
               <div className=" flex items-center">{textOptions[nextIndex]}</div>
             </div>
           </div>
-         <div className='relative -translate-y-9'>
+         <div className='relative -translate-y-6'>
           <div>
             <p className='text-[18px] text-[#FFFFFFB3] max-w-xl'>Honoring architectural vision, delivers exceptional execution and outstanding client services.</p>
           </div>

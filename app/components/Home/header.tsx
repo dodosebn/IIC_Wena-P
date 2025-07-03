@@ -7,7 +7,7 @@ import { LuPhoneCall } from 'react-icons/lu';
 
 const Header = () => {
   return (
-    <div className='bg-[#fff]'>
+    <div className='bg-[#fff] md:block hidden'>
       {/* Outer wrapper with vertical padding */}
       <div className='py-7'>
         {/* Flex layout without vertical padding so line can stretch */}
