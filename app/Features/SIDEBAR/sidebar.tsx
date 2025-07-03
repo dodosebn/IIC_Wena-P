@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import items from "./mapps";
+import items from './mapps';
 import { BiMenuAltRight } from "react-icons/bi";
 import { SidebarProps } from "@/app/types";
 import TransitionLink from "@/app/utils/transitionLink";
