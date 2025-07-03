@@ -72,7 +72,7 @@ const ImgShowComp = () => {
       <div className="absolute inset-0 bg-red-700/70 z-10" />
 
       {/* Content */}
-      <div className="relative max-w-7xl mx-auto  z-20 md:px-12 px-3 pt-20 md:pt-0 h-full flex flex-col justify-start cursor-pointer text-white">
+      <div className="relative max-w-7xl mx-auto z-20 md:px-12 px-3 pt-20 md:pt-0 h-full flex flex-col justify-start cursor-pointer text-white">
         <nav className="md:flex hidden justify-between items-center border-b border-white/30 py-5">
           <Image src={Logo} alt="logo" />
           <ul className="flex space-x-4 text-sm font-medium">
@@ -93,8 +93,10 @@ const ImgShowComp = () => {
 
         {/* Animated text */}
         <div className="flex flex-col relative bottom-9 2xl:bottom-0 2xl:top-60">
-          <h1 className="md:text-[95px] text-[65px] font-extrabold capitalize">Building</h1>
-          <div className="relative h-32 md:-translate-y-9 -translate-y-6 overflow-hidden md:text-[95px] text-[66px] text-[#FAA45B] font-extrabold">
+          <h1 className="md:text-[95px] text-[65px] font-extrabold capitalize relative top-7 md:top-0">Building</h1>
+
+          <div className="relative md:-translate-y-6 translate-y-6
+            h-[80px] md:h-[120px] overflow-hidden text-[#FAA45B] font-extrabold">
             <div
               ref={containerRef}
               className="transition-transform duration-1000 ease-in"
@@ -102,13 +104,17 @@ const ImgShowComp = () => {
                 transform: isAnimating ? 'translateY(-50%)' : 'translateY(0%)',
               }}
             >
-              <div>{textOptions[activeIndex]}</div>
-              <div>{textOptions[nextIndex]}</div>
+              <div className="h-[80px] md:h-[120px] text-[60px] md:text-[95px] flex items-center">
+                {textOptions[activeIndex]}
+              </div>
+              <div className="h-[80px] md:h-[120px] text-[60px] md:text-[95px] flex items-center">
+                {textOptions[nextIndex]}
+              </div>
             </div>
           </div>
 
           {/* CTA */}
-          <div className="relative -translate-y-6">
+          <div className="relative md:-translate-y-4 translate-y-6">
             <p className="text-[18px] text-[#FFFFFFB3] max-w-xl">
               Honoring architectural vision, delivers exceptional execution and outstanding client services.
             </p>
