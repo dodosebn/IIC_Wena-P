@@ -6,6 +6,8 @@ import BtnBg from '@/app/utils/btnBg';
 import box1 from '@/public/images/homeimg/box-1.jpg';
 import asset1 from '@/public/images/homeimg/asset-21.jpeg';
 import { motion, AnimatePresence } from 'framer-motion';
+import TransitionLink from '@/app/utils/transitionLink';
+import { FaAngleRight } from 'react-icons/fa';
 
 const videoUrl = '/assets/videos/section-bg-video.mp4';
 
@@ -20,21 +22,19 @@ const HeroTextSwitcher = ({ textOptions }: { textOptions: string[] }) => {
   }, [textOptions.length]);
 
   return (
-    <div className="relative h-[80px] md:h-[120px] w-full overflow-hidden text-[#FAA45B] font-extrabold text-[20px] md:text-[95px]">
-      <div className="relative w-full h-full flex items-center justify-center">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeIndex}
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -50, opacity: 0 }}
-            transition={{ duration: 0.35, ease: 'easeInOut' }}
-            className="absolute w-full text-center"
-          >
-            {textOptions[activeIndex]}
-          </motion.div>
-        </AnimatePresence>
-      </div>
+    <div className="relative w-full text-[#FAA45B] font-extrabold text-[50px] md:text-[95px] leading-tight">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeIndex}
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -30, opacity: 0 }}
+          transition={{ duration: 0.35, ease: 'easeInOut' }}
+          className="w-full text-start"
+        >
+          {textOptions[activeIndex]}
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 };
@@ -65,10 +65,8 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-black/70">
-      <div className="absolute top-6 left-6 z-20">
-        <BtnBg btnpath="/Features" btnName="Features" />
-      </div>
+    <div className="relative  px-8 w-full h-screen overflow-hidden bg-black/70">
+
 
       <video
         className="absolute top-0 left-0 w-full h-full object-cover"
@@ -79,15 +77,31 @@ const Hero = () => {
         playsInline
       />
 
-      <div className="relative z-20 flex flex-col items-center justify-center h-full text-white gap-8">
-        <h1 className="md:text-[95px] text-[50px] font-extrabold capitalize relative top-7 md:top-0">
-          Africa
-        </h1>
+<div className="relative max-w-7xl mx-auto md:px-12 z-20 flex items-center justify-center md:justify-start h-full w-full text-white">
+  <div className="flex flex-col items-start gap-8 w-full">
+    <h1 className="md:text-[95px] text-[50px] font-extrabold capitalize relative top-7 md:top-0">
+      Africa
+    </h1>
 
-        <HeroTextSwitcher textOptions={textOptions} />
+    <HeroTextSwitcher textOptions={textOptions} />
 
-        {/* <Loading /> */}
-      </div>
+    {/* ✅ BUTTON SECTION - now part of the layout */}
+    <div className="mt-8">
+      <button className="bg-white gap-4 flex items-center text-black font-bold px-6 py-3 rounded-sm transition-all duration-300 transform hover:scale-105 group">
+        <TransitionLink href="/Features">
+          <div className="relative h-6 overflow-hidden">
+            <div className="transition-transform duration-500 ease-in-out group-hover:-translate-y-6">
+              <span className="block h-6">Enter Wena</span>
+              <span className="block h-6">Go to Wena</span>
+            </div>
+          </div>
+        </TransitionLink>
+        <FaAngleRight className="text-lg" />
+      </button>
+    </div>
+  </div>
+</div>
+
     </div>
   );
 };
