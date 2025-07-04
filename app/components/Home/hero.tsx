@@ -15,7 +15,7 @@ const HeroTextSwitcher = ({ textOptions }: { textOptions: string[] }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % textOptions.length);
-    }, 300);
+    }, 3000);
     return () => clearInterval(interval);
   }, [textOptions.length]);
 
@@ -60,7 +60,7 @@ const Hero = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % imgers.length);
-    }, 100);
+    }, 10000);
     return () => clearInterval(interval);
   }, []);
 
