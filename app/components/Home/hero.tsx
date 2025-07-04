@@ -79,9 +79,10 @@ const Hero = () => {
 
 <div className="relative max-w-7xl mx-auto md:px-12 z-20 flex items-center justify-center md:justify-start h-full w-full text-white">
   <div className="flex flex-col items-start gap-8 w-full">
-    <h1 className="md:text-[95px] text-[50px] font-extrabold capitalize relative top-7 md:top-0">
-      Africa
-    </h1>
+   <h1 className="md:text-[95px] text-[50px] font-black capitalize relative top-7 md:top-0 tracking-tight leading-none">
+  Africa
+</h1>
+
 
     <HeroTextSwitcher textOptions={textOptions} />
 

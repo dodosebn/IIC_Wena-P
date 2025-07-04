@@ -93,7 +93,7 @@ const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, pageTitle }) => {
           toggleSidebar={toggleSidebar}
           handleMenu={handleMenu}
           showTitleOnly={showTitleOnly}
-          handleMenuItemClick={handleMenuItemClick }
+          handleMenuItemClick={handleMenuItemClick}
         />
 
         <nav className="hidden md:block bg-white border-b px-4 py-3 border-gray-200">

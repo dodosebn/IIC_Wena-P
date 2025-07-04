@@ -57,9 +57,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
         toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
         pageTitle={showTitle ? pageTitle : ""}
       />
-<div className="md:hidden  px-4 py-6 border-t border-gray-300">
-        <MobFoot />
-      </div>
+
       <div className="flex flex-1">
         <Sidebar
           toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
