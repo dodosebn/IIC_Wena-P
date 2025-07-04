@@ -79,7 +79,7 @@ const textOptions = [
             h-[80px] md:h-[120px] overflow-hidden text-[#FAA45B] font-extrabold">
             <div
               ref={containerRef}
-              className="transition-transform duration-1000 ease-in"
+              className="transition-transform ease-in"
               style={{
                 transform: isAnimating ? 'translateY(-50%)' : 'translateY(0%)',
               }}
