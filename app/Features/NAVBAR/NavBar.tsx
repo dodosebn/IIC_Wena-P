@@ -105,7 +105,7 @@ const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, pageTitle }) => {
     href={`mailto:?subject=Check this out!&body=${shareMessage}`}
     target="_blank"
     rel="noopener noreferrer"
-    className="flex justify-center items-center h-full px-4 border-l border-gray-300"
+    className="flex justify-center items-center h-full px-4 border-l border-r border-gray-300"
   >
     <IoMdMailUnread size={30} />
   </a>
