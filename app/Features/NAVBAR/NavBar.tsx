@@ -1,6 +1,11 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { FaSquareInstagram } from "react-icons/fa6";
+import { IoLogoTiktok } from "react-icons/io5";
+import { IoMdMailUnread } from "react-icons/io";
+import { FaXTwitter } from "react-icons/fa6";
+
 import {
   FaInstagram,
   FaFacebookSquare,
@@ -71,18 +76,41 @@ const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, pageTitle }) => {
 
   const renderShareIcons = () => (
     <>
-      <a href={`https://www.instagram.com/sharer/sharer.php?u=${shareMessage}`} target="_blank" rel="noopener noreferrer" className="h-[4rem] flex justify-center items-center">
-        <FaInstagram size={30} />
-      </a>
-      <a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer" className="h-[4rem] flex justify-center items-center">
-        <AiFillTikTok size={30} />
-      </a>
-      <a href={`https://twitter.com/intent/tweet?text=${shareMessage}`} target="_blank" rel="noopener noreferrer" className="h-[4rem] flex justify-center items-center">
-        <FaSquareXTwitter size={30} />
-      </a>
-      <a href={`mailto:?subject=Check this out!&body=${shareMessage}`} target="_blank" rel="noopener noreferrer" className="h-[4rem] flex justify-center items-center">
-        <IoMail size={30} />
-      </a>
+     <div className="flex h-[4rem] items-center">
+  <a
+    href={`https://www.instagram.com/sharer/sharer.php?u=${shareMessage}` }
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex justify-center items-center h-full px-4 border-l border-gray-300"
+  >
+    <FaSquareInstagram size={30} />
+  </a>
+  <a
+    href="https://www.tiktok.com"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex justify-center items-center h-full px-4 border-l border-gray-300"
+  >
+    <IoLogoTiktok size={30} />
+  </a>
+  <a
+    href={`https://twitter.com/intent/tweet?text=${shareMessage}`}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex justify-center items-center h-full px-4 border-l border-gray-300"
+  >
+    <FaXTwitter size={30} />
+  </a>
+  <a
+    href={`mailto:?subject=Check this out!&body=${shareMessage}`}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex justify-center items-center h-full px-4 border-l border-gray-300"
+  >
+    <IoMdMailUnread size={30} />
+  </a>
+</div>
+
     </>
   );
 
@@ -100,7 +128,7 @@ const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, pageTitle }) => {
           <div className="flex items-center justify-between h-[2.5rem]">
             <div className="w-1/4" />
             <div className="flex flex-[2] h-[2.6rem] items-center">
-              <h1 className="text-xl font-bold mr-2">W</h1>
+              {/* <h1 className="text-xl font-bold mr-2">W</h1> */}
               <p className="text-sm pt-[0.2rem]">
                 <span className="flex-nowrap pl-2.5">{pageTitle}</span>
               </p>

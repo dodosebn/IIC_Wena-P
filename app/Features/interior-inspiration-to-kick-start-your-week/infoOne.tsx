@@ -12,15 +12,15 @@ const InfoOne = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
       <div className="mb-16">
         <div className="mb-8 text-center">
-          <span className="text-[11px] uppercase tracking-wider text-gray-500 font-medium">
+          {/* <span className="text-[11px] uppercase tracking-wider text-gray-500 font-medium">
             Interiors, Travel | by The Spaces Team
-          </span>
+          </span> */}
           <h1 className="mt-4 text-[36px] text-gray-900 leading-tight">
             This new Mediterranean restaurant in Miami has Michelin cred
           </h1>
-          <p className="mt-4 text-[18px] text-gray-600 max-w-3xl mx-auto">
+          {/* <p className="mt-4 text-[18px] text-gray-600 max-w-3xl mx-auto">
             Chef Michael White helms the kitchen at Mika in Coral Gables
-          </p>
+          </p> */}
         </div>
 
         <div className="-mx-4 sm:-mx-6 lg:-mx-8">
@@ -84,7 +84,7 @@ const InfoOne = () => {
         </div>
       </div>
 
-     <Shar />
+     {/* <Shar /> */}
 
       <div className="mb-20">
         <h2 className="text-2xl font-serif font-bold text-gray-900 mb-8 text-center">

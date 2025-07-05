@@ -25,15 +25,15 @@ const UseInfo: React.FC<UseInfoProps> = ({
       {/* Header Section */}
       <div className="mb-16">
         <div className="mb-8 text-center">
-          <span className="text-[11px] uppercase tracking-wider text-gray-500 font-medium">
+          {/* <span className="text-[11px] uppercase tracking-wider text-gray-500 font-medium">
             {headerfirstSpan}
-          </span>
+          </span> */}
           <h1 className="mt-4 text-[36px] text-gray-900 leading-tight">
             {headerfirstH1}
           </h1>
-          <p className="mt-4 text-[18px] text-gray-600 max-w-3xl mx-auto">
+          {/* <p className="mt-4 text-[18px] text-gray-600 max-w-3xl mx-auto">
             {headerfirstP}
-          </p>
+          </p> */}
         </div>
 
   <div className="-mx-4 sm:-mx-6 lg:-mx-8">
@@ -88,7 +88,7 @@ const UseInfo: React.FC<UseInfoProps> = ({
         </div>
       </div>
 
-     <Shar />
+     {/* <Shar /> */}
       {/* Recommended Products */}
       <div className="mb-20">
         <h2 className="text-2xl font-serif  text-gray-900 mb-8 text-center">
