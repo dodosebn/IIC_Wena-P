@@ -116,7 +116,7 @@ const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, pageTitle }) => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white ">
         <MobileNav
           toggleSidebar={toggleSidebar}
           handleMenu={handleMenu}
@@ -128,10 +128,10 @@ const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, pageTitle }) => {
           <div className="flex items-center justify-between h-[2.5rem]">
             <div className="w-1/4" />
             <div className="flex flex-[2] h-[2.6rem] items-center">
-              {/* <h1 className="text-xl font-bold mr-2">W</h1> */}
-              <p className="text-sm pt-[0.2rem]">
+              <h1 className="mr-2 text-gray-600">INTRO</h1>
+              {/* <p className="text-sm pt-[0.2rem]">
                 <span className="flex-nowrap pl-2.5">{pageTitle}</span>
-              </p>
+              </p> */}
             </div>
             <div className="flex justify-end items-center space-x-6">
               <div className="relative group flex items-center space-x-6">

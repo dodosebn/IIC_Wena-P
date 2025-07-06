@@ -56,7 +56,7 @@ export default function MainLayoutRootLayout({
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col ">
       <NavBar
         isSidebarOpen={isSidebarOpen}
         toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
