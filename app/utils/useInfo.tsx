@@ -1,10 +1,11 @@
-import React from "react";
-import { FaGlobe, FaInstagram, FaTiktok } from "react-icons/fa";
-import Image from "next/image";
-import sameple_1 from "@/public/assets/images/temp/sample-1.jpg";
-import { UseInfoProps } from "../types";
-import { CiLock } from "react-icons/ci";
-import laptop from "@/public/images/homeimg/laptop.avif";
+'use client';
+import React, { useState } from 'react';
+import { FaGlobe, FaInstagram, FaTiktok } from 'react-icons/fa';
+import Image from 'next/image';
+import sample_1 from '@/public/assets/images/temp/sample-1.jpg';
+import { UseInfoProps } from '../types';
+import { CiLock } from 'react-icons/ci';
+import laptop from '@/public/images/homeimg/laptop.avif';
 
 const UseInfo: React.FC<UseInfoProps> = ({
   imgforPhotocite1,
@@ -12,26 +13,28 @@ const UseInfo: React.FC<UseInfoProps> = ({
   describp2,
   describp3,
 }) => {
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+
   const features = [
     {
       icon: <CiLock size={32} />,
-      title: "End-to-end encryption",
-      description: "Your data is securely encrypted and always in your control.",
+      title: 'End-to-end encryption',
+      description: 'Your data is securely encrypted and always in your control.',
     },
     {
       icon: <CiLock size={32} />,
-      title: "Private cloud sync",
-      description: "Sync notes across devices without compromising privacy.",
+      title: 'Private cloud sync',
+      description: 'Sync notes across devices without compromising privacy.',
     },
     {
       icon: <CiLock size={32} />,
-      title: "No tracking",
-      description: "We don’t track your activity or share your data.",
+      title: 'No tracking',
+      description: 'We don’t track your activity or share your data.',
     },
     {
       icon: <CiLock size={32} />,
-      title: "Global compliance",
-      description: "Fully compliant with major privacy regulations.",
+      title: 'Global compliance',
+      description: 'Fully compliant with major privacy regulations.',
     },
   ];
 
@@ -135,12 +138,9 @@ const UseInfo: React.FC<UseInfoProps> = ({
       {/* Stay Organized Section */}
       <div
         className="relative bg-cover bg-center bg-no-repeat text-white flex items-center justify-start min-h-[20rem]"
-        style={{ backgroundImage: imgforPhotocite1 ? `url(${imgforPhotocite1.src})` : "none" }}
+        style={{ backgroundImage: imgforPhotocite1 ? `url(${imgforPhotocite1.src})` : 'none' }}
       >
-        {/* Overlay */}
         <div className="absolute inset-0 bg-black/30 z-0" />
-
-        {/* Content */}
         <div className="relative bg-black/50 z-10 max-w-lg p-6">
           <h2 className="text-2xl font-bold mb-2">Stay organized</h2>
           <p className="max-w-[18rem]">
@@ -149,20 +149,38 @@ const UseInfo: React.FC<UseInfoProps> = ({
         </div>
       </div>
 
-      {/* Sample Image Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
-        {[...Array(4)].map((_, i) => (
-          <div key={i} className="group cursor-pointer">
-            <div className="relative aspect-square overflow-hidden shadow-md">
-              <Image
-                src={sameple_1}
-                alt={`sample-${i}`}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform"
-              />
-            </div>
+      {/* Expandable Image Grid */}
+      <div className="w-full">
+        {expandedIndex !== null ? (
+          <div className="relative w-full">
+            <Image
+              src={sample_1}
+              alt={`expanded-${expandedIndex}`}
+              className="w-full h-auto max-h-[90vh] object-cover"
+            />
+            <button
+              className="absolute top-4 right-4 bg-black/70 text-white px-4 py-2 rounded-md"
+              onClick={() => setExpandedIndex(null)}
+            >
+              Close
+            </button>
           </div>
-        ))}
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+            {[...Array(4)].map((_, i) => (
+              <div key={i} className="group cursor-pointer" onClick={() => setExpandedIndex(i)}>
+                <div className="relative aspect-square overflow-hidden shadow-md">
+                  <Image
+                    src={sample_1}
+                    alt={`sample-${i}`}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Final CTA */}

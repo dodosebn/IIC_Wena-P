@@ -19,6 +19,7 @@ import { useRouter } from "next/navigation";
 import MobileNav from "./mobileNav";
 import { useNavbarStore } from "@/app/store/useNavStore";
 import Link from "next/link";
+import { Instagram } from "lucide-react";
 
 interface NavBarProps {
   isSidebarOpen: boolean;
@@ -84,7 +85,8 @@ const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, pageTitle }) => {
     rel="noopener noreferrer"
     className="flex justify-center items-center h-full px-4 border-l border-gray-300"
   >
-    <FaSquareInstagram size={30} />
+    {/* <FaSquareInstagram /> */}
+    <Instagram size={30} />
   </a>
   <a
     href="https://www.tiktok.com"
