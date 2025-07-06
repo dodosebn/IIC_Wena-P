@@ -72,7 +72,7 @@ const InfoOne = () => {
           lighting is subtle, emanating discreetly from niches, sconces and a sweeping marble-topped bar beneath three
           cascading crystal chandeliers.
         </p>
-        <p className='w-1/2'>
+        <p>
           The elegant dining room was imagined by Bishop Design and Mika co-owner Alex Pirez in rustic raw woods and
           wicker, made more sumptuous with the addition of velvet and leather. To combat the South Florida climate, the
           lighting is subtle, emanating discreetly from niches, sconces and a sweeping marble-topped bar beneath three
@@ -84,7 +84,7 @@ const InfoOne = () => {
       <div className="w-full text-white flex flex-col md:flex-row gap-3 items-stretch">
         <div className="w-full md:w-1/2 space-y-4 p-20 bg-[#2c2b27]">
           <h2 className="text-4xl font-bold">A true color ink display</h2>
-          <p className='w-1/2'>Enjoy the vibrant color experience while maintaining the paper-like reading and writing feel.</p>
+          <p>Enjoy the vibrant color experience while maintaining the paper-like reading and writing feel.</p>
         </div>
         <div className="w-full md:w-1/2">
           <Image src={pabloImg} alt="feature" className="w-full h-full object-cover" />
@@ -98,7 +98,7 @@ const InfoOne = () => {
         </div>
         <div className="w-full md:w-1/2 space-y-4 p-20 bg-[#cbc8bc]">
           <h2 className="text-4xl font-bold">Read in comfort. Day or night.</h2>
-          <p className='w-1/2'>Thanks to its adaptive light and anti-glare screen, your eyes stay protected any time of the day.</p>
+          <p>Thanks to its adaptive light and anti-glare screen, your eyes stay protected any time of the day.</p>
         </div>
       </div>
 
@@ -106,7 +106,7 @@ const InfoOne = () => {
       <div className="flex flex-col md:flex-row gap-10">
         <div className="flex-2 space-y-6">
           <h2 className="text-4xl font-bold">Data protection and privacy</h2>
-          <p className='w-1/2'>Our technology ensures your data is secure, always.</p>
+          <p>Our technology ensures your data is secure, always.</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {features.map((item, index) => (
               <div key={index} className="flex items-start space-x-4">
