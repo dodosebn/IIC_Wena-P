@@ -35,15 +35,15 @@ export interface ImageSliderProps {
   showSocialLinks?: boolean;
 }
 export type UseInfoProps = {
-  headerfirstSpan: string;
-  headerfirstH1: string;
-  headerfirstP: string;
-  photoCite: string;
-  imgforPhotocite1: StaticImageData;
-  imgforphotocite2: StaticImageData;
-  describp1: string;
-  describp2: string;
-  describp3: string;
-  Slider: React.FC; // or FC<SliderProps> if it takes props
+  headerfirstSpan?: string;
+  headerfirstH1?: string;
+  headerfirstP?: string;
+  photoCite?: string;
+  imgforPhotocite1?: StaticImageData;
+  imgforphotocite2?: StaticImageData;
+  describp1?: string;
+  describp2?: string;
+  describp3?: string;
+  Slider?: React.FC; // or FC<SliderProps> if it takes props
 };
 

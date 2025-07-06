@@ -55,30 +55,7 @@ const Page = () => {
       </div>
 
       {/* Section 2 */}
-      <div
-        ref={section2Ref}
-        className="min-h-[80vh] bg-gradient-to-br from-gray-50 to-gray-100 w-full py-16 px-4 sm:px-8"
-      >
-        <div className="max-w-6xl mx-auto">
-          <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Discover More Inspiration</h2>
-            <p className="text-lg text-gray-600 leading-relaxed">
-              This section features additional content and resources to complement your design journey. 
-              Explore curated collections, expert tips, and behind-the-scenes looks at stunning interiors.
-            </p>
-            <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-gray-50 p-6 rounded-lg hover:shadow-md transition-all">
-                <h3 className="font-medium text-gray-800 mb-2">Design Trends 2023</h3>
-                <p className="text-gray-600">Explore the latest interior design trends shaping homes this year.</p>
-              </div>
-              <div className="bg-gray-50 p-6 rounded-lg hover:shadow-md transition-all">
-                <h3 className="font-medium text-gray-800 mb-2">Color Palettes</h3>
-                <p className="text-gray-600">Discover harmonious color combinations for every room.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    
 
       {/* Floating navigation buttons */}
       {/* <div className="fixed bottom-6 left-6 flex flex-col gap-3 z-50">

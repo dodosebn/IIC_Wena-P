@@ -1,129 +1,182 @@
 import React from "react";
 import { FaGlobe, FaInstagram, FaTiktok } from "react-icons/fa";
 import Image from "next/image";
-import pabloImg from "@/public/assets/images/temp/download.webp";
 import sameple_1 from "@/public/assets/images/temp/sample-1.jpg";
 import { UseInfoProps } from "../types";
-import Formalin from "./customs/formalin";
-import Shar from "./shar";
+import { CiLock } from "react-icons/ci";
+import laptop from "@/public/images/homeimg/laptop.avif";
 
 const UseInfo: React.FC<UseInfoProps> = ({
-  headerfirstSpan,
-  headerfirstH1,
-  headerfirstP,
-  photoCite,
   imgforPhotocite1,
   describp1,
   describp2,
   describp3,
-    imgforphotocite2,
-
-  Slider
 }) => {
+  const features = [
+    {
+      icon: <CiLock size={32} />,
+      title: "End-to-end encryption",
+      description: "Your data is securely encrypted and always in your control.",
+    },
+    {
+      icon: <CiLock size={32} />,
+      title: "Private cloud sync",
+      description: "Sync notes across devices without compromising privacy.",
+    },
+    {
+      icon: <CiLock size={32} />,
+      title: "No tracking",
+      description: "We don’t track your activity or share your data.",
+    },
+    {
+      icon: <CiLock size={32} />,
+      title: "Global compliance",
+      description: "Fully compliant with major privacy regulations.",
+    },
+  ];
+
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-      {/* Header Section */}
-      <div className="mb-16">
-        <div className="mb-8 text-center">
-          {/* <span className="text-[11px] uppercase tracking-wider text-gray-500 font-medium">
-            {headerfirstSpan}
-          </span> */}
-          <h1 className="mt-4 text-[36px] text-gray-900 leading-tight">
-            {headerfirstH1}
+    <div className="max-w-7xl mx-auto px-4 lg:px-6 py-7 space-y-5">
+      {/* Hero Image */}
+      {imgforPhotocite1 && (
+        <div>
+          <Image src={imgforPhotocite1} alt="hero image" className="w-full" />
+        </div>
+      )}
+
+      {/* Gradient CTA Section */}
+      <div className="bg-[linear-gradient(to_right,_#605654,_#c2b4b1)] text-white p-10 flex flex-col md:flex-row justify-between items-center gap-8">
+        <div className="space-y-4 max-w-[15rem]">
+          <h1 className="text-3xl font-bold">
+            reMarkable <br /> Paper Pro
           </h1>
-          {/* <p className="mt-4 text-[18px] text-gray-600 max-w-3xl mx-auto">
-            {headerfirstP}
-          </p> */}
+          <p className="text-lg">
+            Experience a paper-like feel with cutting-edge color display and advanced tools.
+          </p>
+          <button className="bg-blue-700 hover:bg-blue-800 text-white py-2 px-6 rounded-md">
+            Buy Now
+          </button>
         </div>
+        {imgforPhotocite1 && (
+          <Image src={imgforPhotocite1} alt="product" className="w-full md:w-1/2" />
+        )}
+      </div>
 
-  <div className="-mx-4 sm:-mx-6 lg:-mx-8">
-          <div className="relative w-full aspect-[16/9] overflow-hidden">  
-                  <Image
-            src={imgforPhotocite1 || pabloImg} 
-            alt="header-image"
-            fill
-            priority
-            quality={85}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
-            className="object-cover"
-            placeholder="blur" 
-          />
-          <div className="absolute bottom-4 left-4 bg-black/70 text-white px-3 py-1 rounded text-sm">
-            {photoCite}
+      {/* Description Section */}
+      <div className="text-[#2c2b27] space-y-6 flex flex-col px-8 items-center justify-center leading-relaxed">
+        {describp1 && <p className="mb-6">{describp1}</p>}
+        {describp2 && <p className="mb-6">{describp2}</p>}
+        {describp3 && <p>{describp3}</p>}
+      </div>
+
+      {/* Feature Section - Dark */}
+      <div className="w-full text-white flex flex-col md:flex-row gap-3 items-stretch">
+        <div className="w-full md:w-1/2 space-y-4 p-10 bg-[#2c2b27]">
+          <h2 className="text-2xl font-bold">A true color ink display</h2>
+          <p>Enjoy the vibrant color experience while maintaining the paper-like reading and writing feel.</p>
+        </div>
+        {imgforPhotocite1 && (
+          <div className="w-full md:w-1/2">
+            <Image src={imgforPhotocite1} alt="feature" className="w-full h-full object-cover" />
+          </div>
+        )}
+      </div>
+
+      {/* Feature Section - Light Gray */}
+      <div className="w-full text-black flex flex-col md:flex-row gap-3 items-stretch">
+        {imgforPhotocite1 && (
+          <div className="w-full md:w-1/2">
+            <Image src={imgforPhotocite1} alt="feature" className="w-full h-full object-cover" />
+          </div>
+        )}
+        <div className="w-full md:w-1/2 space-y-4 p-10 bg-[#cbc8bc]">
+          <h2 className="text-2xl font-bold">Read in comfort. Day or night.</h2>
+          <p>
+            Thanks to its adaptive light and anti-glare screen, your eyes stay protected any time of the day.
+          </p>
+        </div>
+      </div>
+
+      {/* Privacy Grid */}
+      <div className="flex flex-col md:flex-row gap-10">
+        <div className="flex-2 space-y-6">
+          <h2 className="text-2xl font-bold">Data protection and privacy</h2>
+          <p>Our technology ensures your data is secure, always.</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {features.map((item, index) => (
+              <div key={index} className="flex items-start space-x-4">
+                <div>{item.icon}</div>
+                <div>
+                  <h3 className="font-bold">{item.title}</h3>
+                  <p className="text-sm">{item.description}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-        </div>
-      </div>
-
-      {/* Content Paragraphs */}
-      <div className="max-w-3xl mx-auto mb-20">
-        <div className="prose prose-lg text-gray-700">
-          <p className="mb-6">{describp1}</p>
-          <p className="mb-6">{describp2}</p>
-          <p>{describp3}</p>
-        </div>
-      </div>
-
-      {/* Slider Section */}
-      {/* <div className="mb-20">
-        <Slider />
-      </div> */}
-
-      {/* Single Image Section - Also fixed blur */}
-      <div className="mb-20">
-        <div className="-mx-4 sm:-mx-6 lg:-mx-8">
-          <div className="relative w-full aspect-[16/9] overflow-hidden">  
-          <Image 
-            src={imgforphotocite2 || sameple_1}
-            alt="home"
-            fill
-            quality={85}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 800px"
-            className="object-cover"
-          />
-          <div className="absolute bottom-4 left-4 bg-black/70 text-white px-3 py-1 rounded text-sm">
-            {photoCite}
+        {imgforPhotocite1 && (
+          <div className="flex-1">
+            <Image src={imgforPhotocite1} alt="privacy visual" className="w-full h-full" />
           </div>
+        )}
+      </div>
+
+      {/* Final Showcase */}
+      <div className="flex flex-col bg-[#2c2b29] text-white md:flex-row items-center">
+        <div className="max-w-[32rem] flex-2">
+          <Image src={laptop} alt="final-cta" className="w-full rounded-md" />
         </div>
+        <div className="px-7 py-4 w-[20rem] flex-1">
+          <h2 className="text-3xl font-bold">64GB for limitless note-taking</h2>
+          <p className="pt-4">Personalize your reMarkable Paper Pro to suit your workflow and style.</p>
         </div>
       </div>
 
-     {/* <Shar /> */}
-      {/* Recommended Products */}
-      <div className="mb-20">
-        <h2 className="text-2xl font-serif  text-gray-900 mb-8 text-center">
-          SUPPORT US BY BUYING ONE OF THESE PRODUCTS
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {[...Array(4)].map((_, i) => (
-            <div key={i} className="group cursor-pointer">
-              <div className="relative aspect-square overflow-hidden shadow-md mb-4">
-                <Image
-                  src={sameple_1}
-                  alt="product"
-                  fill
-                  quality={75}
-                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div>
-                <span className="text-xs uppercase tracking-wider text-gray-500">
-                  Interiors, News
-                </span>
-                <p className="mt-1 text-gray-900 font-medium">
-                  The cedar-clad hillside home is decidedly Canadian in style —
-                  woody
-                </p>
-              </div>
+      {/* Stay Organized Section */}
+      <div
+        className="relative bg-cover bg-center bg-no-repeat text-white flex items-center justify-start min-h-[20rem]"
+        style={{ backgroundImage: imgforPhotocite1 ? `url(${imgforPhotocite1.src})` : "none" }}
+      >
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/30 z-0" />
+
+        {/* Content */}
+        <div className="relative bg-black/50 z-10 max-w-lg p-6">
+          <h2 className="text-2xl font-bold mb-2">Stay organized</h2>
+          <p className="max-w-[18rem]">
+            Keep all your notes, sketches, and files in one place, accessible across devices.
+          </p>
+        </div>
+      </div>
+
+      {/* Sample Image Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+        {[...Array(4)].map((_, i) => (
+          <div key={i} className="group cursor-pointer">
+            <div className="relative aspect-square overflow-hidden shadow-md">
+              <Image
+                src={sameple_1}
+                alt={`sample-${i}`}
+                fill
+                className="object-cover group-hover:scale-105 transition-transform"
+              />
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
 
-{/* <Formalin /> */}
+      {/* Final CTA */}
+      <div className="flex flex-col bg-[#b4a8aa] text-white md:flex-row items-center justify-between gap-8">
+        <div className="px-7 py-4">
+          <h2 className="text-3xl font-bold">Make it your own</h2>
+          <p className="max-w-[18rem] pt-4">
+            Personalize your reMarkable Paper Pro to suit your workflow and style.
+          </p>
+        </div>
+        <Image src={laptop} alt="final-cta" className="w-full md:w-1/3 rounded-md" />
+      </div>
     </div>
   );
 };
 
-export default UseInfo; 
+export default UseInfo;

@@ -31,7 +31,7 @@ const InfoOne = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 mdpx-0 py-7 space-y-5">
+    <div className="max-w-7xl mx-auto px-4 lg:px-6 py-7 space-y-5">
       
       {/* Hero Image */}
       <div>
