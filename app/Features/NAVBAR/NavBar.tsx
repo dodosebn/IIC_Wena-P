@@ -18,6 +18,7 @@ import { motion, AnimatePresence, Variants } from "framer-motion";
 import { useRouter } from "next/navigation";
 import MobileNav from "./mobileNav";
 import { useNavbarStore } from "@/app/store/useNavStore";
+import Link from "next/link";
 
 interface NavBarProps {
   isSidebarOpen: boolean;
@@ -128,7 +129,7 @@ const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, pageTitle }) => {
           <div className="flex items-center justify-between h-[2.5rem]">
             <div className="w-1/4" />
             <div className="flex flex-[2] h-[2.6rem] items-center">
-              <h1 className="mr-2 text-gray-600">INTRO</h1>
+          <Link href={'/'}><h1 className="mr-2 text-gray-600 cursor-pointer">INTRO</h1></Link>    
               {/* <p className="text-sm pt-[0.2rem]">
                 <span className="flex-nowrap pl-2.5">{pageTitle}</span>
               </p> */}
@@ -149,13 +150,14 @@ const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, pageTitle }) => {
 
         <AnimatePresence>
           {menuOpen && (
-            <motion.div
-              className="fixed inset-0 bg-[#fff] z-[999] flex items-center justify-center"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-            >
+                 <motion.div
+            className="fixed inset-0 bg-[#fff] z-50 flex items-center justify-center"
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            exit={{ y: "100%" }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+          >
+           
               <div className="absolute top-8 right-12 text-3xl cursor-pointer" onClick={closeAllMenus}>
                 <GrClose />
               </div>

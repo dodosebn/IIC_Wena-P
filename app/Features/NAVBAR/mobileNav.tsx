@@ -12,6 +12,7 @@ import {
 import { IoClose, IoMail, IoMenu } from 'react-icons/io5';
 import TransitionLink from '@/app/utils/transitionLink';
 import { FaXTwitter } from 'react-icons/fa6';
+import { motion } from 'framer-motion';
 
 interface MobileNavProps {
   toggleSidebar: () => void;
@@ -136,11 +137,12 @@ const MobileNav: React.FC<MobileNavProps> = ({
 
 
       {(isMenuOpen || isAnimating) && (
-        <div
-          className={`fixed inset-0 bg-white z-50 flex flex-col ${
-            isMenuOpen && !isAnimating ? 'animate-slideInRight' : ''
-          } ${isAnimating ? 'animate-slideOutRight' : ''}`}
-        >
+         <motion.div
+            className="fixed inset-0 bg-[#fff] z-50"
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            exit={{ y: "100%" }}
+            transition={{ duration: 0.6, ease: "easeInOut" }} >
           <div className="flex justify-end p-4">
             <button onClick={toggleMenuOverlay} aria-label="Close menu">
               <IoClose size={28} className="text-gray-800" />
@@ -166,8 +168,7 @@ const MobileNav: React.FC<MobileNavProps> = ({
               <FaTiktok />
             </div>
           </div>
-        </div>
-      )}
+</motion.div>      )}
     </div>
   );
 };

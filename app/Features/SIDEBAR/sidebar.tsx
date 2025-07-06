@@ -7,7 +7,6 @@ import { BiMenuAltRight } from "react-icons/bi";
 import { SidebarProps } from "@/app/types";
 import { useNavbarStore } from "@/app/store/useNavStore";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 const Sidebar: React.FC<SidebarProps> = ({
   isOpen,
@@ -18,7 +17,6 @@ const Sidebar: React.FC<SidebarProps> = ({
   const [isMobile, setIsMobile] = useState(false);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
   const { menuOpen } = useNavbarStore();
-  const router = useRouter();
 
   useEffect(() => {
     setIsMobile(window.innerWidth <= 768);
@@ -27,35 +25,22 @@ const Sidebar: React.FC<SidebarProps> = ({
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const handleClick = (
-    index: number,
-    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-    path: string
-  ) => {
-    event.preventDefault(); // delay navigation
+  const handleClick = (index: number) => {
     setActiveIndex(index);
-
     if (isMobile) toggleSidebar();
 
     const nextItem = itemRefs.current[index + 1];
-    const currentItem = itemRefs.current[index];
-
     if (nextItem) {
       nextItem.scrollIntoView({
         behavior: "smooth",
         block: "nearest",
       });
-    } else if (currentItem) {
-      currentItem.scrollIntoView({
+    } else {
+      itemRefs.current[index]?.scrollIntoView({
         behavior: "smooth",
         block: "nearest",
       });
     }
-
-    // Delay the route change just a bit to allow visual update
-    setTimeout(() => {
-      router.push(path);
-    }, 100);
   };
 
   if (menuOpen) return null;
@@ -95,7 +80,7 @@ const Sidebar: React.FC<SidebarProps> = ({
           >
             <Link
               href={item.path}
-              onClick={(e) => handleClick(index, e, item.path)}
+              onClick={() => handleClick(index)}
               className="block w-full text-left cursor-pointer"
             >
               <div
