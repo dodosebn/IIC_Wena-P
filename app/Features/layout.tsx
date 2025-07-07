@@ -58,10 +58,8 @@ export default function MainLayoutRootLayout({
 return (
     <div className="min-h-screen flex flex-col ">
       <NavBar
-        isSidebarOpen={isSidebarOpen}
-        toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
-        pageTitle={showTitle ? pageTitle : ""}
-      />
+      isSidebarOpen={isSidebarOpen}
+      toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} pageTitle={''}      />
       <div className="flex flex-1">
         <Sidebar 
           toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}

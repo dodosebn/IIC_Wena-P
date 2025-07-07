@@ -6,6 +6,10 @@ import Image from 'next/image';
 import sample_1 from '@/public/assets/images/temp/sample-1.jpg';
 import laptop from '@/public/images/homeimg/laptop.avif';
 import bookBacking from '@/public/images/homeimg/book_backing.avif';
+import planeLike from '@/public/newImages/planeLike.avif';
+import bookiee from '@/public/newImages/bookie.avif';
+import pencilLike from '@/public/newImages/pencilLike.avif';
+import gray44 from '@/public/newImages/gray-444.avif';
 import { UseInfoProps } from '../types';
 
 const UseInfo: React.FC<UseInfoProps> = ({
@@ -40,12 +44,13 @@ const UseInfo: React.FC<UseInfoProps> = ({
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 md:px-10 py-16 space-y-16 text-[#2c2b27]">
-      {imgforPhotocite1 && (
-        <div>
-          <Image src={imgforPhotocite1} alt="hero image" className="w-full object-cover" />
-        </div>
-      )}
+     <div className="max-w-7xl mx-auto px-4  p-12 space-y-3 text-[#2c2b27]">
+      <div className='bg-[#f3eee8] p-20 flex items-center justify-center mx-auto'>
+        <h1 className="text-5xl font-bold leading-tight">reMarkable</h1>
+      </div>
+      <div>
+        <Image src={planeLike} alt="hero image" className="w-full h-[25rem] object-cover" />
+      </div>
 
       <div className="bg-gradient-to-r from-[#605654] to-[#877e6f] text-white px-10 py-16 flex flex-col md:flex-row items-center justify-between gap-10">
         <div className="space-y-6 max-w-md">
@@ -54,34 +59,30 @@ const UseInfo: React.FC<UseInfoProps> = ({
           <button className="bg-blue-700 hover:bg-blue-800 text-white py-2 px-6 rounded-md">Buy Now</button>
         </div>
         <div className="w-full md:w-1/2">
-          <Image src={bookBacking} alt="product" className="w-full object-contain" />
+          <Image src={bookiee} alt="product" className="w-full object-contain" />
         </div>
       </div>
 
-      <div className="space-y-8 leading-relaxed text-center text-[#2c2b27] px-4 md:px-10">
-        {describp1 && <p>{describp1}</p>}
-        {describp2 && <p>{describp2}</p>}
-        {describp3 && <p>{describp3}</p>}
+      <div className="space-y-8 leading-relaxed  text-[#2c2b27] px-4 md:px-10">
+        <p>A recipient of six Michelin stars over his career, the American chef Michael White is a safe pair of hands in the kitchen. This fact, along with a burnished dining room in an olive-grove palette, is what makes Mika a boon to the tidy white streets of Coral Gables in Miami. The Riviera-inspired restaurant, with its menu of seafood pastas and crudos, is a new hub on Ponce de Leon Boulevard, a historic palm-lined artery through town with Mediterranean flavour.</p>
+        <p>The elegant dining room was imagined by Bishop Design and Mika co-owner Alex Pirez in rustic raw woods and wicker, made more sumptuous with the addition of velvet and leather. To combat the South Florida climate, the lighting is subtle, emanating discreetly from niches, sconces and a sweeping marble-topped bar beneath three cascading crystal chandeliers.</p>
+        <p>The elegant dining room was imagined by Bishop Design and Mika co-owner Alex Pirez in rustic raw woods and wicker, made more sumptuous with the addition of velvet and leather. To combat the South Florida climate, the lighting is subtle, emanating discreetly from niches, sconces and a sweeping marble-topped bar beneath three cascading crystal chandeliers.</p>
       </div>
 
       <div className="w-full text-white flex flex-col md:flex-row gap-4 items-stretch">
         <div className="w-full md:w-1/2 space-y-6 px-6 md:px-20 py-16 bg-[#2c2b27]">
           <h2 className="text-4xl font-bold">A true color ink display</h2>
-          <p>Enjoy the vibrant color experience while maintaining the paper-like reading and writing feel.</p>
+          <p>Enjoy the vibrant color experience while maintaining the paper-like reading and writing feel. Enjoy the vibrant color experience while maintaining the paper-like reading and writing feel.</p>
         </div>
-        {imgforPhotocite1 && (
-          <div className="w-full md:w-1/2">
-            <Image src={imgforPhotocite1} alt="feature" className="w-full h-full object-cover" />
-          </div>
-        )}
+        <div className="w-full md:w-1/2">
+          <Image src={pencilLike} alt="feature" className="w-full h-full object-cover" />
+        </div>
       </div>
 
       <div className="w-full text-black flex flex-col md:flex-row gap-4 items-stretch">
-        {imgforPhotocite1 && (
-          <div className="w-full md:w-1/2 bg-[radial-gradient(circle_at_left,_#92887c_0%,_#92887c_50%,_#cccabe_100%)] flex justify-center items-center py-10">
-            <Image src={imgforPhotocite1} alt="feature" className="w-[70%] max-w-[500px] object-contain" />
-          </div>
-        )}
+        <div className="w-full md:w-1/2 bg-[radial-gradient(circle_at_left,_#92887c_0%,_#92887c_50%,_#cccabe_100%)] flex justify-center items-center py-10">
+          <Image src={pencilLike} alt="feature" className="w-[70%] max-w-[500px] object-contain" />
+        </div>
         <div className="w-full md:w-1/2 space-y-6 px-6 md:px-20 py-16 bg-[radial-gradient(circle_at_left,_#cccabe_0%,_#cccabe_50%,_#92887c_100%)]">
           <h2 className="text-4xl font-bold">Read in comfort. Day or night.</h2>
           <p>Thanks to its adaptive light and anti-glare screen, your eyes stay protected any time of the day.</p>
@@ -89,9 +90,9 @@ const UseInfo: React.FC<UseInfoProps> = ({
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row gap-14 items-start">
+      <div className="flex flex-col bg-[#f1ece6] p-9 md:flex-row gap-14 items-start">
         <div className="flex-2 space-y-6">
-          <h2 className="text-4xl font-bold">Data protection and privacy</h2>
+          <h2 className="text-4xl font-bold w-[70%]">Data protection and privacy</h2>
           <p>Our technology ensures your data is secure, always.</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {features.map((item, index) => (
@@ -105,11 +106,9 @@ const UseInfo: React.FC<UseInfoProps> = ({
             ))}
           </div>
         </div>
-        {imgforPhotocite1 && (
-          <div className="flex-1">
-            <Image src={imgforPhotocite1} alt="privacy visual" className="w-full h-full object-cover" />
-          </div>
-        )}
+        <div className="flex-1">
+          <Image src={gray44} alt="privacy visual" className="w-full h-[20rem] object-cover" />
+        </div>
       </div>
 
       <div className="flex flex-col bg-[#2c2b29] text-white md:flex-row items-center">
@@ -122,18 +121,16 @@ const UseInfo: React.FC<UseInfoProps> = ({
         </div>
       </div>
 
-      {imgforPhotocite1 && (
-        <div
-          className="relative bg-cover bg-center bg-no-repeat text-white flex items-center justify-start min-h-[20rem]"
-          style={{ backgroundImage: `url(${imgforPhotocite1.src})` }}
-        >
-          <div className="absolute inset-0 bg-black/40 z-0" />
-          <div className="relative z-10 max-w-xl p-8 space-y-4 bg-black/50">
-            <h2 className="text-4xl font-bold">Stay organized</h2>
-            <p className="text-lg max-w-md">Keep all your notes, sketches, and files in one place, accessible across devices.</p>
-          </div>
+      <div
+        className="relative bg-cover bg-center bg-no-repeat text-white flex items-center justify-start min-h-[20rem]"
+        style={{ backgroundImage: `url(${gray44.src})` }}
+      >
+        <div className="absolute inset-0 bg-black/40 z-0" />
+        <div className="relative z-10 max-w-xl p-8 space-y-4 bg-black/50">
+          <h2 className="text-4xl font-bold">Stay organized</h2>
+          <p className="text-lg max-w-md">Keep all your notes, sketches, and files in one place, accessible across devices.</p>
         </div>
-      )}
+      </div>
 
       <div className="w-full">
         {expandedIndex !== null ? (

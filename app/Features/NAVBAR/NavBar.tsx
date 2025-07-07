@@ -129,7 +129,7 @@ const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, pageTitle }) => {
 
         <nav className="hidden md:block bg-white border-b px-4 py-3 border-gray-200">
           <div className="flex items-center justify-between h-[2.5rem]">
-            <div className="w-1/4" />
+            <div className="w-[22%] xl:w-[25%]" />
             <div className="flex flex-[2] h-[2.6rem] items-center">
           <Link href={'/'}><h1 className="mr-2 text-gray-600 cursor-pointer">INTRO</h1></Link>    
               {/* <p className="text-sm pt-[0.2rem]">
