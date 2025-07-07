@@ -44,6 +44,6 @@ export type UseInfoProps = {
   describp1?: string;
   describp2?: string;
   describp3?: string;
-  Slider?: React.FC; // or FC<SliderProps> if it takes props
+  Slider?: React.FC; 
 };
 
