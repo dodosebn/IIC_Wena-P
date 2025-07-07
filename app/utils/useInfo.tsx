@@ -44,7 +44,7 @@ const UseInfo: React.FC<UseInfoProps> = ({
   ];
 
   return (
-     <div className="max-w-7xl mx-auto px-4  p-12 space-y-3 text-[#2c2b27]">
+        <div className="max-w-7xl mx-auto px-4  p-12 space-y-3 text-[#2c2b27]">
       <div className='bg-[#f3eee8] p-20 flex items-center justify-center mx-auto'>
         <h1 className="text-5xl font-bold leading-tight">reMarkable</h1>
       </div>
@@ -71,7 +71,7 @@ const UseInfo: React.FC<UseInfoProps> = ({
 
       <div className="w-full text-white flex flex-col md:flex-row gap-4 items-stretch">
         <div className="w-full md:w-1/2 space-y-6 px-6 md:px-20 py-16 bg-[#2c2b27]">
-          <h2 className="text-4xl font-bold">A true color ink display</h2>
+          <h2 className="text-4xl font-bold">A true color ink <br /> display</h2>
           <p>Enjoy the vibrant color experience while maintaining the paper-like reading and writing feel. Enjoy the vibrant color experience while maintaining the paper-like reading and writing feel.</p>
         </div>
         <div className="w-full md:w-1/2">
@@ -80,19 +80,19 @@ const UseInfo: React.FC<UseInfoProps> = ({
       </div>
 
       <div className="w-full text-black flex flex-col md:flex-row gap-4 items-stretch">
-        <div className="w-full md:w-1/2 bg-[radial-gradient(circle_at_left,_#92887c_0%,_#92887c_50%,_#cccabe_100%)] flex justify-center items-center py-10">
-          <Image src={pencilLike} alt="feature" className="w-[70%] max-w-[500px] object-contain" />
-        </div>
-        <div className="w-full md:w-1/2 space-y-6 px-6 md:px-20 py-16 bg-[radial-gradient(circle_at_left,_#cccabe_0%,_#cccabe_50%,_#92887c_100%)]">
-          <h2 className="text-4xl font-bold">Read in comfort. Day or night.</h2>
-          <p>Thanks to its adaptive light and anti-glare screen, your eyes stay protected any time of the day.</p>
-          <p>Thanks to its adaptive light and anti-glare screen, your eyes stay protected any time of the day.</p>
-        </div>
-      </div>
+             <div className="w-full md:w-1/2 bg-[radial-gradient(circle_at_left,_#92887c_0%,_#92887c_50%,_#cccabe_100%)] flex justify-center items-center py-10">
+               <Image src={pencilLike} alt="feature" className="w-[70%] max-w-[500px] object-contain" />
+             </div>
+             <div className="w-full md:w-1/2 space-y-6 px-6 md:px-20 py-16 bg-[radial-gradient(circle_at_left,_#cccabe_0%,_#cccabe_50%,_#92887c_100%)]">
+               <h2 className="text-4xl font-bold">Read in comfort. <br />Day or night.</h2>
+               <p>Thanks to its adaptive light and anti-glare screen, your eyes stay protected any time of the day.</p>
+               <p>Thanks to its adaptive light and anti-glare screen, your eyes stay protected any time of the day.</p>
+             </div>
+           </div>
 
       <div className="flex flex-col bg-[#f1ece6] p-9 md:flex-row gap-14 items-start">
         <div className="flex-2 space-y-6">
-          <h2 className="text-4xl font-bold w-[70%]">Data protection and privacy</h2>
+          <h2 className="text-4xl font-bold w-[70%]">Data protection and <br className='hidden md:block' /> privacy</h2>
           <p>Our technology ensures your data is secure, always.</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {features.map((item, index) => (
@@ -116,7 +116,7 @@ const UseInfo: React.FC<UseInfoProps> = ({
           <Image src={laptop} alt="final-cta" className="w-full rounded-md" />
         </div>
         <div className="px-10 py-10 w-full md:w-[20rem] flex-1">
-          <h2 className="text-3xl font-bold">64GB for limitless note-taking</h2>
+          <h2 className="text-3xl font-bold">64GB for limitless <br /> note-taking</h2>
           <p className="pt-4">Personalize your reMarkable Paper Pro to suit your workflow and style.</p>
         </div>
       </div>
@@ -167,8 +167,8 @@ const UseInfo: React.FC<UseInfoProps> = ({
 
       <div className="flex flex-col bg-[#b4a8aa] text-white md:flex-row items-center justify-between px-10 py-14 gap-12">
         <div className="space-y-4">
-          <h2 className="text-4xl font-bold">Make it your own</h2>
-          <p className="max-w-md">Personalize your reMarkable Paper Pro to suit your workflow and style.</p>
+          <h2 className="text-6xl font-bold">Make it your own</h2>
+          <p className="max-w-md">Personalize your reMarkable Paper Pro <br /> to suit your workflow and style.</p>
         </div>
         <Image src={laptop} alt="final-cta" className="w-full md:w-1/3 rounded-md" />
       </div>
