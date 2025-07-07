@@ -11,6 +11,8 @@ import planeLike from '@/public/newImages/planeLike.avif';
 import bookiee from '@/public/newImages/bookie.avif';
 import pencilLike from '@/public/newImages/pencilLike.avif';
 import gray44 from '@/public/newImages/gray-444.avif';
+import { WiRainMix } from "react-icons/wi";
+
 const InfoOne = () => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
@@ -31,7 +33,7 @@ const InfoOne = () => {
       description: 'We don’t track your activity or share your data.',
     },
     {
-      icon: <CiLock size={32} />,
+      icon: <WiRainMix size={32} />,
       title: 'Global compliance',
       description: 'Fully compliant with major privacy regulations.',
     },
