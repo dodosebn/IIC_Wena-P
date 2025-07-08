@@ -43,15 +43,14 @@ const Sidebar: React.FC<SidebarProps> = ({
     }
   };
 
-  if (menuOpen) return null;
-
   return (
-    <aside
-      className={`fixed h-screen w-[280px] bg-[#f5f5f5] border-r border-gray-200
-        flex flex-col z-50 top-0 left-0
-        ${isMobile ? (isOpen ? "translate-x-0" : "-translate-x-full") : ""}
-        transition-transform duration-300 ease-in-out shadow-sm`}
-    >
+   <aside
+  className={`fixed h-screen w-[280px] bg-[#f5f5f5] border-r border-gray-200
+    flex flex-col z-50 top-0 left-0
+    ${isMobile ? (isOpen ? "translate-x-0" : "-translate-x-full") : ""}
+    transition-transform duration-300 ease-in-out shadow-sm`}
+>
+
       <div
         className="p-4 md:px-5 md:py-[1.1rem] flex justify-between items-center border-b
        border-gray-200 sticky top-0 bg-[#f5f5f5] z-10"
@@ -84,8 +83,7 @@ const Sidebar: React.FC<SidebarProps> = ({
               className="block w-full text-left cursor-pointer"
             >
               <div
-                className={`p-4 border-b border-gray-100 hover:bg-gray-50 transition-colors
-                  ${index === activeIndex ? "bg-gray-50" : ""}`}
+                className={`p-4 border-b border-gray-100 hover:bg-gray-50 transition-colors`}
               >
                 <div className="relative w-full aspect-[5/3] overflow-hidden">
                   <Image

@@ -2,11 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { BiMenuAltLeft } from 'react-icons/bi';
-import {
-  FaFacebookSquare,
-  FaInstagram,
-  FaTiktok,
-} from 'react-icons/fa';
+import { FaFacebookSquare, FaInstagram, FaTiktok } from 'react-icons/fa';
 import { IoClose, IoMail, IoMenu } from 'react-icons/io5';
 import { FaXTwitter } from 'react-icons/fa6';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
@@ -19,6 +15,7 @@ interface MobileNavProps {
   handleMenuItemClick: (path: string) => void;
 }
 
+// ✅ Animation variants
 const containerVariant: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -90,12 +87,19 @@ const MobileNav: React.FC<MobileNavProps> = ({
             exit={{ y: '100%' }}
             transition={{ duration: 0.6, ease: 'easeInOut' }}
           >
-            <motion.div className="flex justify-end p-4" variants={itemVariant}>
+            <motion.div
+              className="flex justify-end p-4"
+              variants={itemVariant}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+            >
               <button onClick={toggleMenuOverlay} aria-label="Close menu">
                 <IoClose size={28} className="text-gray-800" />
               </button>
             </motion.div>
 
+            {/* 🔥 Menu Links */}
             <motion.ul
               className="flex flex-col items-center space-y-6 text-xl font-medium text-gray-800 mt-16"
               variants={containerVariant}
@@ -115,6 +119,7 @@ const MobileNav: React.FC<MobileNavProps> = ({
               ))}
             </motion.ul>
 
+            {/* 🔥 Social Icons */}
             <motion.div
               className="flex justify-center gap-6 pt-10 text-3xl text-gray-700"
               variants={containerVariant}

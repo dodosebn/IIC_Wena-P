@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import React, { useEffect, useState } from "react";
-import { FaSquareInstagram, FaXTwitter } from "react-icons/fa6";
-import { IoLogoTiktok, IoMailUnread, IoMenu } from "react-icons/io5";
-import { GrClose } from "react-icons/gr";
-import { motion, AnimatePresence, Variants } from "framer-motion";
-import { useRouter } from "next/navigation";
-import MobileNav from "./mobileNav";
-import { useNavbarStore } from "@/app/store/useNavStore";
-import Link from "next/link";
+import React, { useEffect, useState } from 'react';
+import { FaSquareInstagram, FaXTwitter } from 'react-icons/fa6';
+import { IoLogoTiktok, IoMailUnread, IoMenu } from 'react-icons/io5';
+import { GrClose } from 'react-icons/gr';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
+import { useRouter } from 'next/navigation';
+import MobileNav from './mobileNav';
+import { useNavbarStore } from '@/app/store/useNavStore';
+import Link from 'next/link';
 
 interface NavBarProps {
   isSidebarOpen: boolean;
@@ -29,15 +29,14 @@ const itemVariant: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { type: "spring", bounce: 0.4 },
+    transition: { type: 'spring', bounce: 0.4 },
   },
 };
 
 const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, pageTitle }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showTitleOnly, setShowTitleOnly] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [shareMessage, setShareMessage] = useState("");
+  const [shareMessage, setShareMessage] = useState('');
 
   const { menuOpen, setMenuOpen } = useNavbarStore();
   const router = useRouter();
@@ -53,14 +52,13 @@ const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, pageTitle }) => {
       setLastScrollY(window.scrollY);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
 
-  const handleMenu = () => setIsMenuOpen((prev) => !prev);
   const closeAllMenus = () => setMenuOpen(false);
 
-  const handleMenuItemClick = (path: string = "/") => {
+  const handleMenuItemClick = (path: string = '/') => {
     setMenuOpen(false);
     router.push(path);
   };
@@ -104,11 +102,10 @@ const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, pageTitle }) => {
 
   return (
     <>
-          <header className="fixed top-0 left-0 right-0 z-50 bg-white md:ml-[280px] ">
-
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white md:ml-[280px]">
         <MobileNav
           toggleSidebar={toggleSidebar}
-          handleMenu={handleMenu}
+          handleMenu={() => setMenuOpen(true)}
           showTitleOnly={showTitleOnly}
           handleMenuItemClick={handleMenuItemClick}
         />
@@ -132,43 +129,7 @@ const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, pageTitle }) => {
           </div>
         </nav>
 
-        <AnimatePresence>
-          {menuOpen && (
-            <motion.div
-              className="fixed inset-0 bg-[#fff] z-50 flex items-center justify-center"
-              initial={{ y: "100%" }}
-              animate={{ y: 0 }}
-              exit={{ y: "100%" }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
-            >
-              <div
-                className="absolute top-8 right-12 text-3xl cursor-pointer"
-                onClick={closeAllMenus}
-              >
-                <GrClose />
-              </div>
 
-              <motion.ul
-                className="w-full text-xl sm:text-3xl space-y-6 text-center"
-                variants={containerVariant}
-                initial="hidden"
-                animate="visible"
-                exit="hidden"
-              >
-                {["WENA", "Sponsors", "Partners", "Support"].map((item, idx) => (
-                  <motion.li key={idx} variants={itemVariant}>
-                    <button
-                      onClick={() => handleMenuItemClick("/features")}
-                      className="hover:text-blue-400 tracking-[3px] text-xl text-black transition block w-full bg-transparent border-none"
-                    >
-                      {item}
-                    </button>
-                  </motion.li>
-                ))}
-              </motion.ul>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </header>
     </>
   );
