@@ -58,7 +58,7 @@ const Sidebar: React.FC<SidebarProps> = ({
       >
         <div
           className="uppercase text-gray-500 font-medium 
-         tracking-[0.2rem] text-lg text-center mx-auto"
+         tracking-[0.15rem] text-md text-center mx-auto"
         >
           <a href="/">THE WENA PROJECT</a>
         </div>
