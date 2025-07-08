@@ -1,4 +1,5 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 import { FaGlobe, FaInstagram, FaTiktok } from "react-icons/fa";
 import Image from 'next/image';
 import Slider from './slider/Slider';
@@ -8,19 +9,15 @@ import Formalin from '@/app/utils/customs/formalin';
 import Shar from '@/app/utils/shar';
 
 const InfoOne = () => {
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+    <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
       <div className="mb-16">
         <div className="mb-8 text-center">
-          {/* <span className="text-[11px] uppercase tracking-wider text-gray-500 font-medium">
-            Interiors, Travel | by The Spaces Team
-          </span> */}
           <h1 className="mt-4 text-[36px] text-gray-900 leading-tight">
             This new Mediterranean restaurant in Miami has Michelin cred
           </h1>
-          {/* <p className="mt-4 text-[18px] text-gray-600 max-w-3xl mx-auto">
-            Chef Michael White helms the kitchen at Mika in Coral Gables
-          </p> */}
         </div>
 
         <div className="-mx-4 sm:-mx-6 lg:-mx-8">
@@ -39,7 +36,6 @@ const InfoOne = () => {
         </div>
       </div>
 
-      {/* Content Paragraphs */}
       <div className="max-w-3xl mx-auto mb-20">
         <div className="prose prose-lg text-gray-700">
           <p className="mb-6">
@@ -64,14 +60,8 @@ const InfoOne = () => {
         </div>
       </div>
 
-      {/* Slider Section */}
-      {/* <div className="mb-20">
-        <Slider />
-      </div> */}
-
-      {/* Single Image Section */}
-          <div className="-mx-4 sm:-mx-6 lg:-mx-8">
-          <div className="relative w-full aspect-[16/9] overflow-hidden">
+      <div className="-mx-4 sm:-mx-6 lg:-mx-8">
+        <div className="relative w-full aspect-[16/9] overflow-hidden">
           <Image 
             src={sameple_1} 
             alt="home" 
@@ -84,8 +74,6 @@ const InfoOne = () => {
         </div>
       </div>
 
-     {/* <Shar /> */}
-
       <div className="mb-20">
         <h2 className="text-2xl font-serif font-bold text-gray-900 mb-8 text-center">
           SUPPORT US BY BUYING ONE OF THESE PRODUCTS
@@ -93,10 +81,13 @@ const InfoOne = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[...Array(4)].map((_, i) => (
             <div key={i} className="group cursor-pointer">
-              <div className="relative aspect-square overflow-hidden shadow-md mb-4">
+              <div
+                className="relative aspect-square overflow-hidden shadow-md mb-4"
+                onClick={() => setExpandedIndex(i)}
+              >
                 <Image 
                   src={sameple_1} 
-                  alt="product" 
+                  alt={`product-${i}`} 
                   fill
                   className="object-cover group-hover:scale-105 transition-transform"
                 />
@@ -111,8 +102,24 @@ const InfoOne = () => {
           ))}
         </div>
       </div>
-{/* <Formalin /> */}
-     
+
+      {expandedIndex !== null && (
+        <div className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-4">
+          <div className="relative max-w-4xl w-full">
+            <Image
+              src={sameple_1}
+              alt={`expanded-${expandedIndex}`}
+              className="w-full h-auto max-h-[90vh] object-contain rounded-lg"
+            />
+            <button
+              className="absolute top-4 right-4 bg-black/70 text-white px-4 py-2 rounded-md"
+              onClick={() => setExpandedIndex(null)}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
