@@ -6,13 +6,11 @@ import {
   FaFacebookSquare,
   FaInstagram,
   FaTiktok,
-  FaWhatsapp,
-  FaTwitter,
 } from 'react-icons/fa';
 import { IoClose, IoMail, IoMenu } from 'react-icons/io5';
-import TransitionLink from '@/app/utils/transitionLink';
 import { FaXTwitter } from 'react-icons/fa6';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
+import TransitionLink from '@/app/utils/transitionLink';
 
 interface MobileNavProps {
   toggleSidebar: () => void;
@@ -21,6 +19,23 @@ interface MobileNavProps {
   handleMenuItemClick: (path: string) => void;
 }
 
+const containerVariant: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.3, delayChildren: 0.7 },
+  },
+};
+
+const itemVariant: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: 'spring', bounce: 0.4 },
+  },
+};
+
 const MobileNav: React.FC<MobileNavProps> = ({
   toggleSidebar,
   handleMenu,
@@ -28,7 +43,6 @@ const MobileNav: React.FC<MobileNavProps> = ({
   handleMenuItemClick,
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false);
   const [shareMessage, setShareMessage] = useState('');
 
   useEffect(() => {
@@ -37,79 +51,12 @@ const MobileNav: React.FC<MobileNavProps> = ({
   }, []);
 
   const toggleMenuOverlay = () => {
-    if (!isAnimating) {
-      if (isMenuOpen) {
-        setIsAnimating(true);
-      } else {
-        setIsMenuOpen(true);
-        setIsAnimating(false);
-      }
-      handleMenu();
-    }
+    setIsMenuOpen((prev) => !prev);
+    handleMenu();
   };
-
-  useEffect(() => {
-    if (isAnimating) {
-      const timer = setTimeout(() => {
-        setIsMenuOpen(false);
-        setIsAnimating(false);
-      }, 300);
-      return () => clearTimeout(timer);
-    }
-  }, [isAnimating]);
 
   return (
     <div className="md:hidden relative">
-      {/* 
-      {showTitleOnly ? (
-        <div className="flex items-center justify-between px-4 border-b border-gray-400 h-14">
-          <div className="flex justify-center">
-            <h1 className="text-xl font-bold">W</h1>
-          </div>
-          <div className="h-full border-l border-gray-400 flex items-center px-3">
-            <span className="text-gray-500 text-sm pr-2">SHARE THIS:</span>
-            <div className="space-x-4 flex">
-              {shareMessage && (
-                <>
-                  <a
-                    href={`https://twitter.com/intent/tweet?text=${shareMessage}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="h-[3.5rem] border-l border-gray-200 flex justify-center items-center pl-2"
-                  >
-                    <FaSquareXTwitter size={24} />
-                  </a>
-                  <a
-                    href={`https://www.facebook.com/sharer/sharer.php?u=${shareMessage}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="h-[3.5rem] border-l border-gray-200 flex justify-center items-center pl-2"
-                  >
-                    <FaFacebookSquare size={24} />
-                  </a>
-                  <a
-                    href={`https://wa.me/?text=${shareMessage}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="h-[3.5rem] border-l border-gray-200 flex justify-center items-center pl-2"
-                  >
-                    <FaWhatsapp size={24} />
-                  </a>
-                  <a
-                    href={`mailto:?subject=Check this out!&body=${shareMessage}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="h-[3.5rem] border-l border-gray-200 flex justify-center items-center pl-2"
-                  >
-                    <IoMail size={24} />
-                  </a>
-                </>
-              )}
-            </div>
-          </div>
-        </div>
-      ) : (
-      */}
       <div className="flex justify-between items-center border-b border-gray-400 h-14">
         <div className="h-full border-r border-gray-400 flex items-center px-4">
           <button onClick={toggleSidebar} aria-label="Toggle sidebar">
@@ -118,12 +65,12 @@ const MobileNav: React.FC<MobileNavProps> = ({
         </div>
         <div className="flex justify-center">
           <TransitionLink href="/">
-            <span className=" tracking-[0.2rem] text-[1rem]">
-           THE WENA PROJECT
+            <span className="tracking-[0.2rem] text-[1rem] font-bold">
+              THE WENA PROJECT
             </span>
           </TransitionLink>
         </div>
-        <div className="h-full border-l border-gray-400 flex items-center text-center justify-center px-4">
+        <div className="h-full border-l border-gray-400 flex items-center px-4">
           <button
             onClick={toggleMenuOverlay}
             className="flex flex-col items-center"
@@ -133,42 +80,92 @@ const MobileNav: React.FC<MobileNavProps> = ({
           </button>
         </div>
       </div>
-      {/* ) */}
 
-
-      {(isMenuOpen || isAnimating) && (
-         <motion.div
-            className="fixed inset-0 bg-[#fff] z-50"
-            initial={{ y: "100%" }}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            className="fixed inset-0 bg-white z-50 flex flex-col"
+            initial={{ y: '100%' }}
             animate={{ y: 0 }}
-            exit={{ y: "100%" }}
-            transition={{ duration: 0.6, ease: "easeInOut" }} >
-          <div className="flex justify-end p-4">
-            <button onClick={toggleMenuOverlay} aria-label="Close menu">
-              <IoClose size={28} className="text-gray-800" />
-            </button>
-          </div>
-          <div className="flex flex-col items-center space-y-6 text-xl font-medium text-gray-800 mt-16">
-            <ul className="flex flex-col items-center space-y-6">
-              {['WENA', 'Sponsors', 'Partners', 'Supports'].map((itm, ndx) => (
-                <li key={ndx}>
+            exit={{ y: '100%' }}
+            transition={{ duration: 0.6, ease: 'easeInOut' }}
+          >
+            <motion.div className="flex justify-end p-4" variants={itemVariant}>
+              <button onClick={toggleMenuOverlay} aria-label="Close menu">
+                <IoClose size={28} className="text-gray-800" />
+              </button>
+            </motion.div>
+
+            <motion.ul
+              className="flex flex-col items-center space-y-6 text-xl font-medium text-gray-800 mt-16"
+              variants={containerVariant}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+            >
+              {['WENA', 'Sponsors', 'Partners', 'Support'].map((item, idx) => (
+                <motion.li key={idx} variants={itemVariant}>
                   <button
                     onClick={() => handleMenuItemClick('/features')}
-                    className="hover:text-blue-400 tracking-[3px] text-xl text-black transition block w-full bg-transparent border-none"
+                    className="hover:text-blue-400 tracking-[3px] text-xl text-black transition"
                   >
-                    {itm}
+                    {item}
                   </button>
-                </li>
+                </motion.li>
               ))}
-            </ul>
-            <div className="flex pt-5 gap-6 text-3xl text-gray-700">
-              <FaXTwitter />
-              <FaFacebookSquare />
-              <FaInstagram />
-              <FaTiktok />
-            </div>
-          </div>
-</motion.div>      )}
+            </motion.ul>
+
+            <motion.div
+              className="flex justify-center gap-6 pt-10 text-3xl text-gray-700"
+              variants={containerVariant}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+            >
+              <motion.a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                variants={itemVariant}
+              >
+                <FaXTwitter />
+              </motion.a>
+              <motion.a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                variants={itemVariant}
+              >
+                <FaFacebookSquare />
+              </motion.a>
+              <motion.a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                variants={itemVariant}
+              >
+                <FaInstagram />
+              </motion.a>
+              <motion.a
+                href="https://tiktok.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                variants={itemVariant}
+              >
+                <FaTiktok />
+              </motion.a>
+              <motion.a
+                href={`mailto:?subject=Check this out&body=${shareMessage}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                variants={itemVariant}
+              >
+                <IoMail />
+              </motion.a>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
