@@ -110,7 +110,7 @@ const MobileNav: React.FC<MobileNavProps> = ({
               {['WENA', 'Sponsors', 'Partners', 'Support'].map((item, idx) => (
                 <motion.li key={idx} variants={itemVariant}>
                   <button
-                    onClick={() => handleMenuItemClick('/features')}
+                    onClick={() => handleMenuItemClick('/Features')}
                     className="hover:text-blue-400 tracking-[3px] text-xl text-black transition"
                   >
                     {item}
