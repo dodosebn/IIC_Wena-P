@@ -117,15 +117,12 @@ const MobileNav: React.FC<MobileNavProps> = ({
                   </button>
                 </motion.li>
               ))}
-            </motion.ul>
-
-            {/* 🔥 Social Icons */}
-            <motion.div
-              className="flex justify-center gap-6 pt-10 text-3xl text-gray-700"
+              <motion.div
+              className="flex justify-center gap-6 pt-5 text-3xl text-gray-700"
               variants={containerVariant}
-              initial="hidden"
-              animate="visible"
-              exit="hidden"
+              // initial="hidden"
+              // animate="visible"
+              // exit="hidden"
             >
               <motion.a
                 href="https://twitter.com"
@@ -168,6 +165,10 @@ const MobileNav: React.FC<MobileNavProps> = ({
                 <IoMail />
               </motion.a>
             </motion.div>
+            </motion.ul>
+
+            {/* 🔥 Social Icons */}
+            
           </motion.div>
         )}
       </AnimatePresence>
