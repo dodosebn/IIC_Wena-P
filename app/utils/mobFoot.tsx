@@ -15,45 +15,52 @@ const MobFoot = () => {
   }, []);
 
   return (
-    <div className="flex gap-3  mx-auto justify-center md:hidden">
-        <div className='flex items-center pt-2'>
-      <p className="text-sm text-gray-700 mb-2">SHARE THIS:</p>
+    <div className="flex gap-3 mx-auto justify-center md:hidden h-[4rem]">
+      <div className="flex items-center pt-2">
+        <p className="text-sm text-gray-700 mb-2">SHARE THIS:</p>
       </div>
-      <div className="flex space-x-3">
+
+      <div className="flex items-center h-full">
         <a
           href={`https://www.instagram.com/sharer/sharer.php?u=${shareMessage}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="h-[4rem] flex justify-center items-center"
+          className="h-full flex justify-center items-center"
         >
-          <FaInstagram size={30} />
+          <FaInstagram size={35} />
         </a>
+
+        <div className="h-full border-l border-gray-300/20 mx-3" />
 
         <a
           href="https://www.tiktok.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="h-[4rem] flex justify-center items-center"
+          className="h-full flex justify-center items-center"
         >
-          <AiFillTikTok size={30} />
+          <AiFillTikTok size={35} />
         </a>
+
+        <div className="h-full border-l  border-gray-300/20 mx-3" />
 
         <a
           href={`https://twitter.com/intent/tweet?text=${shareMessage}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="h-[4rem] flex justify-center items-center"
+          className="h-full flex justify-center items-center"
         >
-          <FaSquareXTwitter size={30} />
+          <FaSquareXTwitter size={35} />
         </a>
+
+        <div className="h-full border-l  border-gray-300/20 mx-3" />
 
         <a
           href={`mailto:?subject=Check this out!&body=${shareMessage}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="h-[4rem] flex justify-center items-center"
+          className="h-full flex justify-center items-center"
         >
-          <IoMail size={30} />
+          <IoMail size={35} />
         </a>
       </div>
     </div>
