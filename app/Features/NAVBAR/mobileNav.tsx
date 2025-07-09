@@ -111,15 +111,15 @@ const MobileNav: React.FC<MobileNavProps> = ({
                 <motion.li key={idx} variants={itemVariant}>
                   <button
                     onClick={() => handleMenuItemClick('/Features')}
-                    className="hover:text-blue-400 tracking-[3px] text-xl text-black transition"
+                    className="hover:text-blue-400 tracking-[3px] text-xl uppercase text-black transition"
                   >
                     {item}
                   </button>
                 </motion.li>
               ))}
               <motion.div
-              className="flex justify-center gap-6 pt-5 text-3xl text-gray-700"
-              variants={containerVariant}
+              className="flex justify-center gap-6 pt-3 text-3xl text-gray-700"
+              // variants={containerVariant}
               // initial="hidden"
               // animate="visible"
               // exit="hidden"

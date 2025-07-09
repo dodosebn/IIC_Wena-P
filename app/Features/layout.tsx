@@ -141,7 +141,7 @@ export default function MainLayoutRootLayout({ children }: { children: React.Rea
                   <motion.li key={idx} variants={itemVariant}>
                     <button
                       onClick={() => handleMenuItemClick("/Features")}
-                      className="hover:text-blue-400 tracking-[3px] text-xl text-black transition block w-full bg-transparent border-none"
+                      className="hover:text-blue-400 uppercase tracking-[3px] text-xl text-black transition block w-full bg-transparent border-none"
                     >
                       {item}
                     </button>
