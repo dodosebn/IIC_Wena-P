@@ -141,7 +141,8 @@ export default function MainLayoutRootLayout({
         <AnimatePresence>
           {menuOpen && (
             <motion.div
-              className="fixed inset-0 bg-white z-[9999] flex items-center justify-center"
+              className="fixed inset-0 bg-white z-999
+              flex items-center justify-center"
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
               exit={{ y: "100%" }}
@@ -155,20 +156,29 @@ export default function MainLayoutRootLayout({
               </button>
 
               <motion.ul
-                className="flex flex-col items-center space-y-6 text-xl font-medium text-gray-800 mt-16"
+      className="w-full text-xl absolute md:top-5 
+       sm:text-3xl space-y-5
+       font-light text-center"
                 variants={containerVariant}
                 initial="hidden"
                 animate="visible"
                 exit="hidden"
               >
-                {navItems.map((item) => (
+                {navItems.map((item, index) => (
                   <motion.li key={item.key} variants={itemVariant}>
                     <button
                       onClick={() => setActiveSection(item.key)}
-                      className="hover:text-blue-400 tracking-[3px] text-xl uppercase text-black transition block w-full bg-transparent border-none"
-                    >
+   className={`hover:text-blue-400 tracking-[3px] cursor-pointer text-black transition ${
+                      index === 0
+                        ? "text-2xl md:text-4xl font-bold"
+                        : "text-xl font-light"
+                    }`}                    >
                       {item.name}
                     </button>
+                      {item.name === "WENA" && (
+                    <div className="h-px w-[80%] font-extrabold
+                    md:w-130 mx-auto bg-black/20 mt-9" />
+                  )}
                   </motion.li>
                 ))}
                 {!isDesktop && (
