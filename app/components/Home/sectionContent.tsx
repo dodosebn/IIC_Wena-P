@@ -36,7 +36,7 @@ const SectionOverlayContent: React.FC<NavSectionContentProps> = ({ section, onCl
         <GrClose color="#000000" />
       </div>
 
-      <div className="min-h-screen max-w-7xl mx-auto px-6 flex items-start justify-center">
+      <div className="min-h-screen max-w-7xl mx-auto px-6 py-3 flex items-start justify-center">
         {sectionMap[section] || (
           <div className="text-center py-20 text-gray-500">Page build in progress.</div>
         )}
