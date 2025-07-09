@@ -1,19 +1,19 @@
-'use client';
+"use client";
 
-import '../globals.css';
+import "../globals.css";
 import { useState, useEffect } from "react";
 import Sidebar from "./SIDEBAR/sidebar";
 import NavBar from "./NAVBAR/NavBar";
 import { usePathname } from "next/navigation";
-import MobFoot from '../utils/mobFoot';
+import MobFoot from "../utils/mobFoot";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import { useNavbarStore } from "@/app/store/useNavStore";
-import { GrClose } from 'react-icons/gr';
-import SectionOverlayContent from '../components/Home/sectionContent';
-import { createPortal } from 'react-dom';
-import { IoMail } from 'react-icons/io5';
-import { FaFacebookSquare, FaInstagram, FaTiktok } from 'react-icons/fa';
-import { FaXTwitter } from 'react-icons/fa6';
+import { GrClose } from "react-icons/gr";
+import SectionOverlayContent from "../components/Home/sectionContent";
+import { createPortal } from "react-dom";
+import { IoMail } from "react-icons/io5";
+import { FaFacebookSquare, FaInstagram, FaTiktok } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 const navItems = [
   { name: "WENA", key: "wena" },
@@ -35,11 +35,15 @@ const itemVariant: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { type: 'spring', bounce: 0.4 },
+    transition: { type: "spring", bounce: 0.4 },
   },
 };
 
-export default function MainLayoutRootLayout({ children }: { children: React.ReactNode }) {
+export default function MainLayoutRootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const pathname = usePathname();
   const { menuOpen, setMenuOpen } = useNavbarStore();
 
@@ -48,29 +52,31 @@ export default function MainLayoutRootLayout({ children }: { children: React.Rea
   const [pageTitle, setPageTitle] = useState("Welcome to Home");
   const [isDesktop, setIsDesktop] = useState<boolean | null>(null);
   const [activeSection, setActiveSection] = useState<string | null>(null);
-  const [shareMessage, setShareMessage] = useState('');
+  const [shareMessage, setShareMessage] = useState("");
 
   const pageConfig = [
     {
       path: "/Features/interior-inspiration-to-kick-start-your-week",
-      title: "Interior inspiration to kick-start your week"
+      title: "Interior inspiration to kick-start your week",
     },
     {
       path: "/Features/this-new-mediterranean-restaurant-in-miami-has-michelin-cred",
-      title: "This new Mediterranean restaurant in Miami has Michelin cred"
+      title: "This new Mediterranean restaurant in Miami has Michelin cred",
     },
     {
       path: "/Features/stunning-modern-home-with-breathtaking-outdoor-space",
-      title: "Stunning modern home with breathtaking outdoor space"
+      title: "Stunning modern home with breathtaking outdoor space",
     },
     {
       path: "/Features/interior-six-inspiration-to-kick-start-your-week",
-      title: "Interior six inspiration to kick-start your week"
+      title: "Interior six inspiration to kick-start your week",
     },
   ];
 
   useEffect(() => {
-    const index = pageConfig.findIndex(page => pathname?.startsWith(page.path));
+    const index = pageConfig.findIndex((page) =>
+      pathname?.startsWith(page.path)
+    );
     setActiveIndex(index);
   }, [pathname]);
 
@@ -87,25 +93,24 @@ export default function MainLayoutRootLayout({ children }: { children: React.Rea
       setIsDesktop(window.innerWidth >= 768);
     };
     handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
     if (menuOpen || activeSection) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     }
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     };
   }, [menuOpen, activeSection]);
-   useEffect(() => {
-      const url = window.location.href;
-      setShareMessage(encodeURIComponent(`Hey! Check this out : ${url}`));
-    }, []);
-  
+  useEffect(() => {
+    const url = window.location.href;
+    setShareMessage(encodeURIComponent(`Hey! Check this out : ${url}`));
+  }, []);
 
   return (
     <div className="relative z-0 min-h-screen flex flex-col">
@@ -133,92 +138,93 @@ export default function MainLayoutRootLayout({ children }: { children: React.Rea
         </div>
 
         {/* {isDesktop && ( */}
-  <AnimatePresence>
-    {menuOpen && (
-      <motion.div
-        className="fixed inset-0 bg-white z-[9999] flex items-center justify-center"
-        initial={{ y: "100%" }}
-        animate={{ y: 0 }}
-        exit={{ y: "100%" }}  
-        transition={{ duration: 0.6, ease: "easeInOut" }}
-      >
-        <button
-          className="absolute top-8 right-12 text-3xl"
-          onClick={() => setMenuOpen(false)}
-        >
-          <GrClose size={28} className="text-gray-800" />
-        </button>
-
-        <motion.ul
-          className="flex flex-col items-center space-y-6 text-xl font-medium text-gray-800 mt-16"
-          variants={containerVariant}
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-        >
-          {navItems.map((item) => (
-            <motion.li key={item.key} variants={itemVariant}>
+        <AnimatePresence>
+          {menuOpen && (
+            <motion.div
+              className="fixed inset-0 bg-white z-[9999] flex items-center justify-center"
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "100%" }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+            >
               <button
-                onClick={() => setActiveSection(item.key)}
-                className="hover:text-blue-400 tracking-[3px] text-xl uppercase text-black transition block w-full bg-transparent border-none"
+              className="absolute top-5 right-5 text-4xl cursor-pointer z-50"
+                onClick={() => setMenuOpen(false)}
               >
-                {item.name}
+              <GrClose color="#000000" />
               </button>
-            </motion.li>
-          ))}
-          {
-            !isDesktop && (
-                            <motion.li variants={itemVariant}>
-                              <div className="flex justify-center gap-6 pt-3 text-3xl text-gray-700">
-                                <motion.a
-                                  href="https://twitter.com"
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  variants={itemVariant}
-                                >
-                                  <FaXTwitter />
-                                </motion.a>
-                                <motion.a
-                                  href="https://facebook.com"
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-variants={itemVariant}                                >
-                                  <FaFacebookSquare />
-                                </motion.a>
-                                <motion.a
-                                  href="https://instagram.com"
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-variants={itemVariant}                                >
-                                  <FaInstagram />
-                                </motion.a>
-                                <motion.a
-                                  href="https://tiktok.com"
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-variants={itemVariant}                                >
-                                  <FaTiktok />
-                                </motion.a>
-                                <motion.a
-                                  href={`mailto:?subject=Check this out&body=${shareMessage}`}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-variants={itemVariant}                                >
-                                  <IoMail />
-                                </motion.a>
-                              </div>
-                            </motion.li>
-            )
-          }
-        </motion.ul>
-      </motion.div>
-    )}
 
-  </AnimatePresence>
-{/* )} */}
+              <motion.ul
+                className="flex flex-col items-center space-y-6 text-xl font-medium text-gray-800 mt-16"
+                variants={containerVariant}
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
+              >
+                {navItems.map((item) => (
+                  <motion.li key={item.key} variants={itemVariant}>
+                    <button
+                      onClick={() => setActiveSection(item.key)}
+                      className="hover:text-blue-400 tracking-[3px] text-xl uppercase text-black transition block w-full bg-transparent border-none"
+                    >
+                      {item.name}
+                    </button>
+                  </motion.li>
+                ))}
+                {!isDesktop && (
+                  <motion.li variants={itemVariant}>
+                    <div className="flex justify-center gap-6 pt-3 text-3xl text-gray-700">
+                      <motion.a
+                        href="https://twitter.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        variants={itemVariant}
+                      >
+                        <FaXTwitter />
+                      </motion.a>
+                      <motion.a
+                        href="https://facebook.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        variants={itemVariant}
+                      >
+                        <FaFacebookSquare />
+                      </motion.a>
+                      <motion.a
+                        href="https://instagram.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        variants={itemVariant}
+                      >
+                        <FaInstagram />
+                      </motion.a>
+                      <motion.a
+                        href="https://tiktok.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        variants={itemVariant}
+                      >
+                        <FaTiktok />
+                      </motion.a>
+                      <motion.a
+                        href={`mailto:?subject=Check this out&body=${shareMessage}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        variants={itemVariant}
+                      >
+                        <IoMail />
+                      </motion.a>
+                    </div>
+                  </motion.li>
+                )}
+              </motion.ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
+        {/* )} */}
       </div>
 
-      {typeof window !== 'undefined' &&
+      {typeof window !== "undefined" &&
         createPortal(
           <AnimatePresence>
             {activeSection && (
