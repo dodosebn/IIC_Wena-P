@@ -96,46 +96,41 @@ const Sidebar: React.FC<SidebarProps> = ({
 
       <div className="flex-1 p-1 overflow-y-auto">
         {items.map((item, index) => (
-          <div
-            key={index}
-            ref={(el) => {
-              itemRefs.current[index] = el;
-            }}
-          >
-            <Link
-              href={item.path}
-              onClick={(e) => {
-                e.preventDefault();
-                handleClick(index);
-              }}
-              className="block w-full text-left cursor-pointer"
-            >
-              <div
-                className={`p-4 border-b border-gray-100 hover:bg-gray-50 transition-colors`}
-              >
-                <div className="relative w-full aspect-[5/3] overflow-hidden">
-                  <Image
-                    src={item.img}
-                    alt={item.text || "Sidebar Item"}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 240px"
-                    className="object-cover"
-                    priority={index < 6}
-                  />
-                  {index === activeIndex && (
-                    <div className="absolute inset-0 bg-black/60 flex justify-center items-center">
-                      <span className="text-white text-xs uppercase tracking-wider">
-                        {item.activeLabel}
-                      </span>
-                    </div>
-                  )}
-                </div>
-                <p className="text-gray-800 text-sm mt-2 text-start">
-                  {item.text}
-                </p>
-              </div>
-            </Link>
-          </div>
+<div
+  key={index}
+  ref={(el) => {
+    itemRefs.current[index] = el;
+  }}
+>
+  <div
+    onClick={() => handleClick(index)}
+    className="block w-full text-left cursor-pointer"
+  >
+    <Link href={item.path}>
+      <div className={`p-4 border-b border-gray-100 hover:bg-gray-50 transition-colors`}>
+        <div className="relative w-full aspect-[5/3] overflow-hidden">
+          <Image
+            src={item.img}
+            alt={item.text || "Sidebar Item"}
+            fill
+            sizes="(max-width: 768px) 100vw, 240px"
+            className="object-cover"
+            priority={index < 6}
+          />
+          {index === activeIndex && (
+            <div className="absolute inset-0 bg-black/60 flex justify-center items-center">
+              <span className="text-white text-xs uppercase tracking-wider">
+                {item.activeLabel}
+              </span>
+            </div>
+          )}
+        </div>
+        <p className="text-gray-800 text-sm mt-2 text-start">{item.text}</p>
+      </div>
+    </Link>
+  </div>
+</div>
+
         ))}
       </div>
     </aside>
