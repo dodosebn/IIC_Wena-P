@@ -15,6 +15,7 @@ const Sidebar: React.FC<SidebarProps> = ({
   activeIndex,
 }) => {
   const [isMobile, setIsMobile] = useState(false);
+  const [isToggledDown, setIsToggledDown] = useState(false);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
   const { menuOpen } = useNavbarStore();
 
@@ -26,38 +27,62 @@ const Sidebar: React.FC<SidebarProps> = ({
   }, []);
 
   const handleClick = (index: number) => {
-    setActiveIndex(index);
-    if (isMobile) toggleSidebar();
-
-    const nextItem = itemRefs.current[index + 1];
-    if (nextItem) {
-      nextItem.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest",
-      });
+    if (index === activeIndex) {
+      // If already active, toggle scroll
+      if (isToggledDown) {
+        // Scroll back to current item
+        itemRefs.current[index]?.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+        });
+        setIsToggledDown(false);
+      } else {
+        // Scroll to next item
+        const nextItem = itemRefs.current[index + 1];
+        if (nextItem) {
+          nextItem.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+          });
+          setIsToggledDown(true);
+        }
+      }
     } else {
-      itemRefs.current[index]?.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest",
-      });
+      // Normal behavior for a new item
+      setActiveIndex(index);
+      setIsToggledDown(false);
+
+      if (isMobile) toggleSidebar();
+
+      const nextItem = itemRefs.current[index + 1];
+      if (nextItem) {
+        nextItem.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+        });
+      } else {
+        itemRefs.current[index]?.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+        });
+      }
     }
   };
 
   return (
-   <aside
-  className={`fixed h-screen w-[280px] bg-[#f5f5f5] border-r border-gray-200
-    flex flex-col z-50 top-0 left-0
-    ${isMobile ? (isOpen ? "translate-x-0" : "-translate-x-full") : ""}
-    transition-transform duration-300 ease-in-out shadow-sm`}
->
-
+    <aside
+      className={`fixed h-screen w-[280px] bg-[#f5f5f5] border-r border-gray-200
+      flex flex-col z-50 top-0 left-0
+      ${isMobile ? (isOpen ? "translate-x-0" : "-translate-x-full") : ""}
+      transition-transform duration-300 ease-in-out shadow-sm`}
+    >
       <div
         className="p-4 md:px-5 md:py-[1.1rem] flex justify-between items-center border-b
-       border-gray-200 sticky top-0 bg-[#f5f5f5] z-10"
+        border-gray-200 sticky top-0 bg-[#f5f5f5] z-10"
       >
         <div
           className="uppercase text-gray-500 font-medium 
-         tracking-[0.15rem] text-md text-center mx-auto"
+          tracking-[0.15rem] text-md text-center mx-auto"
         >
           <a href="/">THE WENA PROJECT</a>
         </div>
@@ -79,7 +104,10 @@ const Sidebar: React.FC<SidebarProps> = ({
           >
             <Link
               href={item.path}
-              onClick={() => handleClick(index)}
+              onClick={(e) => {
+                e.preventDefault();
+                handleClick(index);
+              }}
               className="block w-full text-left cursor-pointer"
             >
               <div
@@ -92,7 +120,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                     fill
                     sizes="(max-width: 768px) 100vw, 240px"
                     className="object-cover"
-                    priority={index < 3}
+                    priority={index < 6}
                   />
                   {index === activeIndex && (
                     <div className="absolute inset-0 bg-black/60 flex justify-center items-center">

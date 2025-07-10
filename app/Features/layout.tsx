@@ -48,7 +48,7 @@ export default function MainLayoutRootLayout({
   const { menuOpen, setMenuOpen } = useNavbarStore();
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(-1);
+const [activeIndex, setActiveIndex] = useState(-1);
   const [pageTitle, setPageTitle] = useState("Welcome to Home");
   const [isDesktop, setIsDesktop] = useState<boolean | null>(null);
   const [activeSection, setActiveSection] = useState<string | null>(null);
@@ -177,7 +177,7 @@ export default function MainLayoutRootLayout({
                     </button>
                       {item.name === "WENA" && (
                     <div className="h-px w-[80%] font-extrabold
-                    md:w-130 mx-auto bg-black/20 mt-9" />
+                    md:w-130 mx-auto bg-black mt-9" />
                   )}
                   </motion.li>
                 ))}
