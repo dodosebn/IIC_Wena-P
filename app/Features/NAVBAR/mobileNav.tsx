@@ -9,10 +9,10 @@ import { motion, AnimatePresence, Variants } from 'framer-motion';
 import TransitionLink from '@/app/utils/transitionLink';
 import { createPortal } from 'react-dom';
 import { GrClose } from 'react-icons/gr';
-import Wena from '@/app/Features/sections/wena';
-import Sponsors from '@/app/Features/sections/sponsors';
-import Partners from '@/app/Features/sections/partners';
-import Support from '@/app/Features/sections/support';
+// import Wena from '@/app/Features/sections/wena';
+// import Sponsors from '@/app/Features/sections/sponsors';
+// import Partners from '@/app/Features/sections/partners';
+// import Support from '@/app/Features/sections/support';
 
 interface MobileNavProps {
   toggleSidebar: () => void;
@@ -52,12 +52,12 @@ const contentVariant: Variants = {
   },
 };
 
-const sectionMap: Record<string, React.ReactNode> = {
-  wena: <Wena />,
-  sponsors: <Sponsors />,
-  partners: <Partners />,
-  support: <Support />,
-};
+// const sectionMap: Record<string, React.ReactNode> = {
+//   wena: <Wena />,
+//   sponsors: <Sponsors />,
+//   partners: <Partners />,
+//   support: <Support />,
+// };
 
 const MobileNav: React.FC<MobileNavProps> = ({
   toggleSidebar,

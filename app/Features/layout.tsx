@@ -15,13 +15,23 @@ import { IoMail } from "react-icons/io5";
 import { FaFacebookSquare, FaInstagram, FaTiktok } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
+// const navItems = [
+//   { name: "WENA", key: "wena" },
+//   { name: "Sponsors", key: "sponsors" },
+//   { name: "Partners", key: "partners" },
+//   { name: "Support", key: "support" },
+// ];
 const navItems = [
-  { name: "WENA", key: "wena" },
-  { name: "Sponsors", key: "sponsors" },
-  { name: "Partners", key: "partners" },
-  { name: "Support", key: "support" },
+  { name: "LAST GENERATION", key: "last-generation" },
+  { name: "SOSIOLOJI", key: "sosioloji" },
+  { name: "OUR PURPOSE", key: "purpose" },
+  { name: "THE EDITOR", key: "editor" },
+  { name: "CONTRIBUTORS", key: "contributors" },
+  { name: "JOIN THE MOVEMENT", key: "movement" },
+  { name: "FILOSOFI", key: "filosofi" },
+  { name: "IDEA IS CAP", key: "ideaiscapital" },
+  { name: "CONNECT", key: "connect" },
 ];
-
 const containerVariant: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -98,15 +108,16 @@ const [activeIndex, setActiveIndex] = useState(-1);
   }, []);
 
   useEffect(() => {
-    if (menuOpen || activeSection) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [menuOpen, activeSection]);
+    if (menuOpen) {
+document.body.style.overflowX = "hidden";
+  } else {
+    document.body.style.overflow = ""; 
+  }
+
+      return () => {
+    document.body.style.overflow = "";
+  };
+}, [menuOpen]);
   useEffect(() => {
     const url = window.location.href;
     setShareMessage(encodeURIComponent(`Hey! Check this out : ${url}`));
@@ -141,7 +152,7 @@ const [activeIndex, setActiveIndex] = useState(-1);
         <AnimatePresence>
           {menuOpen && (
             <motion.div
-              className="fixed inset-0 bg-white z-999
+              className="fixed inset-0 bg-nav z-999
               flex items-center justify-center"
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
@@ -149,14 +160,17 @@ const [activeIndex, setActiveIndex] = useState(-1);
               transition={{ duration: 0.6, ease: "easeInOut" }}
             >
               <button
-              className="absolute top-5 right-5 text-4xl cursor-pointer z-50"
-                onClick={() => setMenuOpen(false)}
-              >
-              <GrClose color="#000000" />
-              </button>
+  className="absolute top-5 right-5 text-4xl cursor-pointer z-50"
+  onClick={(e) => {
+    e.preventDefault();
+    setMenuOpen(false);
+  }}
+>
+  <GrClose color="#000000" />
+</button>
 
               <motion.ul
-      className="w-full text-xl absolute md:top-5 
+      className="w-full text-xl absolute 
        sm:text-3xl space-y-5
        font-light text-center"
                 variants={containerVariant}
@@ -175,9 +189,12 @@ const [activeIndex, setActiveIndex] = useState(-1);
                     }`}                    >
                       {item.name}
                     </button>
-                      {item.name === "WENA" && (
+                      {item.name === "LAST GENERATION" && (
                     <div className="h-px w-[80%] font-extrabold
                     md:w-130 mx-auto bg-black mt-9" />
+                  )}
+                       {item.name === "JOIN THE MOVEMENT" && (
+                    <div className="h-px w-[80%]  md:w-80 mx-auto bg-black/20 mt-9" />
                   )}
                   </motion.li>
                 ))}

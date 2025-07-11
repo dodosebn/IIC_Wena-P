@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Support = () => {
+const Movement = () => {
   return (
     <div>
-      Support
+      Movement
     </div>
   )
 }
 
-export default Support;
+export default Movement;

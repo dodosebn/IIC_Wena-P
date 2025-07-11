@@ -3,7 +3,7 @@ import React from 'react'
 const Partners = () => {
   return (
     <div>
-      Partners
+      partners
     </div>
   )
 }
