@@ -1,0 +1,77 @@
+'use client';
+
+import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import NavBar from "./NAVBAR/NavBar";
+import Sidebar from "./SIDEBAR/sidebar";
+import MobFoot from "../utils/mobFoot";
+
+export default function ClientLayout({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(-1);
+  const [pageTitle, setPageTitle] = useState("Welcome to Home");
+  const [showTitle, setShowTitle] = useState(false);
+
+  const pageConfig = [
+    {
+      path: "/features/interior-inspiration-to-kick-start-your-week",
+      title: "Interior inspiration to kick-start your week",
+    },
+    {
+      path: "/features/this-new-mediterranean-restaurant-in-miami-has-michelin-cred",
+      title: "This new Mediterranean restaurant in Miami has Michelin cred",
+    },
+    {
+      path: "/features/stunning-modern-home-with-breathtaking-outdoor-space",
+      title: "Stunning modern home with breathtaking outdoor space",
+    },
+    {
+      path: "/features/interior-six-inspiration-to-kick-start-your-week",
+      title: "Interior six inspiration to kick-start your week",
+    },
+  ];
+
+  useEffect(() => {
+    const index = pageConfig.findIndex((page) => pathname?.startsWith(page.path));
+    setActiveIndex(index);
+  }, [pathname]);
+
+  useEffect(() => {
+    setPageTitle(
+      activeIndex === -1 ? "Welcome to Home" : pageConfig[activeIndex]?.title || ""
+    );
+  }, [activeIndex]);
+
+  useEffect(() => {
+    const onScroll = () => setShowTitle(window.scrollY > 100);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <div className="min-h-screen flex flex-col">
+      <NavBar
+        isSidebarOpen={isSidebarOpen}
+        toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
+        pageTitle={showTitle ? pageTitle : ""}
+      />
+
+      <div className="flex flex-1">
+        <Sidebar
+          toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
+          activeIndex={activeIndex}
+          setActiveIndex={setActiveIndex}
+          isOpen={isSidebarOpen}
+        />
+
+        <main className="flex-1 md:ml-[280px] mt-2 transition-all duration-300 overflow-y-auto">
+          {children}
+        </main>
+      </div>
+
+      
+    </div>
+  );
+}
