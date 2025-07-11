@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Movement = () => {
+const Author = () => {
   return (
     <div>
-      Movement
+      Author
     </div>
   )
 }
 
-export default Movement;
+export default Author;

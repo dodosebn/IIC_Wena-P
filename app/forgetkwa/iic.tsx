@@ -1,7 +1,7 @@
 
 const IIC = () => {
   return (
-    <div>IIC</div>
+    <div>Idea is Capital</div>
   )
 }
 

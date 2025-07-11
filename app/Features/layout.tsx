@@ -14,6 +14,7 @@ import { createPortal } from "react-dom";
 import { IoMail } from "react-icons/io5";
 import { FaFacebookSquare, FaInstagram, FaTiktok } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import SectionContent from "../components/Home/sectionContent";
 
 // const navItems = [
 //   { name: "WENA", key: "wena" },
@@ -152,8 +153,8 @@ document.body.style.overflowX = "hidden";
         <AnimatePresence>
           {menuOpen && (
             <motion.div
-              className="fixed inset-0 bg-nav z-999
-              flex items-center justify-center"
+              className="fixed inset-0 bg-[#fff] z-999
+              flex items-center justify-center mx-auto"
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
               exit={{ y: "100%" }}
@@ -182,7 +183,7 @@ document.body.style.overflowX = "hidden";
                   <motion.li key={item.key} variants={itemVariant}>
                     <button
                       onClick={() => setActiveSection(item.key)}
-   className={`hover:text-blue-400 tracking-[3px] uppercase cursor-pointer text-black transition ${
+   className={`hover:text-blue-400 uppercase cursor-pointer text-gray-900 leading-tight transition ${
                       index === 0
                         ? "text-2xl md:text-4xl font-bold"
                         : "text-xl font-light"
@@ -255,7 +256,7 @@ document.body.style.overflowX = "hidden";
         createPortal(
           <AnimatePresence>
             {activeSection && (
-              <SectionOverlayContent
+              <SectionContent
                 key={activeSection}
                 section={activeSection}
                 onClose={() => setActiveSection(null)}
