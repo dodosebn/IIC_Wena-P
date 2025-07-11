@@ -57,7 +57,7 @@ body {
 @layer{
   .bg-nav{
      background-color: #FFF6E6;
-    background-image: url('../public/Images/sos.webp');
+background-image: url('/Images/sos.webp');
     height: 100vh;
     width: 100vw;
     object-fit: cover;
