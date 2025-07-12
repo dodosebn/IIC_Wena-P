@@ -164,7 +164,7 @@ export default function MainLayoutRootLayout({
               </button>
 
               <motion.ul
-                className="w-full text-xl absolute sm:text-3xl space-y-5 font-light text-center
+                className="w-full text-xl absolute top-18 md:top-0 sm:text-3xl space-y-5 font-light text-center
                  overflow-y-auto h-full pb-10"
                 variants={containerVariant}
                 initial="hidden"
@@ -184,7 +184,7 @@ export default function MainLayoutRootLayout({
                       {item.name}
                     </button>
                     {item.name === "LAST GENERATION" && (
-                      <div className="h-px w-[80%] font-extrabold md:w-130 mx-auto bg-black mt-9" />
+                      <div className="h-px w-[80%] font-extrabold md:w-130 mx-auto bg-black/50 mt-9" />
                     )}
                     {item.name === "JOIN THE MOVEMENT" && (
                       <div className="h-px w-[80%] md:w-80 mx-auto bg-black/20 mt-9" />
