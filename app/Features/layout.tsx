@@ -16,12 +16,6 @@ import { FaFacebookSquare, FaInstagram, FaTiktok } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import SectionContent from "../components/Home/sectionContent";
 
-// const navItems = [
-//   { name: "WENA", key: "wena" },
-//   { name: "Sponsors", key: "sponsors" },
-//   { name: "Partners", key: "partners" },
-//   { name: "Support", key: "support" },
-// ];
 const navItems = [
   { name: "LAST GENERATION", key: "last-generation" },
   { name: "SOSIOLOJI", key: "sosioloji" },
@@ -33,6 +27,7 @@ const navItems = [
   { name: "IDEA IS CAP", key: "ideaiscapital" },
   { name: "CONNECT", key: "connect" },
 ];
+
 const containerVariant: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -59,7 +54,7 @@ export default function MainLayoutRootLayout({
   const { menuOpen, setMenuOpen } = useNavbarStore();
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-const [activeIndex, setActiveIndex] = useState(-1);
+  const [activeIndex, setActiveIndex] = useState(-1);
   const [pageTitle, setPageTitle] = useState("Welcome to Home");
   const [isDesktop, setIsDesktop] = useState<boolean | null>(null);
   const [activeSection, setActiveSection] = useState<string | null>(null);
@@ -110,15 +105,15 @@ const [activeIndex, setActiveIndex] = useState(-1);
 
   useEffect(() => {
     if (menuOpen) {
-document.body.style.overflowX = "hidden";
-  } else {
-    document.body.style.overflow = ""; 
-  }
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
 
-      return () => {
-    document.body.style.overflow = "";
-  };
-}, [menuOpen]);
   useEffect(() => {
     const url = window.location.href;
     setShareMessage(encodeURIComponent(`Hey! Check this out : ${url}`));
@@ -126,21 +121,21 @@ document.body.style.overflowX = "hidden";
 
   return (
     <div className="relative z-0 min-h-screen flex flex-col">
-      <div className="w-full">
+      <div className="w-full flex flex-col flex-1">
         <NavBar
           isSidebarOpen={isSidebarOpen}
           toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
           pageTitle={pageTitle}
         />
 
-        <div className="flex flex-1">
+        <div className="flex flex-1 overflow-hidden">
           <Sidebar
             toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
             activeIndex={activeIndex}
             setActiveIndex={setActiveIndex}
             isOpen={isSidebarOpen}
           />
-          <main className="flex-1 md:ml-[280px] mt-2 transition-all duration-300 overflow-y-auto">
+          <main className="flex-1 md:ml-[280px] overflow-y-auto h-[calc(100vh-80px)]">
             {children}
           </main>
         </div>
@@ -149,31 +144,28 @@ document.body.style.overflowX = "hidden";
           <MobFoot />
         </div>
 
-        {/* {isDesktop && ( */}
         <AnimatePresence>
           {menuOpen && (
             <motion.div
-              className="fixed inset-0 bg-[#fff] z-999
-              flex items-center justify-center mx-auto"
+              className="fixed inset-0 bg-[#fff] z-[999] flex items-center justify-center mx-auto"
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
               exit={{ y: "100%" }}
               transition={{ duration: 0.6, ease: "easeInOut" }}
             >
               <button
-  className="absolute top-5 right-5 text-4xl cursor-pointer z-50"
-  onClick={(e) => {
-    e.preventDefault();
-    setMenuOpen(false);
-  }}
->
-  <GrClose color="#000000" />
-</button>
+                className="absolute top-5 right-5 text-4xl cursor-pointer z-50"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setMenuOpen(false);
+                }}
+              >
+                <GrClose color="#000000" />
+              </button>
 
               <motion.ul
-      className="w-full text-xl absolute 
-       sm:text-3xl space-y-5
-       font-light text-center"
+                className="w-full text-xl absolute sm:text-3xl space-y-5 font-light text-center
+                 overflow-y-auto h-full pb-10"
                 variants={containerVariant}
                 initial="hidden"
                 animate="visible"
@@ -183,20 +175,20 @@ document.body.style.overflowX = "hidden";
                   <motion.li key={item.key} variants={itemVariant}>
                     <button
                       onClick={() => setActiveSection(item.key)}
-   className={`hover:text-blue-400 uppercase cursor-pointer text-gray-900 leading-tight transition ${
-                      index === 0
-                        ? "text-2xl md:text-4xl font-bold"
-                        : "text-xl font-light"
-                    }`}                    >
+                      className={`hover:text-blue-400 uppercase cursor-pointer text-gray-900 leading-tight transition ${
+                        index === 0
+                          ? "text-2xl md:text-4xl font-bold"
+                          : "text-xl font-light"
+                      }`}
+                    >
                       {item.name}
                     </button>
-                      {item.name === "LAST GENERATION" && (
-                    <div className="h-px w-[80%] font-extrabold
-                    md:w-130 mx-auto bg-black mt-9" />
-                  )}
-                       {item.name === "JOIN THE MOVEMENT" && (
-                    <div className="h-px w-[80%]  md:w-80 mx-auto bg-black/20 mt-9" />
-                  )}
+                    {item.name === "LAST GENERATION" && (
+                      <div className="h-px w-[80%] font-extrabold md:w-130 mx-auto bg-black mt-9" />
+                    )}
+                    {item.name === "JOIN THE MOVEMENT" && (
+                      <div className="h-px w-[80%] md:w-80 mx-auto bg-black/20 mt-9" />
+                    )}
                   </motion.li>
                 ))}
                 {!isDesktop && (
@@ -249,7 +241,6 @@ document.body.style.overflowX = "hidden";
             </motion.div>
           )}
         </AnimatePresence>
-        {/* )} */}
       </div>
 
       {typeof window !== "undefined" &&
