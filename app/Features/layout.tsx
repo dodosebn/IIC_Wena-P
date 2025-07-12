@@ -164,15 +164,22 @@ export default function MainLayoutRootLayout({
               </button>
 
               <motion.ul
-                className="w-full text-xl absolute top-18 md:top-0 sm:text-3xl space-y-5 font-light text-center
-                 overflow-y-auto h-full pb-10"
+                className="w-full h-full flex flex-col items-center justify-center
+                 text-xl sm:text-3xl space-y-5 font-light text-center overflow-y-auto"
+      //            className="w-full text-xl absolute 
+      //  sm:text-3xl space-y-5
+      //  font-light text-center"
                 variants={containerVariant}
                 initial="hidden"
                 animate="visible"
                 exit="hidden"
               >
                 {navItems.map((item, index) => (
-                  <motion.li key={item.key} variants={itemVariant}>
+                  <motion.li 
+                    key={item.key} 
+                    variants={itemVariant}
+                    className="w-full flex flex-col items-center"
+                  >
                     <button
                       onClick={() => setActiveSection(item.key)}
                       className={`hover:text-blue-400 uppercase cursor-pointer text-gray-900 leading-tight transition ${
@@ -192,7 +199,10 @@ export default function MainLayoutRootLayout({
                   </motion.li>
                 ))}
                 {!isDesktop && (
-                  <motion.li variants={itemVariant}>
+                  <motion.li 
+                    variants={itemVariant}
+                    className="w-full flex justify-center"
+                  >
                     <div className="flex justify-center gap-6 pt-3 text-3xl text-gray-700">
                       <motion.a
                         href="https://twitter.com"
