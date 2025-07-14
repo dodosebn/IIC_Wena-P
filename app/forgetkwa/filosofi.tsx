@@ -1,6 +1,6 @@
 const Filosofi = () => {
   return (
-    <div>Filosofi</div>
+    <div>Partner with us</div>
   )
 }
 

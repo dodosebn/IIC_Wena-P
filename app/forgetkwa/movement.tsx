@@ -3,7 +3,7 @@ import React from 'react'
 const Movement = () => {
   return (
     <div>
-      Give Back
+      Sponsor Us
     </div>
   )
 }

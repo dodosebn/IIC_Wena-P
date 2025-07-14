@@ -15,12 +15,17 @@ import { FaFacebookSquare, FaInstagram, FaTiktok } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import SectionContent from "../components/Home/sectionContent";
 import items from "./SIDEBAR/mapps";
+import Link from "next/link";
 
 const navItems = [
   { name: "LAST GENERATION", key: "last-generation" },
   { name: "THE WENA PROJECT", key: "sosioloji" },
   { name: "OUR PURPOSE", key: "purpose" },
-  { name: "GIVE BACK", key: "movement" },
+  { name: "SPONSOR WENA", key: "editor" },
+  { name: "ANEWWENA.COM", key: "anewwena.com" },
+  { name: "SUPPORT US", key: "movement" },
+  { name: "PARTNER WITH US", key: "filosofi" },
+  { name: "INVEST IN WENA", key: "ideaiscapital" },
   { name: "CONNECT", key: "connect" },
 ];
 
@@ -55,11 +60,7 @@ export default function MainLayoutRootLayout({
   const [shareMessage, setShareMessage] = useState("");
 
   useEffect(() => {
-    // Use items from mapps directly for path matching
-    const index = items.findIndex(item => 
-      pathname?.startsWith(item.path)
-    );
-    console.log(`Path: ${pathname}, Matched index: ${index}`);
+    const index = items.findIndex(item => pathname?.startsWith(item.path));
     setActiveIndex(index);
   }, [pathname]);
 
@@ -72,7 +73,9 @@ export default function MainLayoutRootLayout({
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [menuOpen]);
 
   useEffect(() => {
@@ -111,7 +114,6 @@ export default function MainLayoutRootLayout({
               exit={{ y: "100%" }}
               transition={{ duration: 0.6, ease: "easeInOut" }}
             >
-
               <button
                 className="absolute top-5 right-5 text-4xl cursor-pointer z-50"
                 onClick={(e) => {
@@ -129,26 +131,44 @@ export default function MainLayoutRootLayout({
                 animate="visible"
                 exit="hidden"
               >
-                {navItems.map((item, index) => (
-                  <motion.li key={item.key} variants={itemVariant}>
-                    <button
-                      onClick={() => setActiveSection(item.key)}
-                      className={`hover:text-blue-400 uppercase cursor-pointer text-gray-900 leading-tight transition ${
-                        index === 0
-                          ? "text-2xl md:text-4xl font-bold"
-                          : "text-xl font-light"
-                      }`}
-                    >
-                      {item.name}
-                    </button>
-                    {item.name === "LAST GENERATION" && (
-                      <div className="h-px w-[80%] font-extrabold md:w-130 mx-auto bg-black mt-9" />
-                    )}
-                    {item.name === "GIVE BACK" && (
-                      <div className="h-px w-[80%] md:w-80 mx-auto bg-black/20 mt-9" />
-                    )}
-                  </motion.li>
-                ))}
+                {navItems.map((item, index) => {
+                  if (item.name === "ANEWWENA.COM") {
+                    return (
+                      <motion.li key={item.key} variants={itemVariant}>
+                        <Link
+                          href={`https://${item.key}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="uppercase text-gray-900 hover:text-blue-400 text-xl"
+                        >
+                          {item.name}
+                        </Link>
+                      </motion.li>
+                    );
+                  }
+
+                  return (
+                    <motion.li key={item.key} variants={itemVariant}>
+                      <button
+                        onClick={() => setActiveSection(item.key)}
+                        className={`hover:text-blue-400 uppercase cursor-pointer text-gray-900 leading-tight transition ${
+                          index === 0
+                            ? "text-2xl md:text-4xl font-bold"
+                            : "text-xl font-light"
+                        }`}
+                      >
+                        {item.name}
+                      </button>
+                      {item.name === "LAST GENERATION" && (
+                        <div className="h-px w-[80%] font-extrabold md:w-130 mx-auto bg-black mt-9" />
+                      )}
+                      {item.name === "SUPPORT US" && (
+                        <div className="h-px w-[80%] md:w-80 font-extrabold mx-auto bg-black/20 mt-9" />
+                      )}
+                    </motion.li>
+                  );
+                })}
+
                 {!isDesktop && (
                   <motion.li variants={itemVariant}>
                     <div className="flex justify-center gap-6 pt-3 text-3xl text-gray-700">
@@ -196,7 +216,7 @@ export default function MainLayoutRootLayout({
                   </motion.li>
                 )}
               </motion.ul>
-                  </motion.div>
+            </motion.div>
           )}
         </AnimatePresence>
       </div>
