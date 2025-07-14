@@ -1,6 +1,5 @@
 import React from 'react'
 import Header from './components/Home/header'
-import ImgShowComp from './components/Home/imgShowComp'
 import Hero from './components/Home/hero'
 // import HomeVideos from './components/Home/Hero'
 

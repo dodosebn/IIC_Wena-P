@@ -9,30 +9,21 @@ import MobFoot from "../utils/mobFoot";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import { useNavbarStore } from "@/app/store/useNavStore";
 import { GrClose } from "react-icons/gr";
-import SectionOverlayContent from "../components/Home/sectionContent";
 import { createPortal } from "react-dom";
 import { IoMail } from "react-icons/io5";
 import { FaFacebookSquare, FaInstagram, FaTiktok } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import SectionContent from "../components/Home/sectionContent";
+import items from "./SIDEBAR/mapps";
 
-// const navItems = [
-//   { name: "WENA", key: "wena" },
-//   { name: "Sponsors", key: "sponsors" },
-//   { name: "Partners", key: "partners" },
-//   { name: "Support", key: "support" },
-// ];
 const navItems = [
   { name: "LAST GENERATION", key: "last-generation" },
-  { name: "SOSIOLOJI", key: "sosioloji" },
+  { name: "THE WENA PROJECT", key: "sosioloji" },
   { name: "OUR PURPOSE", key: "purpose" },
-  { name: "THE EDITOR", key: "editor" },
-  { name: "CONTRIBUTORS", key: "contributors" },
-  { name: "JOIN THE MOVEMENT", key: "movement" },
-  { name: "FILOSOFI", key: "filosofi" },
-  { name: "IDEA IS CAP", key: "ideaiscapital" },
+  { name: "GIVE BACK", key: "movement" },
   { name: "CONNECT", key: "connect" },
 ];
+
 const containerVariant: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -56,72 +47,36 @@ export default function MainLayoutRootLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  const { menuOpen, setMenuOpen } = useNavbarStore();
+  const { menuOpen, setMenuOpen, activeIndex, setActiveIndex } = useNavbarStore();
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-const [activeIndex, setActiveIndex] = useState(-1);
-  const [pageTitle, setPageTitle] = useState("Welcome to Home");
   const [isDesktop, setIsDesktop] = useState<boolean | null>(null);
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const [shareMessage, setShareMessage] = useState("");
 
-  const pageConfig = [
-    {
-      path: "/Features/interior-inspiration-to-kick-start-your-week",
-      title: "Interior inspiration to kick-start your week",
-    },
-    {
-      path: "/Features/this-new-mediterranean-restaurant-in-miami-has-michelin-cred",
-      title: "This new Mediterranean restaurant in Miami has Michelin cred",
-    },
-    {
-      path: "/Features/stunning-modern-home-with-breathtaking-outdoor-space",
-      title: "Stunning modern home with breathtaking outdoor space",
-    },
-    {
-      path: "/Features/interior-six-inspiration-to-kick-start-your-week",
-      title: "Interior six inspiration to kick-start your week",
-    },
-  ];
-
   useEffect(() => {
-    const index = pageConfig.findIndex((page) =>
-      pathname?.startsWith(page.path)
+    // Use items from mapps directly for path matching
+    const index = items.findIndex(item => 
+      pathname?.startsWith(item.path)
     );
+    console.log(`Path: ${pathname}, Matched index: ${index}`);
     setActiveIndex(index);
   }, [pathname]);
 
   useEffect(() => {
-    setPageTitle(
-      activeIndex === -1
-        ? "Welcome to Home"
-        : pageConfig[activeIndex]?.title || ""
-    );
-  }, [activeIndex]);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsDesktop(window.innerWidth >= 768);
-    };
+    const handleResize = () => setIsDesktop(window.innerWidth >= 768);
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
-    if (menuOpen) {
-document.body.style.overflowX = "hidden";
-  } else {
-    document.body.style.overflow = ""; 
-  }
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
 
-      return () => {
-    document.body.style.overflow = "";
-  };
-}, [menuOpen]);
   useEffect(() => {
-    const url = window.location.href;
-    setShareMessage(encodeURIComponent(`Hey! Check this out : ${url}`));
+    setShareMessage(encodeURIComponent(`Hey! Check this out: ${window.location.href}`));
   }, []);
 
   return (
@@ -130,14 +85,12 @@ document.body.style.overflowX = "hidden";
         <NavBar
           isSidebarOpen={isSidebarOpen}
           toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
-          pageTitle={pageTitle}
+          pageTitle={items[activeIndex]?.text || "Welcome to Home"}
         />
 
         <div className="flex flex-1">
           <Sidebar
             toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
-            activeIndex={activeIndex}
-            setActiveIndex={setActiveIndex}
             isOpen={isSidebarOpen}
           />
           <main className="flex-1 md:ml-[280px] mt-2 transition-all duration-300 overflow-y-auto">
@@ -149,31 +102,28 @@ document.body.style.overflowX = "hidden";
           <MobFoot />
         </div>
 
-        {/* {isDesktop && ( */}
         <AnimatePresence>
           {menuOpen && (
             <motion.div
-              className="fixed inset-0 bg-[#fff] z-999
-              flex items-center justify-center mx-auto"
+              className="fixed inset-0 bg-[#fff] z-[999] flex items-center justify-center mx-auto"
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
               exit={{ y: "100%" }}
               transition={{ duration: 0.6, ease: "easeInOut" }}
             >
+
               <button
-  className="absolute top-5 right-5 text-4xl cursor-pointer z-50"
-  onClick={(e) => {
-    e.preventDefault();
-    setMenuOpen(false);
-  }}
->
-  <GrClose color="#000000" />
-</button>
+                className="absolute top-5 right-5 text-4xl cursor-pointer z-50"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setMenuOpen(false);
+                }}
+              >
+                <GrClose color="#000000" />
+              </button>
 
               <motion.ul
-      className="w-full text-xl absolute 
-       sm:text-3xl space-y-5
-       font-light text-center"
+                className="w-full text-xl absolute sm:text-3xl space-y-5 font-light text-center"
                 variants={containerVariant}
                 initial="hidden"
                 animate="visible"
@@ -183,20 +133,20 @@ document.body.style.overflowX = "hidden";
                   <motion.li key={item.key} variants={itemVariant}>
                     <button
                       onClick={() => setActiveSection(item.key)}
-   className={`hover:text-blue-400 uppercase cursor-pointer text-gray-900 leading-tight transition ${
-                      index === 0
-                        ? "text-2xl md:text-4xl font-bold"
-                        : "text-xl font-light"
-                    }`}                    >
+                      className={`hover:text-blue-400 uppercase cursor-pointer text-gray-900 leading-tight transition ${
+                        index === 0
+                          ? "text-2xl md:text-4xl font-bold"
+                          : "text-xl font-light"
+                      }`}
+                    >
                       {item.name}
                     </button>
-                      {item.name === "LAST GENERATION" && (
-                    <div className="h-px w-[80%] font-extrabold
-                    md:w-130 mx-auto bg-black mt-9" />
-                  )}
-                       {item.name === "JOIN THE MOVEMENT" && (
-                    <div className="h-px w-[80%]  md:w-80 mx-auto bg-black/20 mt-9" />
-                  )}
+                    {item.name === "LAST GENERATION" && (
+                      <div className="h-px w-[80%] font-extrabold md:w-130 mx-auto bg-black mt-9" />
+                    )}
+                    {item.name === "GIVE BACK" && (
+                      <div className="h-px w-[80%] md:w-80 mx-auto bg-black/20 mt-9" />
+                    )}
                   </motion.li>
                 ))}
                 {!isDesktop && (
@@ -246,10 +196,9 @@ document.body.style.overflowX = "hidden";
                   </motion.li>
                 )}
               </motion.ul>
-            </motion.div>
+                  </motion.div>
           )}
         </AnimatePresence>
-        {/* )} */}
       </div>
 
       {typeof window !== "undefined" &&

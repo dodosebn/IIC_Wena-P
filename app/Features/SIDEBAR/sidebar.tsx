@@ -4,20 +4,20 @@ import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import items from "./mapps";
 import { BiMenuAltRight } from "react-icons/bi";
-import { SidebarProps } from "@/app/types";
-import { useNavbarStore } from "@/app/store/useNavStore";
 import Link from "next/link";
+import { useNavbarStore } from "@/app/store/useNavStore";
 
-const Sidebar: React.FC<SidebarProps> = ({
-  isOpen,
-  toggleSidebar,
-  setActiveIndex,
-  activeIndex,
-}) => {
+interface SidebarProps {
+  isOpen: boolean;
+  toggleSidebar: () => void;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
   const [isMobile, setIsMobile] = useState(false);
   const [isToggledDown, setIsToggledDown] = useState(false);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const { menuOpen } = useNavbarStore();
+
+  const {activeIndex, setActiveIndex } = useNavbarStore();
 
   useEffect(() => {
     setIsMobile(window.innerWidth <= 768);
@@ -26,29 +26,37 @@ const Sidebar: React.FC<SidebarProps> = ({
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Reset refs when items count changes
+  useEffect(() => {
+    itemRefs.current = new Array(items.length).fill(null);
+  }, [items.length]);
+
   const handleClick = (index: number) => {
     if (index === activeIndex) {
-      // If already active, toggle scroll
-      if (isToggledDown) {
-        // Scroll back to current item
-        itemRefs.current[index]?.scrollIntoView({
+      const currentItem = itemRefs.current[index];
+      const nextItem = itemRefs.current[index + 1];
+
+      if (isToggledDown && currentItem) {
+        currentItem.scrollIntoView({
           behavior: "smooth",
           block: "nearest",
         });
         setIsToggledDown(false);
       } else {
-        // Scroll to next item
-        const nextItem = itemRefs.current[index + 1];
         if (nextItem) {
           nextItem.scrollIntoView({
             behavior: "smooth",
             block: "nearest",
           });
-          setIsToggledDown(true);
+        } else if (currentItem) {
+          currentItem.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+          });
         }
+        setIsToggledDown(true);
       }
     } else {
-      // Normal behavior for a new item
       setActiveIndex(index);
       setIsToggledDown(false);
 
@@ -80,10 +88,7 @@ const Sidebar: React.FC<SidebarProps> = ({
         className="p-4 md:px-5 md:py-[1.1rem] flex justify-between items-center border-b
         border-gray-200 sticky top-0 bg-[#f5f5f5] z-10"
       >
-        <div
-          className="uppercase text-gray-500 font-medium 
-          tracking-[0.15rem] text-md text-center mx-auto"
-        >
+        <div className="uppercase text-gray-500 font-medium tracking-[0.15rem] text-md text-center mx-auto">
           <a href="/">THE WENA PROJECT</a>
         </div>
         {isMobile && (
@@ -96,41 +101,42 @@ const Sidebar: React.FC<SidebarProps> = ({
 
       <div className="flex-1 p-1 overflow-y-auto">
         {items.map((item, index) => (
-<div
-  key={index}
-  ref={(el) => {
-    itemRefs.current[index] = el;
-  }}
->
-  <div
-    onClick={() => handleClick(index)}
-    className="block w-full text-left cursor-pointer"
-  >
-    <Link href={item.path}>
-      <div className={`p-4 border-b border-gray-100 hover:bg-gray-50 transition-colors`}>
-        <div className="relative w-full aspect-[5/3] overflow-hidden">
-          <Image
-            src={item.img}
-            alt={item.text || "Sidebar Item"}
-            fill
-            sizes="(max-width: 768px) 100vw, 240px"
-            className="object-cover"
-            priority={index < 6}
-          />
-          {index === activeIndex && (
-            <div className="absolute inset-0 bg-black/60 flex justify-center items-center">
-              <span className="text-white text-xs uppercase tracking-wider">
-                {item.activeLabel}
-              </span>
+          <div
+            key={index}
+            ref={(el) => {
+              itemRefs.current[index] = el ?? null;
+            }}
+          >
+            <div
+              onClick={() => handleClick(index)}
+              className="block w-full text-left cursor-pointer"
+            >
+              <Link href={item.path}>
+                <div className="p-4 border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                  <div className="relative w-full aspect-[5/3] overflow-hidden">
+                    <Image
+                      src={item.img}
+                      alt={item.text || "Sidebar Item"}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 240px"
+                      className="object-cover"
+                      priority={index < 6}
+                    />
+                    {index === activeIndex && (
+                      <div className="absolute inset-0 bg-black/60 flex justify-center items-center">
+                        <span className="text-white text-xs uppercase tracking-wider">
+                          {item.activeLabel}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                  <p className="text-gray-800 text-sm mt-2 text-start">
+                    {item.text}
+                  </p>
+                </div>
+              </Link>
             </div>
-          )}
-        </div>
-        <p className="text-gray-800 text-sm mt-2 text-start">{item.text}</p>
-      </div>
-    </Link>
-  </div>
-</div>
-
+          </div>
         ))}
       </div>
     </aside>

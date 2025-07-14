@@ -1,8 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import Loading from '../Loading';
-import BtnBg from '@/app/utils/btnBg';
+
 import box1 from '@/public/images/homeimg/box-1.jpg';
 import asset1 from '@/public/images/homeimg/asset-21.jpeg';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -22,7 +21,9 @@ const HeroTextSwitcher = ({ textOptions }: { textOptions: string[] }) => {
   }, [textOptions.length]);
 
   return (
-    <div className="relative w-full text-[#FAA45B] font-extrabold text-[50px] md:text-[95px] leading-tight">
+    <div className="relative w-full text-[#FAA45B] font-extrabold text-[45px] 
+    md:text-[90px] leading-tight h-[5.5rem] md:min-h-[7rem]">
+
       <AnimatePresence mode="wait">
         <motion.div
           key={activeIndex}
@@ -79,21 +80,20 @@ const Hero = () => {
 
 <div className="relative max-w-7xl mx-auto md:px-12 z-20 flex items-center justify-center md:justify-start h-full w-full text-white">
   <div className="flex flex-col items-start gap-8 w-full">
-   <h1 className="md:text-[95px] text-[50px] font-black capitalize relative top-7 md:top-0 tracking-tight leading-none">
+   <h1 className="md:text-[90px] text-[45px] font-black capitalize relative top-7 md:top-0 tracking-tight leading-none">
   Africa
 </h1>
 
 
     <HeroTextSwitcher textOptions={textOptions} />
 
-    {/* ✅ BUTTON SECTION - now part of the layout */}
     <div className="mt-8">
       <button className="bg-white gap-4 flex items-center text-black font-bold px-6 py-3 rounded-sm transition-all duration-300 transform hover:scale-105 group">
         <TransitionLink href="/Features">
           <div className="relative h-6 overflow-hidden">
             <div className="transition-transform duration-500 ease-in-out group-hover:-translate-y-6">
-              <span className="block h-6">Enter Wena</span>
-              <span className="block h-6">Go to Wena</span>
+              <span className="block h-6">Wena Website</span>
+              <span className="block h-6">Proceed</span>
             </div>
           </div>
         </TransitionLink>

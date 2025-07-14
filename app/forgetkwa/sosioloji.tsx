@@ -3,7 +3,7 @@ import React from 'react'
 const Sosioloji = () => {
   return (
     <div>
-      Support
+      The Wena Project
     </div>
   )
 }

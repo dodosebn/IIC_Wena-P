@@ -72,7 +72,7 @@ const UseInfo: React.FC<UseInfoProps> = ({
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 800px"
               className="object-cover"
             />
-            <div className="absolute bottom-4 left-4 bg-black/70 text-white px-3 py-1 rounded text-sm">
+            <div className="absolute bottom-4 left-4 bg-black/70 text-white px-3 rounded text-sm">
               {photoCite}
             </div>
           </div>
@@ -80,7 +80,7 @@ const UseInfo: React.FC<UseInfoProps> = ({
       </div>
 
       {/* Recommended Products */}
-      <div className="mb-20">
+      <div>
         <h2 className="text-2xl font-serif text-gray-900 mb-8 text-center">
           SUPPORT US BY BUYING ONE OF THESE PRODUCTS
         </h2>
