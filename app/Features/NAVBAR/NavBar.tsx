@@ -117,7 +117,7 @@ const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, pageTitle }) => {
             </Link>
 
             <div className="flex items-center gap-4">
-              <p className="text-gray-600">SHARE THIS:</p>
+              {/* <p className="text-gray-600">SHARE THIS:</p> */}
               {shareMessage && renderShareIcons()}
               <div
                 className="text-3xl text-gray-700 cursor-pointer rotate-90"
