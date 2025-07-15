@@ -22,7 +22,7 @@ const HeroTextSwitcher = ({ textOptions }: { textOptions: string[] }) => {
 
   return (
     <div className="relative w-full text-[#FAA45B] font-extrabold text-[45px] 
-    md:text-[90px] leading-tight h-[5.5rem] md:min-h-[7rem]">
+    md:text-[90px] leading-tight h-[5.5rem] md:min-h-[10rem]">
 
       <AnimatePresence mode="wait">
         <motion.div
