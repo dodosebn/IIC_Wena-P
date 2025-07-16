@@ -1,5 +1,5 @@
 'use client';
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import bigHero from '@/public/latest-imgs/prob1.jpg';
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
@@ -27,9 +27,11 @@ import ochethem from '@/public/latest-imgs/ochedem.jpg';
 import bedroom from '@/public/latest-imgs/bedroomsettings.jpg';
 import fifthImg from '@/public/latest-imgs/fifth-img.jpg';
 import sixthImg from '@/public/latest-imgs/sixthImg.jpg';
+import Gallery from './slider/gallary';
 const InfoOne = () => {
   const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
-  
+    const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+
   const galleryImages = [
     flip1, flip2, flip3, flip4, flip5, flip6, flip7, flip8, flip9
   ];
@@ -179,7 +181,8 @@ const InfoOne = () => {
       <span className="text-sm text-gray-500">
         {currentImageIndex + 1} of {galleryImages.length}
       </span>
-      <button className="hidden md:flex text-gray-500 hover:text-gray-700">
+      <button   onClick={() => setIsGalleryOpen(true)}
+           className="hidden md:flex text-gray-500 hover:text-gray-700">
         <AiOutlineArrowsAlt size={20} />
       </button>
     </div>
@@ -313,7 +316,15 @@ const InfoOne = () => {
     ))}
   </div>
 </div>
-
+   {isGalleryOpen && (
+        <Gallery
+          images={galleryImages}
+          currentIndex={currentImageIndex}
+          onClose={() => setIsGalleryOpen(false)}
+          onNext={nextImage}
+          onPrev={prevImage}
+        />
+      )}
 
     </div>
   )

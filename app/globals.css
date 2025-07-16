@@ -53,7 +53,7 @@ input, section, div {
 @layer utilities {
   /* globals.css */
 .custom-scrollbar::-webkit-scrollbar {
-  width: 4px;
+  width: 1.5px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
