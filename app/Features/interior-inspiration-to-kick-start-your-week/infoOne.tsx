@@ -62,19 +62,37 @@ const InfoOne = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-32 overflow-x-hidden">
+    <div className="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 md:py-32 py-20 overflow-x-hidden">
       {/* Header Section */}
-      <div className="mb-8 flex flex-col items-center space-y-4 justify-center mx-auto">
-        <p className='text-[11px] text-[#9C9C9C]/70 tracking-[3px] uppercase mb-2'>Property | | by Ellen Himelfarb</p>
-        <h1 className="text-[36px] text-[#000]/80 font-serif tracking-[3px] mb-4 text-center leading-tight">
+      <div className="mb-8 flex flex-col items-center space-y-2 justify-center mx-auto">
+       <div>
+        <p className='text-[12px] text-[#000]/70 tracking-[3px] uppercase mb-2 md:flex hidden'>Property | | by Ellen Himelfarb</p>
+                <p className='text-[16px] text-[#000]/70 tracking-[2.5px] leading-7 text-center uppercase mb-2 md:hidden block'>
+                 <span className="block"> Property | </span>
+                  <span className="block">  by Ellen Himelfarb</span> 
+                  </p>
+                  </div>
+<div>
+        <h1 className="text-[36px] font-semibold text-[#000] font-serif tracking-[3px] md:block hidden mb-4 text-center leading-tight">
   <span className="block">A contemporary Palladian pile stuffed with</span>
   <span className="block">surprises hits the market for £6m</span>
 </h1>
+<h1 className="text-[36px] font-semibold text-[#000] font-serif  md:hidden block mb-4 text-center leading-tight">
+  A contemporary Palladian pile stuffed with
+  surprises hits the market for £6m
+</h1>
+</div>
 
-        <p className='text-[18px] tracking-[3px] mb-4 text-center text-[#000]/75 leading-widest'>
+<div>
+        <p className='text-[18px] md:block hidden tracking-[0.5px] mb-4 text-center  leading-widest'>
          <span className="block">The Gloucestershire property has handcrafted</span>
          <span className="block">The  vintage details, plus all the mod cons</span>
         </p>
+         <p className='text-[18px] md:hidden block tracking-[0.5px] mb-4 text-center  leading-widest'>
+         The Gloucestershire property has handcrafted
+        The  vintage details, plus all the mod cons
+        </p>
+        </div>
       </div>
 
       {/* Hero Image */}
@@ -93,8 +111,8 @@ const InfoOne = () => {
 </div>
 
       {/* Content Paragraphs */}
-<div className="max-w-[37rem] mx-auto text-start mb-12 px-4 space-y-6">
-  <p className="text-[18px] leading-relaxed tracking-wide text-[#4c4c4c]">
+<div className="md:max-w-[38rem] max-w-[25rem] mx-auto text-start mb-12 px-3 space-y-6">
+  <p className="md:text-[18px] text-[17px] leading-relaxed tracking-wide text-[#4c4c4c]">
     It’s a new twist on an old saga: a Palladian pile on the market in deepest 
     <span className="underline hover:text-gray-400"> Gloucestershire</span>, supported by ancient beams, laden with antique chandeliers, clad in wisteria.
     Except Daisy Green is no fixer-upper, doomed by rising damp, abandoned by despairing aristocrats.
@@ -103,7 +121,7 @@ const InfoOne = () => {
     <span className="underline hover:text-gray-400"> The asking price is £6m.</span>
   </p>
 
-  <p className="text-[18px] leading-relaxed tracking-wide text-[#4c4c4c]">
+  <p className="md:text-[18px] text-[17px] leading-relaxed tracking-wide text-[#4c4c4c]">
     Inspired by 18th-century Georgians and the principles of harmony and proportion
     espoused by <span className="underline hover:text-gray-400">Andrea Palladio</span>, John and
     <span className="underline hover:text-gray-400"> Susanna White</span> embarked on the project with a yearning to experiment.
@@ -116,148 +134,186 @@ const InfoOne = () => {
 </div>
 
 
-      {/* Image Gallery */}
-      <div className="mb-12 px-12">
-        {/* Main Gallery Image */}
-        <div className="relative mb-4">
-          <div className="relative w-full h-auto" style={{ paddingBottom: '66.66%' }}>
-            <Image
-              src={galleryImages[currentImageIndex]}
-              alt={`Gallery image ${currentImageIndex + 1}`}
-              layout="fill"
-              objectFit="cover"
-              className="w-full"
-            />
-          </div>
-          
-          {/* Navigation Arrows */}
-          <div className="absolute inset-0 flex items-center justify-between px-4">
-            <button 
-              onClick={prevImage}
-              className="bg-gray-300 bg-opacity-80 
-              hover:bg-opacity-100 p-2 shadow-md"
-            >
-              <FaAngleLeft size={24} />
-            </button>
-            <button 
-              onClick={nextImage}
-              className="bg-gray-300 bg-opacity-80 
-              hover:bg-opacity-100 p-2 shadow-md"
-            >
-              <FaAngleRight size={24} />
-            </button>
-          </div>
-        </div>
+      
+<div className="mb-12 px-3 md:px-12">
+  {/* ––– Image (full-bleed on mobile, contained on desktop) */}
+  <div
+    className="relative mb-4
+               left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]
+               md:left-0 md:right-0 md:ml-0 md:mr-0
+               w-screen md:w-full overflow-visible"
+  >
+    <div className="relative w-full" style={{ paddingBottom: '66.66%' }}>
+      <Image
+        src={galleryImages[currentImageIndex]}
+        alt={`Gallery image ${currentImageIndex + 1}`}
+        layout="fill"
+        objectFit="cover"
+        className="w-full"
+      />
+    </div>
 
-        <div className="flex justify-between items-center">
-  <p className="text-sm text-[#4c4c4c] text-start ml-[15vw] ">Photography: Blue Book Agency</p>
-          <div className="flex items-center space-x-4">
-            <span className="text-sm text-gray-500">
-              {currentImageIndex + 1} of {galleryImages.length}
-            </span>
-            <button className="text-gray-500 hover:text-gray-700">
-              <AiOutlineArrowsAlt size={20} />
-            </button>
-          </div>
-        </div>
-      </div> 
+    {/* arrows… */}
+    <div className="absolute inset-0 flex items-center justify-between z-20 px-3 pointer-events-none">
+      <button
+        onClick={prevImage}
+        className="bg-gray-300 bg-opacity-80 hover:bg-opacity-100 p-2 shadow-md pointer-events-auto"
+      >
+        <FaAngleLeft size={24} />
+      </button>
+      <button
+        onClick={nextImage}
+        className="bg-gray-300 bg-opacity-80 hover:bg-opacity-100 p-2 shadow-md pointer-events-auto"
+      >
+        <FaAngleRight size={24} />
+      </button>
+    </div>
+  </div>
+
+  {/* ––– Caption & Counter ––– */}
+  <div className="flex justify-between items-center mt-2 px-3 md:px-0">
+    <p className="text-sm text-[#4c4c4c] text-start md:ml-[10vw]">
+      Photography: Blue Book Agency
+    </p>
+    <div className="flex items-center space-x-4">
+      <span className="text-sm text-gray-500">
+        {currentImageIndex + 1} of {galleryImages.length}
+      </span>
+      <button className="hidden md:flex text-gray-500 hover:text-gray-700">
+        <AiOutlineArrowsAlt size={20} />
+      </button>
+    </div>
+  </div>
+</div>
+
 
    
-<div className="max-w-[37rem] mx-auto text-start mb-12 px-4 space-y-6">
-  <p className="text-[18px] leading-relaxed tracking-wide text-[#4c4c4c]">‘John and I were inspired by the idea of combining practical, modern amenities with the elegant external beauty of English     Palladian architecture, whose tall sash windows and ceiling heights can provide glorious light-filled internal living spaces,’ 
+<div className="md:max-w-[38rem] max-w-[25rem] mx-auto text-start mb-12 px-3 space-y-6">
+  <p className="md:text-[18px] text-[17px] leading-relaxed tracking-wide text-[#4c4c4c]">‘John and I were inspired by the idea of combining practical, modern amenities with the elegant external beauty of English     Palladian architecture, whose tall sash windows and ceiling heights can provide glorious light-filled internal living spaces,’ 
     says Susanna.
      ‘We didn’t want grandiosity — we wanted something joyful, full of wit and character.
       A grown-up doll’s house, if you like.’</p>
-       <p className="text-[18px] leading-relaxed tracking-wide text-[#4c4c4c]">To achieve their ends, the couple collaborated closely with local craftspeople and reused reclaimed materials and furnishings. 
+       <p className="md:text-[18px] text-[17px] leading-relaxed tracking-wide text-[#4c4c4c]">To achieve their ends, the couple collaborated closely with local craftspeople and reused reclaimed materials and furnishings. 
         The evocative entranceway opens to a double-height foyer with stone flooring, dramatic countryside views and a wrought-metal 
         staircase by <span className='underline hover:text-gray-400'>Matt Livsey Hammond.</span>  The elaborate period plasterwork is balanced by a modern steel eat-in
          kitchen on the raised ground
          floor, with an Esse oven and cosy lounge.
          It fits in seamlessly with the timeless design of the house, carefully crafted over three years.</p>
-          <p className="text-[18px] leading-relaxed tracking-wide text-[#4c4c4c]">
+          <p className="md:text-[18px] text-[17px]  leading-relaxed tracking-wide text-[#4c4c4c]">
           In the other direction from the kitchen is a magnificent formal space bathed in light from shuttered windows. 
            A Georgian mantelpiece once belonging to <span className='underline hover:text-gray-400'>Cecil Beaton</span> sits at one end, reclaimed from his Redditch House. 
            The long room is furnished in period antiques and a glorious hand-painted tiled mural by
             <span className='underline hover:text-gray-400'>Priscilla Kennedy.</span>
           </p>
  </div>
- <div className='px-12 relative h-full w-full '>
-<Image src={clockand} alt='clockand'/>
-<div className='py-5'>
-  <p className="text-sm text-[#4c4c4c] text-start">Photography: Blue Book Agency</p>
- </div>
- </div>
+<div
+  className="relative mb-12
+             w-screen -ml-[50vw] left-1/2
+             md:ml-0 md:left-0 md:w-full md:px-12 px-0"
+>
+  <div className="relative w-full h-96 overflow-hidden">
+    <Image
+      src={clockand}
+      alt="clockand"
+      layout="fill"
+      objectFit="cover"
+      className="transition-transform duration-300 md:group-hover:scale-105"
+    />
+  </div>
+  <div className="mt-2 px-3 md:px-0">
+    <p className="text-sm text-[#4c4c4c] text-start">Photography: Blue Book Agency</p>
+  </div>
+</div>
 
-<div className="max-w-[37rem] mx-auto text-start mb-12 px-4 space-y-6">
-  <p className="text-[18px] leading-relaxed tracking-wide text-[#4c4c4c]">‘JohnThe first floor is arranged around five bedrooms, each with an en-suite or private bathroom, one with another 
+
+<div className="md:max-w-[38rem] max-w-[25rem] mx-auto text-start mb-12 px-3 space-y-6">
+  <p className="md:text-[18px] text-[17px]  leading-relaxed tracking-wide text-[#4c4c4c]">‘JohnThe first floor is arranged around five bedrooms, each with an en-suite or private bathroom, one with another 
   painted-tile scene by Priscilla Kennedy. The principal suite has a mezzanine dressing room accessed by a chinoiserie-metal balustrade, 
   leading to a roof terrace with views across the estate. At the lower-ground level is a purpose-built wine cellar.</p>
-  <p className="text-[18px] leading-relaxed tracking-wide text-[#4c4c4c]">     Just north of the historic market town of Wotton-under-Edge, the grounds benefit from a 1990 four-bedroom farmhouse, 
+  <p className="md:text-[18px] text-[17px]  leading-relaxed tracking-wide text-[#4c4c4c]">     Just north of the historic market town of Wotton-under-Edge, the grounds benefit from a 1990 four-bedroom farmhouse, 
      an adjacent barn and an artist’s studio, where Whiteworks was born. Located across a cobbled courtyard from the main house,
       the outbuildings have their own kitchens, bathrooms and lounge spaces. A modern gothic-inspired summerhouse on the land serves
        as a year-round greenhouse, and a wildlife pond offers views beyond to the Tyndale Monument.
       Grazing the working farmland are 150 Herdwick sheep, managed by a local farmer.
    </p>
-      <p className="text-[18px] leading-relaxed tracking-wide text-[#4c4c4c]">‘When we started building Daisy Green, Whiteworks hadn’t yet taken shape,’ says Susanna.
+      <p className="md:text-[18px] text-[17px]  leading-relaxed tracking-wide text-[#4c4c4c]">‘When we started building Daisy Green, Whiteworks hadn’t yet taken shape,’ says Susanna.
     ‘As the house grew, so did my creative practice. Daisy Green became a living studio: a place to play, test, refine.
         Now it’s time for the next chapter. With Whiteworks thriving, we’re ready for a new project and to hand Daisy Green over 
         to someone who will
         love it as much as we have.’</p>
  </div>
  <div></div>
-      <div className="grid grid-cols-1  gap-6 mb-12">
-        {sixImages.map((item) => (
-          <div key={item.key} className="group">
-            <div className="relative w-full h-96 mb-2 overflow-hidden">
-              <Image
-                src={item.img}
-                alt="Property detail"
-                layout="fill"
-                objectFit="cover"
-                className="transition-transform duration-300 group-hover:scale-105"
-              />
-            </div>
-  <p className="text-sm text-[#4c4c4c] text-start">Photography: Blue Book Agency</p>
-          </div>
-        ))}
+    <div className="grid grid-cols-1 gap-6 mb-12">
+  {sixImages.map((item) => (
+    <div key={item.key} className="group">
+      {/* Image wrapper — full-bleed on mobile, contained on desktop */}
+      <div
+        className="relative h-96 overflow-hidden
+                   w-screen -ml-[50vw] left-1/2
+                   md:ml-0 md:left-0 md:w-full"
+      >
+        <Image
+          src={item.img}
+          alt="Property detail"
+          layout="fill"
+          objectFit="cover"
+          className="transition-transform duration-300 group-hover:scale-105"
+        />
       </div>
-<div className='flex flex-col justify-center items-center mx-auto space-y-3'>
-  <h1 className='text-[24px]'>Read next: <span className='underline hover:text-gray-400'>A palatial English estate hits the market for
-   just under £10m</span> </h1>
-   <h1 className='text-[24px] underline hover:text-gray-400'> This London home is infused with peaceful Mediterian minimalism</h1>
- </div>
- <div className='text-[10px] flex justify-center items-center mx-auto space-x-3'>
- <p className='text-[#4c4c4c]'>TAGS : </p>
- <div className='flex space-x-3 py-4'>
-{['CECIL BEATON', 'COUNTRY PROPERTY', 'DAISY DESIGN', 'ENGLISH PROPERTY'].map((item, index) => (
-  <div className='bg-[#e2e2e2] text-[#4c4c4c] p-2' key={index}>
-{item}
-  </div>
-))}
-</div>
- </div>
-      {/* Share Section */}
-      <div className="border-t border-gray-200 pt-6 flex items-center flex-wrap gap-y-4">
-  <p className="text-xs text-gray-500 uppercase">SHARE THIS STORY</p>
 
-  <div className="flex space-x-14 justify-center items-center mx-auto">
+      {/* Caption — aligns with content, not full-bleed */}
+      <div className="mt-2 px-3 md:px-0">
+        <p className="text-sm text-[#4c4c4c] text-start">
+          Photography: Blue Book Agency
+        </p>
+      </div>
+    </div>
+  ))}
+</div>
+
+<div className='flex flex-col justify-center items-center mx-auto space-y-3 text-start'>
+  <h1 className='text-[24px]'>Read next: <span className='underline hover:text-gray-400'>A palatial English estate hits the market for just under £10m</span></h1>
+  <h1 className='text-[24px] underline hover:text-gray-400'> This London home is infused with peaceful Mediterian minimalism</h1>
+</div>
+
+ <div className='text-[10px] flex flex-wrap justify-center items-center mx-auto gap-3 py-4'>
+  <p className='text-[#4c4c4c] whitespace-nowrap'>TAGS :</p>
+  {['CECIL BEATON', 'COUNTRY PROPERTY', 'DAISY DESIGN', 'ENGLISH PROPERTY'].map((item, index) => (
+    <div className='bg-[#e2e2e2] text-[#000] p-2 whitespace-nowrap' key={index}>
+      {item}
+    </div>
+  ))}
+</div>
+
+      {/* Share Section */}
+    <div className="border-t border-gray-200 pt-6 flex flex-col md:flex-row gap-y-4 md:gap-y-0 items-center md:items-start">
+ <div className='flex text-center mx-auto justify-center mt-3'>
+  <p className="text-xs text-center text-gray-700 uppercase mb-2 md:mb-0 whitespace-nowrap">
+    SHARE THIS STORY
+  </p>
+</div>
+  <div className="flex flex-wrap justify-start md:justify-center gap-6 md:gap-14 md:flex-1 w-full">
     {iconsinfooter.map((item) => (
       <button 
         key={item.key}
         className="flex items-center space-x-2 text-gray-700 hover:text-gray-400"
       >
-        <span>{item.icon}</span>
-        <span className="text-[18px]">{item.name}</span>
-        {item.name === 'save' && (
-          <div className='bg-red-500'>
-   <span>{item.icon}</span>
-        <span className="text-[18px]">{item.name}</span>
+        {item.name.toLowerCase() === 'save' ? (
+          <div className="flex items-center bg-red-500 text-white px-2 py-1 rounded space-x-2">
+            <span>{item.icon}</span>
+            <span className="text-[18px]">Save</span>
           </div>
+        ) : (
+          <>
+            <span>{item.icon}</span>
+            <span className="text-[18px]">{item.name}</span>
+          </>
         )}
       </button>
     ))}
   </div>
 </div>
+
 
     </div>
   )

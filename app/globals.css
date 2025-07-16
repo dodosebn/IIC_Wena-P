@@ -1,71 +1,67 @@
 @import "tailwindcss";
+
+/* Base Theme Colors */
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* Font Face Definition */
 @font-face {
-  font-family: 'avenir-next';
-  src: url('/public/assets/fonts/avenir-next-regular.ttf') format('truetype');
+  font-family: 'Avenir Next';
+  src: url('/assets/fonts/avenir-next-light.ttf') format('truetype');
   font-weight: 100;
-  /* font-style: normal; */
+  font-style: normal;
 }
 
-body {
-  font-family: 'Avenir Next', sans-serif;
+/* Dark Mode Variables */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #ededed;
+    --foreground: #ededed;
+  }
 }
+
+/* Body Styling */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Avenir Next', sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -ms-overflow-style: none;
+}
+
+/* Optional: Custom theme mapping — comment or adjust as needed */
+/*
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
+*/
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #ededed;
-    --foreground: #ededed;
-  }
+/* Apply font globally */
+h1, h2, h3, h4, h5, h6,
+a, span, p, button, label,
+input, section, div {
+  font-family: 'Avenir Next', sans-serif !important;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #ededed;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  margin: 0;
-  font-family: 'avenir-next', sans-serif !important;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  padding: 0;
-
-  /* scrollbar-width: none;     */
-  -ms-overflow-style: none;
-}
-
-
-
-
-@layer{
-  .bg-nav{
-     background-color: #FFF6E6;
-background-image: url('/images/sos.webp');
+/* Tailwind Layer Utilities */
+@layer utilities {
+  .bg-nav {
+    background-color: #FFF6E6;
+    background-image: url('/images/sos.webp');
     height: 100vh;
     width: 100vw;
     object-fit: cover;
     z-index: 9000;
     background-repeat: no-repeat;
+  }
 
-}
-    .animate-slideDown {
+  .animate-slideDown {
     animation: slideDown 0.3s ease-out forwards;
   }
 
@@ -79,122 +75,109 @@ background-image: url('/images/sos.webp');
       transform: translateY(0);
     }
   }
-  /* .transition-all {
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 1000ms;
-} */
-    @keyframes zoomForward {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
 
-.animate-zoom-forward {
-  animation: zoomForward 12s ease-in-out infinite;
-}
+  @keyframes zoomForward {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
 
+  .animate-zoom-forward {
+    animation: zoomForward 12s ease-in-out infinite;
+  }
 
   @keyframes lineanim {
-  0% {
-    transform: scaleY(0);
+    0% {
+      transform: scaleY(0);
+    }
+    50% {
+      transform: scaleY(1);
+    }
+    100% {
+      transform: scaleY(0);
+    }
   }
-  50% {
-    transform: scaleY(1);
-  }
-  100% {
-    transform: scaleY(0);
-  }
-}
-@keyframes lineGrow {
-  from {
-    transform: scaleY(0);
-  }
-  to {
-    transform: scaleY(1);
-  }
-  
-}
 
-  h1, h2, h3,h4,h5,h6, a, span, p, button, label{
-  font-family: 'avenir-next', sans-serif !important;
-}
+  @keyframes lineGrow {
+    from {
+      transform: scaleY(0);
+    }
+    to {
+      transform: scaleY(1);
+    }
+  }
 
-input{
-  font-family: 'avenir-next', sans-serif !important;
-}
-section, div{
-  font-family: 'avenir-next', sans-serif !important;
-}
   .metric-card {
-  position: relative;
-  border: 2px solid transparent;
-  --u-size: 20px;
-  clip-path: polygon(
-    0% var(--u-size),
-    var(--u-size) 0%,
-    calc(100% - var(--u-size)) 0%,
-    100% var(--u-size),
-    100% calc(100% - var(--u-size)),
-    calc(100% - var(--u-size)) 100%,
-    var(--u-size) 100%,
-    0% calc(100% - var(--u-size))
-  );
-background: linear-gradient(#1f2937, #111827);
-  border-image: linear-gradient(to right, #3A86FF, #3A86FF) 1; 
-}
-/* Metrics 2 */
-/* Flip card essentials */
-.perspective {
-  perspective: 1000px;
-}
-.transform-style-preserve-3d {
-  transform-style: preserve-3d;
-}
-.backface-hidden {
-  backface-visibility: hidden;
-}
-.rotate-y-180 {
-  transform: rotateY(180deg);
-}
+    position: relative;
+    border: 2px solid transparent;
+    --u-size: 20px;
+    clip-path: polygon(
+      0% var(--u-size),
+      var(--u-size) 0%,
+      calc(100% - var(--u-size)) 0%,
+      100% var(--u-size),
+      100% calc(100% - var(--u-size)),
+      calc(100% - var(--u-size)) 100%,
+      var(--u-size) 100%,
+      0% calc(100% - var(--u-size))
+    );
+    background: linear-gradient(#1f2937, #111827);
+    border-image: linear-gradient(to right, #3A86FF, #3A86FF) 1;
+  }
 
+  .perspective {
+    perspective: 1000px;
+  }
+
+  .transform-style-preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
 
   .logo {
-  font-size: 28px;
-  font-weight: 300;
-  letter-spacing: 3px;
-  text-wrap: nowrap;
-  text-decoration: none;
-}
-@keyframes slideInRight {
-  from {
-    transform: translateX(100%);
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-wrap: nowrap;
+    text-decoration: none;
   }
-  to {
-    transform: translateX(0);
-  }
-}
 
-@keyframes slideOutRight {
-  from {
-    transform: translateX(0);
+  @keyframes slideInRight {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
   }
-  to {
-    transform: translateX(100%);
+
+  @keyframes slideOutRight {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(100%);
+    }
   }
-}
 
-.animate-slideInRight {
-  animation: slideInRight 0.3s ease-out forwards;
-}
+  .animate-slideInRight {
+    animation: slideInRight 0.3s ease-out forwards;
+  }
 
-.animate-slideOutRight {
-  animation: slideOutRight 0.3s ease-out forwards;
-}
+  .animate-slideOutRight {
+    animation: slideOutRight 0.3s ease-out forwards;
+  }
 }
