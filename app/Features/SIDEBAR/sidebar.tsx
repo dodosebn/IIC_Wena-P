@@ -17,7 +17,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
   const [isToggledDown, setIsToggledDown] = useState(false);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const {activeIndex, setActiveIndex } = useNavbarStore();
+  const { activeIndex, setActiveIndex } = useNavbarStore();
 
   useEffect(() => {
     setIsMobile(window.innerWidth <= 768);
@@ -26,7 +26,6 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Reset refs when items count changes
   useEffect(() => {
     itemRefs.current = new Array(items.length).fill(null);
   }, [items.length]);
@@ -86,7 +85,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
     >
       <div
         className="p-4 md:px-5 md:py-[1.1rem] flex justify-between items-center border-b
-        border-gray-200 sticky top-0 bg-[#f5f5f5] z-10"
+        border-gray-300 sticky top-0 bg-[#f5f5f5] z-10"
       >
         <div className="uppercase text-gray-500 font-medium tracking-[0.15rem] text-md text-center mx-auto">
           <a href="/">THE WENA PROJECT</a>
@@ -99,7 +98,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
         )}
       </div>
 
-      <div className="flex-1 p-1 overflow-y-auto">
+      <div className="flex-1 p-1 border-t mt-1 border-gray-300 overflow-y-auto custom-scrollbar">
         {items.map((item, index) => (
           <div
             key={index}
@@ -112,7 +111,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
               className="block w-full text-left cursor-pointer"
             >
               <Link href={item.path}>
-                <div className="p-4 border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                <div className="p-4 border-b border-gray-300 hover:bg-gray-50 transition-colors">
                   <div className="relative w-full aspect-[5/3] overflow-hidden">
                     <Image
                       src={item.img}

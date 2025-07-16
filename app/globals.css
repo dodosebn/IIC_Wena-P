@@ -51,9 +51,23 @@ input, section, div {
 
 /* Tailwind Layer Utilities */
 @layer utilities {
+  /* globals.css */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
   .bg-nav {
     background-color: #FFF6E6;
-    background-image: url('/images/sos.webp');
+    background-image:  url('/images/sos.webp');
     height: 100vh;
     width: 100vw;
     object-fit: cover;
