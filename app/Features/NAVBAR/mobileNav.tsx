@@ -9,6 +9,7 @@ import { motion, AnimatePresence, Variants } from 'framer-motion';
 import TransitionLink from '@/app/utils/transitionLink';
 import { createPortal } from 'react-dom';
 import { GrClose } from 'react-icons/gr';
+import Link from 'next/link';
 // import Wena from '@/app/Features/sections/wena';
 // import Sponsors from '@/app/Features/sections/sponsors';
 // import Partners from '@/app/Features/sections/partners';
@@ -101,12 +102,10 @@ const MobileNav: React.FC<MobileNavProps> = ({
             <BiMenuAltLeft className="text-gray-700 text-3xl" />
           </button>
         </div>
-        <div className="flex justify-center">
-          <TransitionLink href="/">
-            <span className="tracking-[0.2rem] text-[1rem] font-bold">
-              THE WENA PROJECT
-            </span>
-          </TransitionLink>
+        {/* <div className="flex justify-center"> */}
+          <div className="uppercase text-[#000]/90 font-medium tracking-[0.15rem] text-md text-center mx-auto">
+          <Link href="/">THE WENA PROJECT</Link>
+        {/* </div> */}
         </div>
         <div className="h-full border-l border-gray-400 flex items-center px-4">
           <button onClick={toggleMenuOverlay} aria-label="Toggle mobile menu">

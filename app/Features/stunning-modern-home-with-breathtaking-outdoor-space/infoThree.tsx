@@ -1,5 +1,5 @@
 import React from 'react';
-import InfoOne from '../interior-inspiration-to-kick-start-your-week/infoOne';
+import InfoOne from '../a-contemporary-palladian-pile-stuffed-with-surprises-hits-the-market-for-6m/infoOne';
 // import Slider from './slider/Slider';
 // import info3 from '@/public/images/temp/infothree-header.jpg';
 // import sample1 from '@/public/images/temp/sample-1.jpg';

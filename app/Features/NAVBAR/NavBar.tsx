@@ -64,14 +64,14 @@ const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, pageTitle }) => {
   };
 
   const renderShareIcons = () => (
-    <div className="flex h-[4rem] items-center">
+    <div className="flex h-[3.8rem] items-center">
       <a
         href={`https://www.instagram.com/sharer/sharer.php?u=${shareMessage}`}
         target="_blank"
         rel="noopener noreferrer"
         className="flex justify-center items-center h-full px-4 border-l border-gray-300"
       >
-        <FaSquareInstagram size={30} />
+        <FaSquareInstagram  size={24} strokeWidth={1} />
       </a>
       <a
         href="https://www.tiktok.com"
@@ -79,7 +79,7 @@ const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, pageTitle }) => {
         rel="noopener noreferrer"
         className="flex justify-center items-center h-full px-4 border-l border-gray-300"
       >
-        <IoLogoTiktok size={30} />
+        <IoLogoTiktok size={24} strokeWidth={1} />
       </a>
       <a
         href={`https://twitter.com/intent/tweet?text=${shareMessage}`}
@@ -87,7 +87,7 @@ const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, pageTitle }) => {
         rel="noopener noreferrer"
         className="flex justify-center items-center h-full px-4 border-l border-gray-300"
       >
-        <FaXTwitter size={30} />
+        <FaXTwitter size={24} strokeWidth={1} />
       </a>
       <a
         href={`mailto:?subject=Check this out!&body=${shareMessage}`}
@@ -95,7 +95,7 @@ const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, pageTitle }) => {
         rel="noopener noreferrer"
         className="flex justify-center items-center h-full px-4 border-l border-r border-gray-300"
       >
-        <IoMailUnread size={30} />
+        <IoMailUnread size={24} strokeWidth={1} />
       </a>
     </div>
   );

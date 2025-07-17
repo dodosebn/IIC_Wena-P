@@ -163,7 +163,7 @@ export default function MainLayoutRootLayout({
                         <div className="h-px w-[80%] font-extrabold md:w-130 mx-auto bg-black mt-9" />
                       )}
                       {item.name === "SUPPORT US" && (
-                        <div className="h-px w-[80%] md:w-80 font-extrabold mx-auto bg-black/20 mt-9" />
+                        <div className="h-px w-[55%] md:w-80 font-extrabold mx-auto bg-black/20 mt-9" />
                       )}
                     </motion.li>
                   );
@@ -171,14 +171,14 @@ export default function MainLayoutRootLayout({
 
                 {!isDesktop && (
                   <motion.li variants={itemVariant}>
-                    <div className="flex justify-center gap-6 pt-3 text-3xl text-gray-700">
+                    <div className="flex justify-center gap-6 pt-9 text-3xl text-gray-700">
                       <motion.a
                         href="https://twitter.com"
                         target="_blank"
                         rel="noopener noreferrer"
                         variants={itemVariant}
                       >
-                        <FaXTwitter />
+                        <FaXTwitter size={24} />
                       </motion.a>
                       <motion.a
                         href="https://facebook.com"
@@ -186,7 +186,7 @@ export default function MainLayoutRootLayout({
                         rel="noopener noreferrer"
                         variants={itemVariant}
                       >
-                        <FaFacebookSquare />
+                        <FaFacebookSquare size={24} />
                       </motion.a>
                       <motion.a
                         href="https://instagram.com"
@@ -194,7 +194,7 @@ export default function MainLayoutRootLayout({
                         rel="noopener noreferrer"
                         variants={itemVariant}
                       >
-                        <FaInstagram />
+                        <FaInstagram size={24} />
                       </motion.a>
                       <motion.a
                         href="https://tiktok.com"
@@ -202,7 +202,7 @@ export default function MainLayoutRootLayout({
                         rel="noopener noreferrer"
                         variants={itemVariant}
                       >
-                        <FaTiktok />
+                        <FaTiktok size={24}  />
                       </motion.a>
                       <motion.a
                         href={`mailto:?subject=Check this out&body=${shareMessage}`}
@@ -210,7 +210,7 @@ export default function MainLayoutRootLayout({
                         rel="noopener noreferrer"
                         variants={itemVariant}
                       >
-                        <IoMail />
+                        <IoMail size={24} />
                       </motion.a>
                     </div>
                   </motion.li>

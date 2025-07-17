@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useRef, useEffect, useState } from "react";
-import InfoOne from "./interior-inspiration-to-kick-start-your-week/infoOne";
 import { FaArrowUp } from "react-icons/fa6";
+import InfoOne from "./a-contemporary-palladian-pile-stuffed-with-surprises-hits-the-market-for-6m/infoOne";
 
 
 const Page = () => {
