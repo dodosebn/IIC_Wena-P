@@ -275,28 +275,44 @@ className="bg-gray-300/70  p-4 shadow-md pointer-events-auto"
   ))}
 </div>
 
-<div className='flex flex-col justify-center items-center mx-auto space-y-3 text-start'>
-  <h1 className='text-[24px]'>Read next: <span className='underline hover:text-gray-400'>A palatial English estate hits the market for just under £10m</span></h1>
-  <h1 className='text-[24px] underline hover:text-gray-400'> This London home is infused with peaceful Mediterian minimalism</h1>
+<div className="flex flex-col gap-6 px-4 sm:px-0 max-w-2xl mx-auto text-start">
+  <div>
+ <div className="text-[24px] font-medium text-gray-800">
+  Read next: 
+    <span className="underline pl-1 hover:text-gray-500 transition-colors duration-200">
+       A palatial English estate hits the market for just under £10m
+  </span>
 </div>
 
- <div className='text-[10px] flex flex-wrap justify-center items-center mx-auto gap-3 py-4'>
-  <p className='text-[#4c4c4c] whitespace-nowrap'>TAGS :</p>
+  </div>
+
+  <div>
+    <h2 className="text-[24px] font-medium underline hover:text-gray-500 transition-colors duration-200">
+      This London home is infused with peaceful Mediterranean minimalism
+    </h2>
+  </div>
+</div>
+
+<div className="text-[10px] flex flex-wrap items-center gap-3 py-4 px-4 sm:px-6 lg:px-8">
+  <p className="text-[#4c4c4c] whitespace-nowrap">TAGS :</p>
   {['CECIL BEATON', 'COUNTRY PROPERTY', 'DAISY DESIGN', 'ENGLISH PROPERTY'].map((item, index) => (
-    <div className='bg-[#e2e2e2] hover:bg-gray-400 text-[#000] p-2 whitespace-nowrap' key={index}>
+    <div
+      key={index}
+      className="bg-[#e2e2e2] hover:bg-gray-400 text-[#000] p-2 whitespace-nowrap"
+    >
       {item}
     </div>
   ))}
 </div>
-
       {/* Share Section */}
-    <div className="border-t border-gray-300 pt-6 flex flex-col md:flex-row gap-y-4 md:gap-y-0 items-center md:items-start">
- <div className='flex text-center mx-auto justify-center mt-3'>
-  <p className="text-xs text-center text-gray-500 uppercase mb-2 md:mb-0 whitespace-nowrap">
-    SHARE THIS STORY
-  </p>
-</div>
-  <div className="flex flex-wrap justify-start md:justify-center gap-6 md:gap-14 md:flex-1 w-full">
+    <div className="border-t border-gray-300 pt-6 flex flex-col md:flex-row gap-y-4 md:gap-y-0 items-center md:items-start px-4 sm:px-6 lg:px-8">
+  <div className="flex text-center justify-center mt-3 md:mt-0">
+    <p className="text-xs text-center text-gray-500 uppercase mb-2 md:mb-0 whitespace-nowrap">
+      SHARE THIS STORY
+    </p>
+  </div>
+  
+  <div className="flex flex-wrap items-center  justify-center gap-6 md:gap-14 md:flex-1 w-full">
     {iconsinfooter.map((item) => (
       <button 
         key={item.key}
