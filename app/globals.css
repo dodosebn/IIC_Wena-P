@@ -52,6 +52,19 @@ input, section, div {
   font-family: 'Avenir Regu', sans-serif !important;
 
 }
+@keyframes heroZoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+.animate-heroZoom {
+  animation: heroZoom 20s ease-in-out infinite alternate;
+}
+
 .custom-scrollbar::-webkit-scrollbar {
   width: 1.5px;
 }
