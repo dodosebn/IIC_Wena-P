@@ -2,6 +2,7 @@ import React from 'react';
 import Image, { StaticImageData } from 'next/image';
 import { FaChevronLeft, FaChevronRight, FaTimes } from 'react-icons/fa';
 import { FaFacebookF, FaTwitter, FaInstagram, FaPinterest, FaYoutube } from 'react-icons/fa';
+import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 
 interface GalleryProps {
   currentIndex: number;
@@ -36,19 +37,19 @@ const Gallery: React.FC<GalleryProps> = ({ images, currentIndex, onClose, onNext
             onClick={onPrev}
             className="px-4 border-r border-gray-200 h-full flex items-center hover:bg-gray-100"
           >
-            <FaChevronLeft size={24} className="text-gray-500" />
+<ChevronLeft size={24} strokeWidth={1} className="text-gray-600" />
           </button>
           <button
             onClick={onNext}
             className="px-4 border-r border-gray-200 h-full flex items-center hover:bg-gray-100"
           >
-            <FaChevronRight size={24} className="text-gray-500" />
+<ChevronRight size={24} strokeWidth={1} className="text-gray-600" />
           </button>
           <button
             onClick={onClose}
             className="px-4 h-full flex items-center hover:bg-gray-100"
           >
-            <FaTimes size={24} className="text-gray-500" />
+<X size={24} strokeWidth={1} className="text-gray-600" />
           </button>
         </header>
 
@@ -63,19 +64,19 @@ const Gallery: React.FC<GalleryProps> = ({ images, currentIndex, onClose, onNext
           <h3 className="text-sm font-medium mb-3 text-center">FOLLOW US</h3>
           <div className="grid grid-cols-3 gap-10 w-fit">
             <a href="#" className="text-gray-700 hover:text-black">
-              <FaFacebookF size={24} />
+              <FaFacebookF  size={24} style={{ fontWeight: 'normal' }}/>
             </a>
             <a href="#" className="text-gray-700 hover:text-black">
-              <FaTwitter size={24} />
+              <FaTwitter  size={24} style={{ fontWeight: 'normal' }}/>
             </a>
             <a href="#" className="text-gray-700 hover:text-black">
-              <FaInstagram size={24} />
+              <FaInstagram  size={24} style={{ fontWeight: 'normal' }}/>
             </a>
             <a href="#" className="text-gray-700 hover:text-black">
-              <FaPinterest size={24} />
+              <FaPinterest  size={24} style={{ fontWeight: 'normal' }}/>
             </a>
             <a href="#" className="text-gray-700 hover:text-black">
-              <FaYoutube size={24} />
+              <FaYoutube  size={24} style={{ fontWeight: 'normal' }}/>
             </a>
           </div>
         </div>

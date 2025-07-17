@@ -68,8 +68,8 @@ const InfoOne = () => {
       {/* Header Section */}
       <div className="mb-8 flex flex-col items-center space-y-2 justify-center mx-auto">
        <div>
-        <p className='text-[12px] text-[#000]/70 tracking-[3px] uppercase mb-2 md:flex hidden'>Property | | by Ellen Himelfarb</p>
-                <p className='text-[16px] text-[#000]/70 tracking-[2.5px] leading-7 text-center uppercase mb-2 md:hidden block'>
+        <p className='text-[12px] text-[#acacac] tracking-[3px] uppercase mb-2 md:flex hidden'>Property | | by Ellen Himelfarb</p>
+                <p className='text-[16px] text-[#acacac] tracking-[2.5px] leading-7 text-center uppercase mb-2 md:hidden block'>
                  <span className="block"> Property | </span>
                   <span className="block">  by Ellen Himelfarb</span> 
                   </p>
@@ -149,6 +149,7 @@ const InfoOne = () => {
       <Image
         src={galleryImages[currentImageIndex]}
         alt={`Gallery image ${currentImageIndex + 1}`}
+        
         layout="fill"
         objectFit="cover"
         className="w-full"
@@ -156,16 +157,16 @@ const InfoOne = () => {
     </div>
 
     {/* arrows… */}
-    <div className="absolute inset-0 flex items-center justify-between z-20 px-3 pointer-events-none">
+    <div className="absolute inset-0 flex items-center justify-between z-20 pointer-events-none">
       <button
         onClick={prevImage}
-        className="bg-gray-300 bg-opacity-80 hover:bg-opacity-100 p-2 shadow-md pointer-events-auto"
+className="bg-gray-300/70  p-4 shadow-md pointer-events-auto"
       >
         <FaAngleLeft size={24} />
       </button>
       <button
         onClick={nextImage}
-        className="bg-gray-300 bg-opacity-80 hover:bg-opacity-100 p-2 shadow-md pointer-events-auto"
+        className="bg-gray-300/70 p-4 shadow-md pointer-events-auto"
       >
         <FaAngleRight size={24} />
       </button>
@@ -214,7 +215,7 @@ const InfoOne = () => {
              w-screen -ml-[50vw] left-1/2
              md:ml-0 md:left-0 md:w-full md:px-12 px-0"
 >
-  <div className="relative w-full h-96 overflow-hidden">
+  <div className="relative w-full md:h-[95vh] h-80 overflow-hidden">
     <Image
       src={clockand}
       alt="clockand"
@@ -251,7 +252,7 @@ const InfoOne = () => {
     <div key={item.key} className="group">
       {/* Image wrapper — full-bleed on mobile, contained on desktop */}
       <div
-        className="relative h-96 overflow-hidden
+        className="relative md:h-[95vh] h-80  overflow-hidden
                    w-screen -ml-[50vw] left-1/2
                    md:ml-0 md:left-0 md:w-full"
       >
@@ -282,16 +283,16 @@ const InfoOne = () => {
  <div className='text-[10px] flex flex-wrap justify-center items-center mx-auto gap-3 py-4'>
   <p className='text-[#4c4c4c] whitespace-nowrap'>TAGS :</p>
   {['CECIL BEATON', 'COUNTRY PROPERTY', 'DAISY DESIGN', 'ENGLISH PROPERTY'].map((item, index) => (
-    <div className='bg-[#e2e2e2] text-[#000] p-2 whitespace-nowrap' key={index}>
+    <div className='bg-[#e2e2e2] hover:bg-gray-400 text-[#000] p-2 whitespace-nowrap' key={index}>
       {item}
     </div>
   ))}
 </div>
 
       {/* Share Section */}
-    <div className="border-t border-gray-200 pt-6 flex flex-col md:flex-row gap-y-4 md:gap-y-0 items-center md:items-start">
+    <div className="border-t border-gray-300 pt-6 flex flex-col md:flex-row gap-y-4 md:gap-y-0 items-center md:items-start">
  <div className='flex text-center mx-auto justify-center mt-3'>
-  <p className="text-xs text-center text-gray-700 uppercase mb-2 md:mb-0 whitespace-nowrap">
+  <p className="text-xs text-center text-gray-500 uppercase mb-2 md:mb-0 whitespace-nowrap">
     SHARE THIS STORY
   </p>
 </div>
@@ -299,7 +300,7 @@ const InfoOne = () => {
     {iconsinfooter.map((item) => (
       <button 
         key={item.key}
-        className="flex items-center space-x-2 text-gray-700 hover:text-gray-400"
+        className="flex items-center space-x-2 text-[#000] hover:text-gray-400"
       >
         {item.name.toLowerCase() === 'save' ? (
           <div className="flex items-center bg-red-500 text-white px-2 py-1 rounded space-x-2">

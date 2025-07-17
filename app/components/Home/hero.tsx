@@ -66,7 +66,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="relative  px-8 w-full h-screen overflow-hidden bg-black/70">
+    <div className="relative font-regu px-8 w-full h-screen overflow-hidden bg-black/70">
 
 
       <video

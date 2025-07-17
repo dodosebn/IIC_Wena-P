@@ -78,7 +78,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
 
   return (
     <aside
-      className={`fixed h-screen w-[280px] bg-[#f5f5f5] border-r border-gray-200
+      className={`fixed h-screen w-[280px] bg-[#f9f9f9] border-r border-gray-200
       flex flex-col z-50 top-0 left-0
       ${isMobile ? (isOpen ? "translate-x-0" : "-translate-x-full") : ""}
       transition-transform duration-300 ease-in-out shadow-sm`}
@@ -87,8 +87,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
         className="p-4 md:px-5 md:py-[1.1rem] flex justify-between items-center border-b
         border-gray-300 sticky top-0 bg-[#f5f5f5] z-10"
       >
-        <div className="uppercase text-gray-500 font-medium tracking-[0.15rem] text-md text-center mx-auto">
-          <a href="/">THE WENA PROJECT</a>
+        <div className="uppercase text-[#000]/90 font-medium tracking-[0.15rem] text-md text-center mx-auto">
+          <Link href="/">THE WENA PROJECT</Link>
         </div>
         {isMobile && (
           <BiMenuAltRight
@@ -98,7 +98,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
         )}
       </div>
 
-      <div className="flex-1 p-1 border-t mt-1 border-gray-300 overflow-y-auto custom-scrollbar">
+      <div className="flex-1 p-1  overflow-y-auto custom-scrollbar">
         {items.map((item, index) => (
           <div
             key={index}
@@ -129,7 +129,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
                       </div>
                     )}
                   </div>
-                  <p className="text-gray-800 text-sm mt-2 text-start">
+                  <p className="block tracking-[0.5px] text-[#000]/90 leading-widest text-[12.5px] mt-2 text-start">
                     {item.text}
                   </p>
                 </div>

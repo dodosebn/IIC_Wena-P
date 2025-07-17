@@ -4,6 +4,7 @@ import img3 from '@/public/assets/images/temp/infothree-header.jpg';
 import img4 from '@/public/assets/images/temp/info-four-header.jpeg';
 import img5 from '@/public/assets/images/temp/header-image-5.jpg'; // fixed
 import { StaticImageData } from 'next/image';
+import bigHero from '@/public/latest-imgs/prob1.jpg';
 
 type SidebarItem = {
   img: string | StaticImageData; // for Next.js imported images
@@ -14,9 +15,9 @@ type SidebarItem = {
 
 const items: SidebarItem[] = [
   {
-    img: img1,
-    text: "Interior inspiration to kick-start your week",
-    path: "/Features/interior-inspiration-to-kick-start-your-week",
+    img: bigHero,
+    text: "A contemporary Palladian pile stuffed with surprises hits the market for £6m",
+    path: "/Features/a-contemporary-palladian-pile-stuffed-with-surprises-hits-the-market-for-6m",
     activeLabel: "WENA WORK",
   },
   {
