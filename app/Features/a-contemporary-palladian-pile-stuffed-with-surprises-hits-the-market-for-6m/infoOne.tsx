@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import bigHero from '@/public/latest-imgs/prob1.jpg';
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
@@ -31,6 +31,10 @@ import Gallery from './slider/gallary';
 const InfoOne = () => {
   const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
     const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+  const [shareMessage, setShareMessage] = useState("");
+ useEffect(() => {
+    setShareMessage(encodeURIComponent(`Hey! Check this out: ${window.location.href}`));
+  }, []);
 
   const galleryImages = [
     flip1, flip2, flip3, flip4, flip5, flip6, flip7, flip8, flip9
@@ -313,24 +317,30 @@ className="bg-gray-300/70  p-4 shadow-md pointer-events-auto"
   </div>
   
   <div className="flex flex-wrap items-center  justify-center gap-6 md:gap-14 md:flex-1 w-full">
-    {iconsinfooter.map((item) => (
-      <button 
-        key={item.key}
-        className="flex items-center space-x-2 text-[#000] hover:text-gray-400"
-      >
-        {item.name.toLowerCase() === 'save' ? (
-          <div className="flex items-center bg-red-500 text-white px-2 py-1 rounded space-x-2">
-            <span>{item.icon}</span>
-            <span className="text-[18px]">Save</span>
-          </div>
-        ) : (
-          <>
-            <span>{item.icon}</span>
-            <span className="text-[18px]">{item.name}</span>
-          </>
-        )}
-      </button>
-    ))}
+{iconsinfooter.map((item) => {
+  const handleShare = () => {
+    if (item.name.toLowerCase() === 'facebook') {
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${shareMessage}`, '_blank');
+    } else if (item.name.toLowerCase() === 'twitter') {
+      window.open(`https://twitter.com/intent/tweet?url=${shareMessage}`, '_blank');
+    } else if (item.name.toLowerCase() === 'save') {
+      const mediaUrl = encodeURIComponent(`${window.location.origin}/_next/image?url=${bigHero.src}&w=1200&q=75`);
+      window.open(`https://www.pinterest.com/pin/create/button/?url=${shareMessage}&media=${mediaUrl}&description=A stunning property worth viewing.`, '_blank');
+    }
+  };
+
+  return (
+    <button
+      key={item.key}
+      onClick={handleShare}
+      className={`flex items-center space-x-2 ${item.name.toLowerCase() === 'save' ? 'bg-red-500 text-white px-2 py-1 rounded' : 'text-[#000] hover:text-gray-400'}`}
+    >
+      <span>{item.icon}</span>
+      <span className="text-[18px]">{item.name}</span>
+    </button>
+  );
+})}
+
   </div>
 </div>
    {isGalleryOpen && (

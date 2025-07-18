@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { useScroll, useTransform, motion } from 'framer-motion';
 import Image from 'next/image';
 import { TfiFacebook } from 'react-icons/tfi';
@@ -15,10 +15,11 @@ import fFour from '@/public/latest-imgs/1four.jpg';
 import twFour from '@/public/latest-imgs/2four.jpg';
 import thFour from '@/public/latest-imgs/2info.jpg';
 import foFour from '@/public/latest-imgs/4four.jpg';
+        import { toast } from 'react-toastify';
 
 const InfoTwo = () => {
   const ref = useRef(null);
-  const footerRef = useRef(null);
+  const footerRef = useRef(null);  // const [shareMessage, setShareMessage] = useState("");
 
   // Hero scroll-fold effect
   const { scrollYProgress } = useScroll({
@@ -204,16 +205,51 @@ const InfoTwo = () => {
           CONNECT WITH US
         </h1>
         <div className="flex justify-center space-x-8 md:space-x-12">
-          {iconsinfooter.map(item => (
-            <div key={item.key} className="flex flex-col items-center group cursor-pointer">
-              <div className="text-3xl md:text-4xl text-gray-700 mb-2 group-hover:text-gray-900 transition-colors">
-                {item.icon}
-              </div>
-              <div className="text-[11px] uppercase tracking-widest text-gray-700 font-medium">
-                {item.name}
-              </div>
-            </div>
-          ))}
+
+{iconsinfooter.map(item => {
+  const handleClick = () => {
+    const shareUrl = encodeURIComponent(window.location.href);
+    const mediaUrl = encodeURIComponent(`${window.location.origin}/_next/image?url=${bigHero.src}&w=1200&q=75`);
+    const description = encodeURIComponent("Check out this beautiful property!");
+
+    switch (item.name.toLowerCase()) {
+      case 'facebook':
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`, '_blank');
+        toast.success('Sharing on Facebook...');
+        break;
+      case 'twitter':
+        window.open(`https://twitter.com/intent/tweet?url=${shareUrl}`, '_blank');
+        toast.success('Sharing on Twitter...');
+        break;
+      case 'pinterest':
+        window.open(`https://www.pinterest.com/pin/create/button/?url=${shareUrl}&media=${mediaUrl}&description=${description}`, '_blank');
+        toast.success('Sharing on Pinterest...');
+        break;
+      case 'instagram':
+        toast.info("Instagram sharing is only available via the mobile app.");
+        break;
+      default:
+        toast.error("Unsupported platform.");
+        break;
+    }
+  };
+
+  return (
+    <button
+      key={item.key}
+      onClick={handleClick}
+      className="flex flex-col items-center group cursor-pointer focus:outline-none"
+    >
+      <div className="text-3xl md:text-4xl text-gray-700 mb-2 group-hover:text-gray-900 transition-colors">
+        {item.icon}
+      </div>
+      <div className="text-[11px] uppercase tracking-widest text-gray-700 font-medium">
+        {item.name}
+      </div>
+    </button>
+  );
+})}
+
         </div>
       </div>
     </>
