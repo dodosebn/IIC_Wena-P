@@ -98,7 +98,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
         )}
       </div>
 
-      <div className="flex-1 p-1  overflow-y-auto custom-scrollbar">
+      <div className="flex-1 overflow-y-auto custom-scrollbar">
         {items.map((item, index) => (
           <div
             key={index}
@@ -110,31 +110,35 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
               onClick={() => handleClick(index)}
               className="block w-full text-left cursor-pointer"
             >
-              <Link href={item.path}>
-                <div className="p-4 border-b border-gray-300 hover:bg-gray-50 transition-colors">
-                  <div className="relative w-full aspect-[5/3] overflow-hidden">
-                    <Image
-                      src={item.img}
-                      alt={item.text || "Sidebar Item"}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 240px"
-                      className="object-cover"
-                      priority={index < 6}
-                    />
-                    {index === activeIndex && (
-                      <div className="absolute inset-0 bg-black/60 flex justify-center items-center">
-                        <span className="text-white text-xs uppercase tracking-wider">
-                          {item.activeLabel}
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                  <p className="block tracking-[0.5px] text-[#000]/90 leading-widest text-[12.5px] mt-2 text-start">
-                    {item.text}
-                  </p>
-                </div>
-              </Link>
+        <Link href={item.path} className="block w-full">
+  <div className="border-b border-gray-300 hover:bg-gray-50 transition-colors w-full">
+    <div className="p-6">
+      <div className="relative w-full aspect-[5/3] overflow-hidden">
+        <Image
+          src={item.img}
+          alt={item.text || "Sidebar Item"}
+          fill
+          sizes="(max-width: 768px) 100vw, 240px"
+          className="object-cover"
+          priority={index < 6}
+        />
+        {index === activeIndex && (
+          <div className="absolute inset-0 bg-black/60 flex justify-center items-center">
+            <span className="text-white text-xs uppercase tracking-wider">
+              {item.activeLabel}
+            </span>
+          </div>
+        )}
+      </div>
+      <p className="block tracking-[0.5px] text-[#000]/90 leading-widest text-[12.5px] mt-2 text-start">
+        {item.text}
+      </p>
+    </div>
+  </div>
+</Link>
+
             </div>
+            
           </div>
         ))}
       </div>
