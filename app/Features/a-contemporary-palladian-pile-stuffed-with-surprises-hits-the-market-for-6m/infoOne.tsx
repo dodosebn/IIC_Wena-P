@@ -98,12 +98,14 @@ const InfoOne = () => {
           for £6m
         </h1>
 
-        <div className="md:px-44 lg:px-64 xl:px-44">
-          <p className="text-[16px] tracking-[0.5px] mb-4 text-center  leading-widest">
-            The Gloucestershire property has handcrafted vintage details,
-            plus all the mod cons
-          </p>
-        </div>
+    <div className="sm:px-4 md:px-20 lg:px-36 xl:px-60">
+  <p className="text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px]
+   xl:text-[19px] tracking-wide mb-4 text-center leading-relaxed">
+    The Gloucestershire property has handcrafted vintage details,
+    plus all the mod cons
+  </p>
+</div>
+
       </div>
 
       {/* Hero Image */}
