@@ -317,10 +317,10 @@ className="bg-gray-300/70  p-4 shadow-md pointer-events-auto"
   </div>
   
   <div className="flex flex-wrap items-center  justify-center gap-6 md:gap-14 md:flex-1 w-full">
-{iconsinfooter.map((item) => {
+{iconsinfooter.map((item) => {    const shareUrl = encodeURIComponent(window.location.href);
   const handleShare = () => {
     if (item.name.toLowerCase() === 'facebook') {
-      window.open(`https://www.facebook.com/sharer/sharer.php?u=${shareMessage}`, '_blank');
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`, '_blank');
     } else if (item.name.toLowerCase() === 'twitter') {
       window.open(`https://twitter.com/intent/tweet?url=${shareMessage}`, '_blank');
     } else if (item.name.toLowerCase() === 'save') {
