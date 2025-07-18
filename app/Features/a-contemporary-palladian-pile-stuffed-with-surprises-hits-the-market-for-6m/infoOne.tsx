@@ -98,9 +98,9 @@ const InfoOne = () => {
           for £6m
         </h1>
 
-        <div className=" md:px-44 lg:px-64 xl:px-44 2xl:px-0">
+        <div className="md:px-44 lg:px-64 xl:px-44">
           <p className="text-[16px] tracking-[0.5px] mb-4 text-center  leading-widest">
-            The Gloucestershire property has handcrafted The vintage details,
+            The Gloucestershire property has handcrafted vintage details,
             plus all the mod cons
           </p>
         </div>
