@@ -10,15 +10,15 @@ import { IoLogoPinterest } from "react-icons/io5";
 
 // nextFlippers
 
-import flip1 from "@/public/latest-imgs/nextFlips/Daisy-Green-for-sale-Blue-Book-Agency-9.jpg";
-import flip2 from "@/public/latest-imgs/fifth-img.jpg";
-import flip3 from "@/public/latest-imgs/theClockandcase.jpg";
-import flip4 from "@/public/latest-imgs/nextFlips/Daisy-Green-for-sale-Blue-Book-Agency-28-1024x683.jpg";
-import flip5 from "@/public/latest-imgs/chairform.jpg";
-import flip6 from "@/public/latest-imgs/nextFlips/Daisy-Green-for-sale-Blue-Book-Agency-3.jpg";
-import flip7 from "@/public/latest-imgs/bedroomsettings.jpg";
-import flip8 from "@/public/latest-imgs/fifth-img.jpg";
-import flip9 from "@/public/latest-imgs/sixthImg.jpg";
+import flip1 from "@/public/latest-imgs/nextFlips/no9.jpg";
+import flip9 from "@/public/latest-imgs/nextFlips/no1.jpg";
+import flip2 from "@/public/latest-imgs/nextFlips/no2.jpg";
+import flip3 from "@/public/latest-imgs/nextFlips/no3.jpg";
+import flip4 from "@/public/latest-imgs/nextFlips/no4.jpg";
+import flip5 from "@/public/latest-imgs/nextFlips/no555.jpg";
+import flip6 from "@/public/latest-imgs/nextFlips/no6.jpg";
+import flip7 from "@/public/latest-imgs/nextFlips/no7.jpg";
+import flip8 from "@/public/latest-imgs/nextFlips/no888.jpg";
 // // aftertheninethflipper
 import clockand from "@/public/latest-imgs/theClockandcase.jpg";
 import shareandform from "@/public/latest-imgs/chairform.jpg";

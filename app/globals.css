@@ -52,6 +52,10 @@ input, section, div {
   font-family: 'Avenir Regu', sans-serif !important;
 
 }
+.image-transition {
+  transition: opacity 0.5s ease-in-out;
+}
+
 @keyframes heroZoom {
   0% {
     transform: scale(1);
