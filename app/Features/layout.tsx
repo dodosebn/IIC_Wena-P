@@ -58,8 +58,8 @@ export default function MainLayoutRootLayout({
   const [isDesktop, setIsDesktop] = useState<boolean | null>(null);
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const [shareMessage, setShareMessage] = useState("");
-
-  useEffect(() => {
+const [showFoot, setShowFoot] = useState(false); 
+ useEffect(() => {
     const index = items.findIndex(item => pathname?.startsWith(item.path));
     setActiveIndex(index);
   }, [pathname]);
@@ -78,9 +78,10 @@ export default function MainLayoutRootLayout({
     };
   }, [menuOpen]);
 
-  useEffect(() => {
-    setShareMessage(encodeURIComponent(`Hey! Check this out: ${window.location.href}`));
-  }, []);
+useEffect(() => {
+  setShowFoot(pathname?.toLowerCase().includes("interior-six-inspiration-to-kick-start-your-week") ?? false);
+}, [pathname]);
+
 
   return (
     <div className="relative z-0 min-h-screen flex flex-col">
@@ -100,11 +101,11 @@ export default function MainLayoutRootLayout({
             {children}
           </main>
         </div>
-
+{showFoot && (
         <div className="md:hidden px-4 py-6 border-t border-gray-300">
           <MobFoot />
         </div>
-
+)}
         <AnimatePresence>
           {menuOpen && (
             <motion.div
