@@ -21,8 +21,8 @@ const HeroTextSwitcher = ({ textOptions }: { textOptions: string[] }) => {
   }, [textOptions.length]);
 
   return (
-    <div className="relative w-full text-[#FAA45B] font-extrabold text-[45px] 
-    md:text-[90px] leading-tight h-[5.5rem] md:min-h-[10rem]">
+    <div className="relative w-full text-[#FAA45B] pt-2 font-extrabold text-[45px] 
+    md:text-[90px] leading-tight h-[8rem] md:h-[10rem] md:min-h-[10rem] ">
 
       <AnimatePresence mode="wait">
         <motion.div
@@ -31,7 +31,7 @@ const HeroTextSwitcher = ({ textOptions }: { textOptions: string[] }) => {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -30, opacity: 0 }}
           transition={{ duration: 0.35, ease: 'easeInOut' }}
-          className="w-full text-start"
+          className="w-full text-start font-regu"
         >
           {textOptions[activeIndex]}
         </motion.div>
@@ -80,14 +80,14 @@ const Hero = () => {
 
 <div className="relative max-w-7xl mx-auto md:px-12 z-20 flex items-center justify-center md:justify-start h-full w-full text-white">
   <div className="flex flex-col items-start gap-8 w-full">
-   <h1 className="md:text-[90px] text-[45px] font-black capitalize relative top-7 md:top-0 tracking-tight leading-none">
+   <h1 className="md:text-[90px] text-[45px] font-regu font-black capitalize relative top-7 md:top-0 tracking-tight leading-none">
   Africa
 </h1>
 
 
     <HeroTextSwitcher textOptions={textOptions} />
 
-    <div className="mt-8">
+    <div className="mt-8 md:mt-10">
       <button className="bg-white gap-4 flex items-center text-black font-bold px-6 py-3 rounded-sm transition-all duration-300 transform hover:scale-105 group">
         <TransitionLink href="/Features">
           <div className="relative h-6 overflow-hidden">
