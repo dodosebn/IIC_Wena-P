@@ -80,7 +80,7 @@ const InfoOne = () => {
   return (
     <div className="max-w-6xl mx-auto px-3 sm:px-12 md:py-32 py-20 overflow-x-hidden">
       {/* Header Section */}
-      <div className="mb-16 flex flex-col items-center lg:px-20 px-2  space-y-2 justify-center mx-auto">
+      <div className="mb-11 flex flex-col items-center lg:px-20 px-2  space-y-2 justify-center mx-auto">
         <div>
           <p className="text-[11px] text-[#acacac] tracking-[2px] uppercase mb-1 md:flex hidden">
             Property I I by Ellen Himelfarb
