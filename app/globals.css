@@ -48,10 +48,12 @@ input, section, div {
 
 /* Tailwind Layer Utilities */
 @layer utilities {
+ 
 .font-regu{
   font-family: 'Avenir Regu', sans-serif !important;
 
 }
+ 
 .image-transition {
   transition: opacity 0.5s ease-in-out;
 }

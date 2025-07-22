@@ -20,8 +20,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
   const { activeIndex, setActiveIndex } = useNavbarStore();
 
   useEffect(() => {
-    setIsMobile(window.innerWidth <= 768);
-    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    setIsMobile(window.innerWidth <= 1024);
+    const handleResize = () => setIsMobile(window.innerWidth <= 1024);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -84,7 +84,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
       transition-transform duration-300 ease-in-out shadow-sm`}
     >
       <div
-        className="p-4 md:px-5 md:py-[1.1rem] flex justify-between items-center border-b
+        className="p-4 md:px-5  md:py-[1.1rem] flex justify-between items-center border-b
         border-gray-300 sticky top-0 bg-[#f5f5f5] z-10"
       >
         <div className="uppercase text-[#000]/90 font-medium tracking-[0.15rem] text-md text-center mx-auto">

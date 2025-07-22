@@ -97,7 +97,7 @@ useEffect(() => {
             toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
             isOpen={isSidebarOpen}
           />
-          <main className="flex-1 md:ml-[280px] mt-2 transition-all duration-300 overflow-y-auto">
+          <main className="flex-1 lg:ml-[280px] mt-2 transition-all duration-300 overflow-y-auto">
             {children}
           </main>
         </div>

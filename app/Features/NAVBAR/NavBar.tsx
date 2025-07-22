@@ -102,7 +102,7 @@ const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, pageTitle }) => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white md:ml-[280px]">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white lg:ml-[280px]">
         <MobileNav
           toggleSidebar={toggleSidebar}
           handleMenu={() => setMenuOpen(true)}
@@ -110,7 +110,7 @@ const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, pageTitle }) => {
           handleMenuItemClick={handleMenuItemClick}
         />
 
-        <nav className="hidden md:block bg-white border-b px-5 py-3 border-gray-300 w-full">
+        <nav className="hidden lg:block bg-white border-b px-5 py-3 border-gray-300 w-full">
           <div className="flex items-center justify-between h-[2.2rem]">
             <Link href="/" className="text-gray-500 text-md cursor-pointer">
               INTRO

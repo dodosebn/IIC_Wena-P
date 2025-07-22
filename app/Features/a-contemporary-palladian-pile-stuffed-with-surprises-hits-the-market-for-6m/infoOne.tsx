@@ -78,29 +78,29 @@ const InfoOne = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 md:py-32 py-20 overflow-x-hidden">
+    <div className="max-w-6xl mx-auto px-3 sm:px-12 md:py-32 py-20 overflow-x-hidden">
       {/* Header Section */}
-      <div className="mb-8 flex flex-col items-center space-y-2 justify-center mx-auto">
+      <div className="mb-16 flex flex-col items-center lg:px-20 px-2  space-y-2 justify-center mx-auto">
         <div>
-          <p className="text-[12px] text-[#acacac] tracking-[3px] uppercase mb-2 md:flex hidden">
-            Property | | by Ellen Himelfarb
+          <p className="text-[11px] text-[#acacac] tracking-[2px] uppercase mb-1 md:flex hidden">
+            Property I I by Ellen Himelfarb
           </p>
           <p className="text-[12px] text-[#acacac] tracking-[2.5px] leading-7 text-center uppercase mb-2 md:hidden block">
-            <span className="block"> Property | </span>
+            <span className="block"> Property I </span>
             <span className="block"> by Ellen Himelfarb</span>
           </p>
         </div>
-        <h1
-          className="md:text-[36px] text-[25px] text-[#000] tracking-[3px] mb-4 text-center
-         leading-tight"
-        >
-          A contemporary Palladian pile stuffed with surprises hits the market
-          for £6m
-        </h1>
+      <h1
+  className="md:text-[36px] text-[25px] tracking-[1px] text-[#000]  mb-4 text-center
+  leading-tight font-medium"
+>
+ A contemporary Palladian pile stuffed with surprises hits the market
+  for £6m
+</h1>
 
-    <div className="sm:px-4 md:px-20 lg:px-36 xl:px-60">
-  <p className="text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px]
-   xl:text-[19px] tracking-wide mb-4 text-center leading-relaxed">
+
+    <div className="sm:px-4 md:px-6 lg:px-40">
+  <p className="text-[17px]  tracking-wide mb-4 text-center leading-relaxed">
     The Gloucestershire property has handcrafted vintage details,
     plus all the mod cons
   </p>
@@ -109,24 +109,23 @@ const InfoOne = () => {
       </div>
 
       {/* Hero Image */}
-      <div className="mb-6 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
-        <div className="relative w-full h-auto mb-2">
-          <Image
-            src={bigHero}
-            alt="Main property image"
-            layout="responsive"
-            width={1200}
-            height={850}
-            className="w-full"
-          />
-        </div>
+      <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
+       <div className="relative aspect-[11/6] w-full mb-2">
+  <Image
+    src={bigHero}
+    alt="Main property image"
+    fill
+    className="object-cover"
+  />
+</div>
+
         <p className="text-sm text-[#000]/90 text-start pt-3 ml-[10vw] lg:ml-[15vw]">
           Photography: Blue Book Agency
         </p>
       </div>
 
       {/* Content Paragraphs */}
-      <div className="md:max-w-[38rem] max-w-[25rem] mx-auto text-start mb-6 px-3 space-y-6">
+      <div className="md:max-w-[38rem] max-w-[25rem] mx-auto text-start m-6 px-3 space-y-6">
         <p className="md:text-[18px] text-[17px] leading-relaxed tracking-wide text-[#000]/90">
           It’s a new twist on an old saga: a Palladian pile on the market in
           deepest
@@ -170,15 +169,14 @@ const InfoOne = () => {
         </p>
       </div>
 
-      <div className="mb-6 px-3 md:px-12">
-        {/* ––– Image (full-bleed on mobile, contained on desktop) */}
-        <div
+      <div className="mb-6 px-3">
+         <div
           className="relative mb-4
                left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]
                md:left-0 md:right-0 md:ml-0 md:mr-0
                w-screen md:w-full overflow-visible"
         >
-          <div className="relative w-full" style={{ paddingBottom: "66.66%" }}>
+          <div className="relative w-full aspect-12/8" style={{ paddingBottom: "66.66%" }}>
             <Image
               src={galleryImages[currentImageIndex]}
               alt={`Gallery image ${currentImageIndex + 1}`}
@@ -203,6 +201,7 @@ const InfoOne = () => {
               <FaAngleRight size={24} />
             </button>
           </div>
+
         </div>
 
         {/* ––– Caption & Counter ––– */}
@@ -262,9 +261,9 @@ const InfoOne = () => {
       <div
         className="relative mb-6
              w-screen -ml-[50vw] left-1/2
-             md:ml-0 md:left-0 md:w-full md:px-12 px-0"
+             md:ml-0 md:left-0 md:w-full  px-0"
       >
-        <div className="relative w-full md:h-[95vh] h-72 overflow-hidden">
+        <div className="relative w-full  aspect-[12/8] overflow-hidden">
           <Image
             src={clockand}
             alt="clockand"
@@ -315,7 +314,7 @@ const InfoOne = () => {
           <div key={item.key} className="group">
             {/* Image wrapper — full-bleed on mobile, contained on desktop */}
             <div
-              className="relative md:h-[95vh] h-72  overflow-hidden
+              className="relative aspect-[12/8]   overflow-hidden
                    w-screen -ml-[50vw] left-1/2
                    md:ml-0 md:left-0 md:w-full"
             >
@@ -372,14 +371,16 @@ const InfoOne = () => {
         ))}
       </div>
       {/* Share Section */}
-      <div className="border-t border-gray-300 pt-6 flex flex-col md:flex-row gap-y-4 md:gap-y-0 items-center md:items-start px-4 sm:px-6 lg:px-8">
-        <div className="flex text-center justify-center mt-3 md:mt-0">
-          <p className="text-xs text-center text-gray-500 uppercase mb-2 md:mb-0 whitespace-nowrap">
-            SHARE THIS STORY
-          </p>
-        </div>
+      <div className="border-t border-gray-200 pt-6 flex flex-col md:flex-row gap-y-4
+       md:gap-y-0 items-center md:items-start">
+       <div className="flex-shrink-0 justify-center items-center flex mx-auto">
+    <p className="text-xs text-gray-500 uppercase whitespace-nowrap">
+      SHARE THIS STORY
+    </p>
+  </div>
 
-        <div className="flex flex-wrap items-center  justify-center gap-6 md:gap-14 md:flex-1 w-full">
+        <div className="flex flex-wrap items-center md:items-start justify-center gap-6 md:gap-14 md:flex-1 w-full">
+       
           {iconsinfooter.map((item) => {
             const handleShare = () => {
               if (item.name.toLowerCase() === "facebook") {

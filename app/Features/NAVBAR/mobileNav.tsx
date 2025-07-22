@@ -95,7 +95,7 @@ const MobileNav: React.FC<MobileNavProps> = ({
   const closeSection = () => setActiveSection(null);
 
   return (
-    <div className="md:hidden relative">
+    <div className="lg:hidden relative">
       <div className="flex justify-between items-center border-b border-gray-400 h-14">
         <div className="h-full border-r border-gray-400 flex items-center px-4">
           <button onClick={toggleSidebar} aria-label="Toggle sidebar">
