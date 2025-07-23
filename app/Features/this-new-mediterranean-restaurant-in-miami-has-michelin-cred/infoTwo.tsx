@@ -74,10 +74,10 @@ const InfoTwo = () => {
   ];
 
   const iconsinfooter = [
-    { key: 1, icon: <TfiFacebook size={22} />, name: 'Facebook' },
-    { key: 2, icon: <FaXTwitter size={22} />, name: 'Twitter' },
-    { key: 3, icon: <FaInstagramSquare size={22} />, name: 'Instagram' },
-    { key: 4, icon: <IoLogoPinterest size={22} />, name: 'Pinterest' },
+    { key: 1, icon: <TfiFacebook size={24} />, name: 'Facebook' },
+    { key: 2, icon: <FaXTwitter size={24} />, name: 'Twitter' },
+    { key: 3, icon: <FaInstagramSquare size={24} />, name: 'Instagram' },
+    { key: 4, icon: <IoLogoPinterest size={24} />, name: 'Pinterest' },
   ];
 
   return (
