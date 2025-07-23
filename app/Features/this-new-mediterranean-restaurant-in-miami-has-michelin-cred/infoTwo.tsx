@@ -115,7 +115,7 @@ Basel stalwart Les Trois Roi has undergone a dramatic refurb courtesy of the arc
       </div>
 
       {/* Two Column Section */}
-      <div className="max-w-7xl mx-auto px-4 pt-16 sm:px-6 lg:px-16">
+      <div className="max-w-7xl mx-auto px-7 pt-8 sm:px-6 lg:px-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-11 mb-20">
           {firstTwo.map((item) => (
             <div key={item.id} className="group cursor-pointer">
