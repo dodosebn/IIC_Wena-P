@@ -174,8 +174,8 @@ Basel stalwart Les Trois Roi has undergone a dramatic refurb courtesy of the arc
         </motion.div>
         <div className="absolute inset-0 flex justify-center items-center z-20 px-4 text-center pt-12">
           <div className="w-full max-w-4xl">
-            <h1 className="text-[42px] font-medium text-white font-serif tracking-[3px] leading-tight">
-              Sign up to our weekly <br /> newsletter
+            <h1 className="md:text-[40px] text-[25px]  font-medium text-white font-serif tracking-[3px] leading-tight">
+              Sign up to our weekly <br className='hidden md:flex' /> newsletter
             </h1>
             <p className="text-[18px] font-medium text-white tracking-[0.5px] mb-4">
               Never miss a thing
