@@ -99,12 +99,12 @@ const InfoTwo = () => {
           <div className="absolute inset-0 bg-black/30 z-10" />
         </motion.div>
 
-        <div className="absolute pt-12 inset-0 flex justify-center items-center z-20 px-4 text-center">
+        <div className="absolute pt-12 inset-0 flex justify-center items-center z-20 text-center">
           <div className="flex flex-col items-center space-y-4 px-2 lg:px-20">
-            <h1 className="md:text-[36px] text-[25px] text-white mb-4 font-medium leading-tight tracking-[1px]">
+            <h1 className="md:text-[36px] text-[25px] lg:px-14 text-white mb-4 font-medium leading-tight tracking-[1px]">
 Herzog & de Meuron complete a grand hotel project in their home town            </h1>
            
-            <div className="sm:px-4 md:px-6 lg:px-40">
+            <div className="md:px-30 lg:px-40">
    <p className="text-[17px] text-white tracking-wide leading-relaxed text-center max-w-3xl">
 Basel stalwart Les Trois Roi has undergone a dramatic refurb courtesy of the architectural duo
 
