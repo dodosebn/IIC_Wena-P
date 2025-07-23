@@ -1,20 +1,15 @@
-'use client';
+"use client";
 
-import React, { useEffect, useState } from 'react';
-import { FaSquareInstagram, FaXTwitter } from 'react-icons/fa6';
-import { IoLogoTiktok, IoMailUnread, IoMenu } from 'react-icons/io5';
-import { GrClose } from 'react-icons/gr';
-import { motion, AnimatePresence, Variants } from 'framer-motion';
-import { useRouter } from 'next/navigation';
-import MobileNav from './mobileNav';
-import { useNavbarStore } from '@/app/store/useNavStore';
-import Link from 'next/link';
-
-interface NavBarProps {
-  isSidebarOpen: boolean;
-  toggleSidebar: () => void;
-  pageTitle: string;
-}
+import React, { useEffect, useState } from "react";
+import { FaSquareInstagram, FaXTwitter } from "react-icons/fa6";
+import { IoLogoTiktok, IoMailUnread, IoMenu } from "react-icons/io5";
+import { GrClose } from "react-icons/gr";
+import { motion, AnimatePresence, Variants } from "framer-motion";
+import { useRouter } from "next/navigation";
+import MobileNav from "./mobileNav";
+import { useNavbarStore } from "@/app/store/useNavStore";
+import Link from "next/link";
+import { NavBarProps } from "@/app/types";
 
 const containerVariant: Variants = {
   hidden: { opacity: 0 },
@@ -29,14 +24,14 @@ const itemVariant: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { type: 'spring', bounce: 0.4 },
+    transition: { type: "spring", bounce: 0.4 },
   },
 };
 
 const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, pageTitle }) => {
   const [showTitleOnly, setShowTitleOnly] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [shareMessage, setShareMessage] = useState('');
+  const [shareMessage, setShareMessage] = useState("");
 
   const { menuOpen, setMenuOpen } = useNavbarStore();
   const router = useRouter();
@@ -52,13 +47,13 @@ const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, pageTitle }) => {
       setLastScrollY(window.scrollY);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
   const closeAllMenus = () => setMenuOpen(false);
 
-  const handleMenuItemClick = (path: string = '/') => {
+  const handleMenuItemClick = (path: string = "/") => {
     setMenuOpen(false);
     router.push(path);
   };
@@ -71,7 +66,7 @@ const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, pageTitle }) => {
         rel="noopener noreferrer"
         className="flex justify-center items-center h-full px-4 border-l border-gray-300"
       >
-        <FaSquareInstagram  size={24} strokeWidth={1} />
+        <FaSquareInstagram size={24} strokeWidth={1} />
       </a>
       <a
         href="https://www.tiktok.com"
@@ -128,8 +123,6 @@ const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, pageTitle }) => {
             </div>
           </div>
         </nav>
-
-
       </header>
     </>
   );

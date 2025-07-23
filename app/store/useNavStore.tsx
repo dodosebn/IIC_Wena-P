@@ -1,13 +1,7 @@
 'use client';
 import { create } from 'zustand';
+import { NavbarState } from '../types';
 
-interface NavbarState {
-  menuOpen: boolean;
-  setMenuOpen: (value: boolean) => void;
-
-  activeIndex: number;
-  setActiveIndex: (value: number) => void;
-}
 
 export const useNavbarStore = create<NavbarState>((set) => ({
   menuOpen: false,

@@ -1,26 +1,15 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect } from 'react';
-import { BiMenuAltLeft } from 'react-icons/bi';
-import { FaFacebookSquare, FaInstagram, FaTiktok } from 'react-icons/fa';
-import { IoClose, IoMail, IoMenu } from 'react-icons/io5';
-import { FaXTwitter } from 'react-icons/fa6';
-import { motion, AnimatePresence, Variants } from 'framer-motion';
-import TransitionLink from '@/app/utils/transitionLink';
-import { createPortal } from 'react-dom';
-import { GrClose } from 'react-icons/gr';
-import Link from 'next/link';
-// import Wena from '@/app/Features/sections/wena';
-// import Sponsors from '@/app/Features/sections/sponsors';
-// import Partners from '@/app/Features/sections/partners';
-// import Support from '@/app/Features/sections/support';
+import React, { useState, useEffect } from "react";
+import { BiMenuAltLeft } from "react-icons/bi";
+import { FaFacebookSquare, FaInstagram, FaTiktok } from "react-icons/fa";
+import { IoClose, IoMail, IoMenu } from "react-icons/io5";
+import { FaXTwitter } from "react-icons/fa6";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 
-interface MobileNavProps {
-  toggleSidebar: () => void;
-  handleMenu: () => void;
-  showTitleOnly: boolean;
-  handleMenuItemClick: (path: string) => void;
-}
+import Link from "next/link";
+import { MobileNavProps } from "@/app/types";
+
 
 const containerVariant: Variants = {
   hidden: { opacity: 0 },
@@ -35,7 +24,7 @@ const menuItemVariant: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { type: 'spring', bounce: 0.4 },
+    transition: { type: "spring", bounce: 0.4 },
   },
 };
 
@@ -44,30 +33,24 @@ const contentVariant: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: 'easeOut' },
+    transition: { duration: 0.6, ease: "easeOut" },
   },
   exit: {
     opacity: 0,
     y: 50,
-    transition: { duration: 0.4, ease: 'easeIn' },
+    transition: { duration: 0.4, ease: "easeIn" },
   },
 };
 
-// const sectionMap: Record<string, React.ReactNode> = {
-//   wena: <Wena />,
-//   sponsors: <Sponsors />,
-//   partners: <Partners />,
-//   support: <Support />,
-// };
 
 const MobileNav: React.FC<MobileNavProps> = ({
   toggleSidebar,
   handleMenu,
   showTitleOnly,
-  handleMenuItemClick
+  handleMenuItemClick,
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [shareMessage, setShareMessage] = useState('');
+  const [shareMessage, setShareMessage] = useState("");
   const [activeSection, setActiveSection] = useState<string | null>(null);
 
   useEffect(() => {
@@ -76,14 +59,14 @@ const MobileNav: React.FC<MobileNavProps> = ({
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = isMenuOpen || activeSection ? 'hidden' : '';
+    document.body.style.overflow = isMenuOpen || activeSection ? "hidden" : "";
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     };
   }, [isMenuOpen, activeSection]);
 
   const toggleMenuOverlay = () => {
-    setIsMenuOpen(prev => !prev);
+    setIsMenuOpen((prev) => !prev);
     handleMenu();
   };
 
@@ -103,9 +86,9 @@ const MobileNav: React.FC<MobileNavProps> = ({
           </button>
         </div>
         {/* <div className="flex justify-center"> */}
-          <div className="uppercase text-[#000]/90 font-medium tracking-[0.15rem] text-md text-center mx-auto">
+        <div className="uppercase text-[#000]/90 font-medium tracking-[0.15rem] text-md text-center mx-auto">
           <Link href="/">THE WENA PROJECT</Link>
-        {/* </div> */}
+          {/* </div> */}
         </div>
         <div className="h-full border-l border-gray-400 flex items-center px-4">
           <button onClick={toggleMenuOverlay} aria-label="Toggle mobile menu">
@@ -113,8 +96,6 @@ const MobileNav: React.FC<MobileNavProps> = ({
           </button>
         </div>
       </div>
-
-
     </div>
   );
 };

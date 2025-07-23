@@ -47,3 +47,28 @@ export type UseInfoProps = {
   Slider?: React.FC; 
 };
 
+export interface NavbarState {
+  menuOpen: boolean;
+  setMenuOpen: (value: boolean) => void;
+
+  activeIndex: number;
+  setActiveIndex: (value: number) => void;
+}
+
+export interface NavBarProps {
+  isSidebarOpen: boolean;
+  toggleSidebar: () => void;
+  pageTitle: string;
+}
+
+export interface MobileNavProps {
+  toggleSidebar: () => void;
+  handleMenu: () => void;
+  showTitleOnly: boolean;
+  handleMenuItemClick: (path: string) => void;
+}
+
+export interface SideProps {
+  isOpen: boolean;
+  toggleSidebar: () => void;
+}

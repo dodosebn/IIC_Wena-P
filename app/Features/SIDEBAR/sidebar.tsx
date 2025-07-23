@@ -6,13 +6,11 @@ import items from "./mapps";
 import { BiMenuAltRight } from "react-icons/bi";
 import Link from "next/link";
 import { useNavbarStore } from "@/app/store/useNavStore";
+import { SideProps } from "@/app/types";
 
-interface SidebarProps {
-  isOpen: boolean;
-  toggleSidebar: () => void;
-}
 
-const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
+
+const Sidebar: React.FC<SideProps> = ({ isOpen, toggleSidebar }) => {
   const [isMobile, setIsMobile] = useState(false);
   const [isToggledDown, setIsToggledDown] = useState(false);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
