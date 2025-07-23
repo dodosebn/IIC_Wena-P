@@ -20,8 +20,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
   const { activeIndex, setActiveIndex } = useNavbarStore();
 
   useEffect(() => {
-    setIsMobile(window.innerWidth <= 1024);
-    const handleResize = () => setIsMobile(window.innerWidth <= 1024);
+    setIsMobile(window.innerWidth < 1024);
+    const handleResize = () => setIsMobile(window.innerWidth < 1024);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
