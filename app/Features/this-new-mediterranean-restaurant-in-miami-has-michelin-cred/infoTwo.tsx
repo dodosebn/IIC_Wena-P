@@ -192,7 +192,7 @@ Basel stalwart Les Trois Roi has undergone a dramatic refurb courtesy of the arc
         <h1 className="text-[12px] font-serif font-semibold tracking-[2px] text-black mb-10">
           CONNECT WITH US
         </h1>
-        <div className="flex justify-center space-x-8 md:space-x-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 px-14 md:px-30 md:gap-2 items-center gap-7">
           {iconsinfooter.map((item) => {
             const handleClick = () => {
               const shareUrl = encodeURIComponent(window.location.href);
