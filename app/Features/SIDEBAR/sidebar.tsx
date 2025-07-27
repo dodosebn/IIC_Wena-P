@@ -111,7 +111,7 @@ const Sidebar: React.FC<SideProps> = ({ isOpen, toggleSidebar }) => {
         <Link href={item.path} className="block w-full">
   <div className="border-b border-gray-300 hover:bg-gray-50 transition-colors w-full">
     <div className="p-6">
-      <div className="relative w-full aspect-[6/4] overflow-hidden">
+      <div className="relative w-full aspect-[6/3.8] overflow-hidden">
         <Image
           src={item.img}
           alt={item.text || "Sidebar Item"}

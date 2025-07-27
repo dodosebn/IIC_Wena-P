@@ -28,6 +28,7 @@ import bedroom from "@/public/latest-imgs/bedroomsettings.jpg";
 import fifthImg from "@/public/latest-imgs/fifth-img.jpg";
 import sixthImg from "@/public/latest-imgs/sixthImg.jpg";
 import Gallery from "./slider/gallary";
+import HeroIimg from '@/public/latest-imgs/ohmyGod.jpg';
 const InfoOne = () => {
   const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
@@ -80,6 +81,7 @@ const InfoOne = () => {
   return (
     <div className="max-w-6xl mx-auto px-3 sm:px-12 md:py-36 py-24 overflow-x-hidden">
       {/* Header Section */}
+      
       <div className="mb-11 md:mb-20 flex flex-col items-center lg:px-20 px-2  space-y-2 justify-center mx-auto">
         <div>
           <p className="text-[11px] text-[#acacac] tracking-[2px] uppercase mb-1 md:flex hidden">
@@ -110,7 +112,7 @@ const InfoOne = () => {
 
       {/* Hero Image */}
       <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
-       <div className="relative aspect-[11/6] w-full mb-2">
+       <div className="relative aspect-[60/30] w-full mb-2">
   <Image
     src={bigHero}
     alt="Main property image"
@@ -125,7 +127,7 @@ const InfoOne = () => {
       </div>
 
       {/* Content Paragraphs */}
-      <div className="md:max-w-[38rem] max-w-[25rem] mx-auto text-start m-6 px-3 space-y-6">
+      <div className="md:max-w-[40rem] max-w-[25rem] mx-auto text-start m-10 px-3 space-y-6">
         <p className="md:text-[18px] text-[17px] leading-relaxed tracking-wide text-[#000]/90">
           It’s a new twist on an old saga: a Palladian pile on the market in
           deepest
@@ -169,7 +171,7 @@ const InfoOne = () => {
         </p>
       </div>
 
-      <div className="mb-6 px-3">
+      <div className="mb-10 px-3">
          <div
           className="relative mb-4
                left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]
@@ -210,20 +212,20 @@ const InfoOne = () => {
             Photography: Blue Book Agency
           </p>
           <div className="flex items-center space-x-4">
-            <span className="text-sm text-gray-500">
+            <span className="text-[12px] text-gray-700 uppercase">
               {currentImageIndex + 1} of {galleryImages.length}
             </span>
             <button
               onClick={() => setIsGalleryOpen(true)}
-              className="hidden md:flex text-gray-500 hover:text-gray-700"
+              className="hidden md:flex text-gray-900"
             >
-              <AiOutlineArrowsAlt size={20} />
+              <AiOutlineArrowsAlt size={25} />
             </button>
           </div>
         </div>
       </div>
 
-      <div className="md:max-w-[38rem] max-w-[25rem] mx-auto text-start mb-6 px-3 space-y-6">
+      <div className="md:max-w-[40rem] max-w-[25rem] mx-auto text-start mb-10 px-3 space-y-6">
         <p className="md:text-[18px] text-[17px] leading-relaxed tracking-wide text-[#000]/90">
           ‘John and I were inspired by the idea of combining practical, modern
           amenities with the elegant external beauty of English Palladian
@@ -279,7 +281,7 @@ const InfoOne = () => {
         </div>
       </div>
 
-      <div className="md:max-w-[38rem] max-w-[25rem] mx-auto text-start mb-6 px-3 space-y-6">
+      <div className="md:max-w-[40rem] max-w-[25rem] mx-auto text-start mb-10 px-3 space-y-6">
         <p className="md:text-[18px] text-[17px]  leading-relaxed tracking-wide text-[#000]/90">
            The first floor is arranged around five bsedrooms, each with an
           en-suite or private bathroom, one with another painted-tile scene BY
