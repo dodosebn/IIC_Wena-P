@@ -104,7 +104,7 @@ const InfoOne = () => {
 </h1>
 {/* </div> */}
 
-    <div className="sm:px-10 md:px-12 lg:px-50">
+    <div className="sm:px-10 md:px-12 lg:px-44">
   <p className="text-[17px]  tracking-wide mb-4 text-center leading-relaxed">
     The Gloucestershire property has handcrafted vintage details,
     plus all the mod cons
