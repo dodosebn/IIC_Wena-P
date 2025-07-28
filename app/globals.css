@@ -15,8 +15,8 @@
 }
 @font-face {
   font-family: 'Avenir Regu';
-  src: url('/public/fonts/avenir-lt-pro/AvenirLTProMedium.otf') format('truetype');
-  font-weight: 500;
+  src: url('/public/assets/fonts/avenir-next-regular.ttf') format('truetype');
+  font-weight: 100;
   font-style: normal;
 }
 
@@ -53,7 +53,9 @@ input, section, div {
   font-family: 'Avenir Regu', sans-serif !important;
 
 }
- 
+ .makachi {
+  font-weight: 500; 
+  text-shadow: 0.5px 0 0 #000;}
 .image-transition {
   transition: opacity 0.5s ease-in-out;
 }

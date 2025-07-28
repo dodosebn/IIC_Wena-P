@@ -1,7 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import bigHero from "@/public/latest-imgs/prob1.jpg";
+import bigHero from "@/public/latest-imgs/prob11.jpg";
+import mobHero from '@/public/latest-imgs/prob2.jpg';
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import { AiOutlineArrowsAlt } from "react-icons/ai";
 import { TfiFacebook } from "react-icons/tfi";
@@ -29,6 +30,7 @@ import fifthImg from "@/public/latest-imgs/fifth-img.jpg";
 import sixthImg from "@/public/latest-imgs/sixthImg.jpg";
 import Gallery from "./slider/gallary";
 import HeroIimg from '@/public/latest-imgs/ohmyGod.jpg';
+import { MoveDiagonal } from "lucide-react";
 const InfoOne = () => {
   const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
@@ -79,10 +81,10 @@ const InfoOne = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-3 sm:px-12 md:py-36 py-24 overflow-x-hidden">
+    <div className="max-w-6xl mx-auto  md:px-0 md:py-36 py-24 overflow-x-hidden">
       {/* Header Section */}
       
-      <div className="mb-11 md:mb-20 flex flex-col items-center lg:px-20 px-2  space-y-2 justify-center mx-auto">
+      <div className="mb-11 md:mb-16 flex flex-col items-center lg:px-30 px-4  space-y-2 justify-center mx-auto">
         <div>
           <p className="text-[11px] text-[#acacac] tracking-[2px] uppercase mb-1 md:flex hidden">
             Property I I by Ellen Himelfarb
@@ -92,16 +94,17 @@ const InfoOne = () => {
             <span className="block"> by Ellen Himelfarb</span>
           </p>
         </div>
+        {/* <div className="px-8"> */}
       <h1
-  className="md:text-[36px] text-[25px] tracking-[1px] text-[#000]  mb-4 text-center
-  leading-tight font-medium"
+  className="md:text-[36px] text-[30px] text-[#000] tracking-[1px]  mb-4 text-center
+  leading-tight makachi"
 >
  A contemporary Palladian pile stuffed with surprises hits the market
   for £6m
 </h1>
+{/* </div> */}
 
-
-    <div className="sm:px-4 md:px-6 lg:px-40">
+    <div className="sm:px-10 md:px-12 lg:px-50">
   <p className="text-[17px]  tracking-wide mb-4 text-center leading-relaxed">
     The Gloucestershire property has handcrafted vintage details,
     plus all the mod cons
@@ -111,24 +114,22 @@ const InfoOne = () => {
       </div>
 
       {/* Hero Image */}
-      <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
-       <div className="relative aspect-[60/30] w-full mb-2">
-  <Image
-    src={bigHero}
-    alt="Main property image"
+      {/* <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]"> */}
+       {/* <div className="relative w-full mb-2"> */}
+<Image src={bigHero} alt="ohchim" className="hidden md:block"/>
+<div className="relative  aspect-[12/9] w-full block md:hidden">
+<Image src={mobHero} alt="ohchim"   
     fill
-    className="object-cover"
-  />
+    className="object-cover"/>
 </div>
-
-        <p className="text-sm text-[#000]/90 text-start pt-3 ml-[10vw] lg:ml-[15vw]">
+        <p className="text-sm text-[#000]/90 text-start pt-3 ml-[5vw] md:ml-[2vw]">
           Photography: Blue Book Agency
         </p>
-      </div>
+      {/* </div> */}
 
       {/* Content Paragraphs */}
-      <div className="md:max-w-[40rem] max-w-[25rem] mx-auto text-start m-10 px-3 space-y-6">
-        <p className="md:text-[18px] text-[17px] leading-relaxed tracking-wide text-[#000]/90">
+      <div className="max-w-[38rem] mx-auto text-start m-10 px-4 space-y-6">
+        <p className="md:text-[18px] text-[17px] leading-relaxed tracking-wide text-[#000]">
           It’s a new twist on an old saga: a Palladian pile on the market in
           deepest
           <span className="underline hover:text-gray-400">
@@ -150,7 +151,7 @@ const InfoOne = () => {
           </span>
         </p>
 
-        <p className="md:text-[18px] text-[17px] leading-relaxed tracking-wide text-[#000]/90">
+        <p className="md:text-[18px] text-[17px] leading-relaxed tracking-wide text-[#000]">
           Inspired by 18th-century Georgians and the principles of harmony and
           proportion espoused by{" "}
           <span className="underline hover:text-gray-400">Andrea Palladio</span>
@@ -171,14 +172,14 @@ const InfoOne = () => {
         </p>
       </div>
 
-      <div className="mb-10 px-3">
+      <div className="mb-10 px-4 sm:px-12">
          <div
           className="relative mb-4
                left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]
                md:left-0 md:right-0 md:ml-0 md:mr-0
                w-screen md:w-full overflow-visible"
         >
-          <div className="relative w-full aspect-12/8" style={{ paddingBottom: "66.66%" }}>
+          <div className="relative w-full aspect-12/7.2" style={{ paddingBottom: "66.66%" }}>
             <Image
               src={galleryImages[currentImageIndex]}
               alt={`Gallery image ${currentImageIndex + 1}`}
@@ -219,14 +220,17 @@ const InfoOne = () => {
               onClick={() => setIsGalleryOpen(true)}
               className="hidden md:flex text-gray-900"
             >
-              <AiOutlineArrowsAlt size={25} />
-            </button>
+<MoveDiagonal
+  size={24}
+  strokeWidth={1.5}
+  className="text-black"
+/>            </button>
           </div>
         </div>
       </div>
 
-      <div className="md:max-w-[40rem] max-w-[25rem] mx-auto text-start mb-10 px-3 space-y-6">
-        <p className="md:text-[18px] text-[17px] leading-relaxed tracking-wide text-[#000]/90">
+      <div className="max-w-[40rem] mx-auto text-start mb-10 px-4 space-y-6">
+        <p className="md:text-[18px] text-[17px] leading-relaxed tracking-wide text-[#000]">
           ‘John and I were inspired by the idea of combining practical, modern
           amenities with the elegant external beauty of English Palladian
           architecture, whose tall sash windows and ceiling heights can provide
@@ -234,7 +238,7 @@ const InfoOne = () => {
           didn’t want grandiosity — we wanted something joyful, full of wit and
           character. A grown-up doll’s house, if you like.’
         </p>
-        <p className="md:text-[18px] text-[17px] leading-relaxed tracking-wide text-[#000]/90">
+        <p className="md:text-[18px] text-[17px] leading-relaxed tracking-wide text-[#000]">
           To achieve their ends, the couple collaborated closely with local
           craftspeople and reused reclaimed materials and furnishings. The
           evocative entranceway opens to a double-height foyer with stone
@@ -247,7 +251,7 @@ const InfoOne = () => {
           It fits in seamlessly with the timeless design of the house, carefully
           crafted over three years.
         </p>
-        <p className="md:text-[18px] text-[17px]  leading-relaxed tracking-wide text-[#000]/90">
+        <p className="md:text-[18px] text-[17px]  leading-relaxed tracking-wide text-[#000]">
           In the other direction from the kitchen is a magnificent formal space
           bathed in light from shuttered windows. A Georgian mantelpiece once
           belonging to{" "}
@@ -260,12 +264,13 @@ const InfoOne = () => {
           </span>
         </p>
       </div>
+      <div className="sm:px-12">
       <div
-        className="relative mb-6
+        className="relative mb-6 
              w-screen -ml-[50vw] left-1/2
              md:ml-0 md:left-0 md:w-full  px-0"
       >
-        <div className="relative w-full  aspect-[12/8] overflow-hidden">
+        <div className="relative w-full  aspect-[12/7.2] overflow-hidden">
           <Image
             src={clockand}
             alt="clockand"
@@ -274,15 +279,15 @@ const InfoOne = () => {
             className="transition-transform duration-300 md:group-hover:scale-105"
           />
         </div>
-        <div className="px-3 md:px-0 ml-[3vh] pt-3">
+        <div className="px-3 md:px-0 ml-[3vh] pt-4">
           <p className="text-sm text-[#000]/90 text-start">
             Photography: Blue Book Agency
           </p>
         </div>
       </div>
-
-      <div className="md:max-w-[40rem] max-w-[25rem] mx-auto text-start mb-10 px-3 space-y-6">
-        <p className="md:text-[18px] text-[17px]  leading-relaxed tracking-wide text-[#000]/90">
+</div>
+      <div className="max-w-[40rem] mx-auto text-start mb-10 px-4 space-y-6">
+        <p className="md:text-[18px] text-[17px]  leading-relaxed tracking-wide text-[#000]">
            The first floor is arranged around five bsedrooms, each with an
           en-suite or private bathroom, one with another painted-tile scene BY
           Priscilla Kennedy. The principal suite has a mezzanine dressing room
@@ -290,7 +295,7 @@ const InfoOne = () => {
           with views across the estate. At the lower-ground level is a
           purpose-built wine cellar.
         </p>
-        <p className="md:text-[18px] text-[17px]  leading-relaxed tracking-wide text-[#000]/90">
+        <p className="md:text-[18px] text-[17px]  leading-relaxed tracking-wide text-[#000]">
           {" "}
           Just north of the historic market town of Wotton-under-Edge, the
           grounds benefit from a 1990 four-bedroom farmhouse, an adjacent barn
@@ -301,7 +306,7 @@ const InfoOne = () => {
           wildlife pond offers views beyond to the Tyndale Monument. Grazing the
           working farmland are 150 Herdwick sheep, managed by a local farmer.
         </p>
-        <p className="md:text-[18px] text-[17px]  leading-relaxed tracking-wide text-[#000]/90">
+        <p className="md:text-[18px] text-[17px]  leading-relaxed tracking-wide text-[#000]">
           ‘When we started building Daisy Green, Whiteworks hadn’t yet taken
           shape,’ says Susanna. ‘As the house grew, so did my creative practice.
           Daisy Green became a living studio: a place to play, test, refine. Now
@@ -311,26 +316,26 @@ const InfoOne = () => {
         </p>
       </div>
       <div></div>
-      <div className="grid grid-cols-1 gap-6 mb-6">
+      <div className="grid grid-cols-1 gap-6 mb-6 sm:px-12">
         {sixImages.map((item) => (
           <div key={item.key} className="group">
             {/* Image wrapper — full-bleed on mobile, contained on desktop */}
             <div
-              className="relative aspect-[12/8]   overflow-hidden
+              className="relative aspect-[12/7.2]   overflow-hidden
                    w-screen -ml-[50vw] left-1/2
-                   md:ml-0 md:left-0 md:w-full"
+                   md:ml-0 md:left-0 md:w-full "
             >
               <Image
                 src={item.img}
                 alt="Property detail"
                 layout="fill"
                 objectFit="cover"
-                className="transition-transform duration-300 group-hover:scale-105"
+                className="transition-transform duration-300"
               />
             </div>
 
             {/* Caption — aligns with content, not full-bleed */}
-            <div className="mt-3 px-3 md:px-0">
+            <div className="mt-3 px-4 md:px-0">
               <p className="text-sm text-[#000]/90 text-start">
                 Photography: Blue Book Agency
               </p>
@@ -374,7 +379,7 @@ const InfoOne = () => {
       </div>
       {/* Share Section */}
       <div className="border-t border-gray-200 pt-6 flex flex-col md:flex-row gap-y-4
-       md:gap-y-0 items-center md:items-start">
+       md:gap-y-0 items-center md:items-start sm:px-12">
        <div className="flex-shrink-0 justify-center items-center flex mx-auto">
     <p className="text-xs text-gray-500 uppercase whitespace-nowrap">
       SHARE THIS STORY
