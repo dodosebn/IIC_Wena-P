@@ -81,7 +81,7 @@ const InfoOne = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto  md:px-0 md:py-36 py-24 overflow-x-hidden">
+    <div className="max-w-6xl mx-auto  md:px-0 md:py-32 py-24 overflow-x-hidden">
       {/* Header Section */}
       
       <div className="mb-11 md:mb-16 flex flex-col items-center lg:px-30 px-4  space-y-2 justify-center mx-auto">
