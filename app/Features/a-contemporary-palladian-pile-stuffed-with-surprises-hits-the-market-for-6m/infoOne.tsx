@@ -128,24 +128,24 @@ const InfoOne = () => {
       {/* </div> */}
 
       {/* Content Paragraphs */}
-      <div className="max-w-[38rem] mx-auto text-start m-10 px-4 space-y-6">
+      <div className="max-w-[39.3rem] mx-auto text-start m-10 px-4 space-y-6">
         <p className="md:text-[18px] text-[17px] leading-relaxed tracking-wide text-[#000]">
           It’s a new twist on an old saga: a Palladian pile on the market in
           deepest
-          <span className="underline hover:text-gray-400">
+          <span className="border-b-1 hover:text-gray-400">
             {" "}
             Gloucestershire
           </span>
           , supported by ancient beams, laden with antique chandeliers, clad in
           wisteria. Except Daisy Green is no fixer-upper, doomed by rising damp,
           abandoned by despairing aristocrats. The new listing from{" "}
-          <span className="underline hover:text-gray-400">
+          <span className="border-b-1 hover:text-gray-400">
             Blue Book Agency
           </span>{" "}
           was built 15 years ago by the late architect Martin Branston for an
           adventurous designer and her husband as a foil for the minimalism of
           the day.
-          <span className="underline hover:text-gray-400">
+          <span className="border-b-1 hover:text-gray-400">
             {" "}
             The asking price is £6m.
           </span>
@@ -154,18 +154,18 @@ const InfoOne = () => {
         <p className="md:text-[18px] text-[17px] leading-relaxed tracking-wide text-[#000]">
           Inspired by 18th-century Georgians and the principles of harmony and
           proportion espoused by{" "}
-          <span className="underline hover:text-gray-400">Andrea Palladio</span>
+          <span className="border-b-1 hover:text-gray-400">Andrea Palladio</span>
           , John and
-          <span className="underline hover:text-gray-400">
+          <span className="border-b-1 hover:text-gray-400">
             {" "}
             Susanna White
           </span>{" "}
           embarked on the project with a yearning to experiment. They visualised
           the new build with character and wit, from custom furnishings and
           wallpapers from Susanna’s burgeoning interiors practice,{" "}
-          <span className="underline hover:text-gray-400">Whiteworks</span>. Set
+          <span className="border-b-1 hover:text-gray-400">Whiteworks</span>. Set
           in 116 mature acres, including 90 acres of{" "}
-          <span className="underline hover:text-gray-400">Cotswolds</span>{" "}
+          <span className="border-b-1 hover:text-gray-400">Cotswolds</span>{" "}
           farmland, they conceived a timeless façade embracing the finest points
           of Palladian architecture, leading into a fantastical world concealing
           mod cons and conveniences.
@@ -209,7 +209,7 @@ const InfoOne = () => {
 
         {/* ––– Caption & Counter ––– */}
         <div className="flex justify-between items-center mt-3 px-3 md:px-0">
-          <p className="text-sm text-[#000]/90 text-start md:ml-[10vw]">
+          <p className="text-sm text-[#000]/90 text-start md:ml-[11.5vw]">
             Photography: Blue Book Agency
           </p>
           <div className="flex items-center space-x-4">
@@ -229,7 +229,7 @@ const InfoOne = () => {
         </div>
       </div>
 
-      <div className="max-w-[40rem] mx-auto text-start mb-10 px-4 space-y-6">
+      <div className="max-w-[39.3rem] mx-auto text-start mb-10 px-4 space-y-6">
         <p className="md:text-[18px] text-[17px] leading-relaxed tracking-wide text-[#000]">
           ‘John and I were inspired by the idea of combining practical, modern
           amenities with the elegant external beauty of English Palladian
@@ -243,7 +243,7 @@ const InfoOne = () => {
           craftspeople and reused reclaimed materials and furnishings. The
           evocative entranceway opens to a double-height foyer with stone
           flooring, dramatic countryside views and a wrought-metal staircase by{" "}
-          <span className="underline hover:text-gray-400">
+          <span className="border-b-1 hover:text-gray-400">
             Matt Livsey Hammond.
           </span>{" "}
           The elaborate period plasterwork is balanced by a modern steel eat-in
@@ -255,13 +255,13 @@ const InfoOne = () => {
           In the other direction from the kitchen is a magnificent formal space
           bathed in light from shuttered windows. A Georgian mantelpiece once
           belonging to{" "}
-          <span className="underline hover:text-gray-400">Cecil Beaton</span>{" "}
+          <span className="border-b-1 hover:text-gray-400">Cecil Beaton</span>{" "}
           sits at one end, reclaimed from his Redditch House. The long room is
           furnished in period antiques and a glorious hand-painted tiled mural
-          by
-          <span className="underline hover:text-gray-400">
-            Priscilla Kennedy.
-          </span>
+          by {" "}
+          <span className="border-b-1  hover:text-gray-400">
+            Priscilla Kennedy
+          </span>.
         </p>
       </div>
       <div className="sm:px-12">
@@ -279,7 +279,7 @@ const InfoOne = () => {
             className="transition-transform duration-300 md:group-hover:scale-105"
           />
         </div>
-        <div className="px-3 md:px-0 ml-[3vh] pt-4">
+        <div className="px-3 md:px-0  pt-2">
           <p className="text-sm text-[#000]/90 text-start">
             Photography: Blue Book Agency
           </p>
@@ -335,7 +335,7 @@ const InfoOne = () => {
             </div>
 
             {/* Caption — aligns with content, not full-bleed */}
-            <div className="mt-3 px-4 md:px-0">
+            <div className="mt-2 px-4 md:px-0">
               <p className="text-sm text-[#000]/90 text-start">
                 Photography: Blue Book Agency
               </p>
@@ -348,14 +348,14 @@ const InfoOne = () => {
         <div>
           <div className="text-[24px] font-medium text-gray-800">
             Read next:
-            <span className="underline pl-1 hover:text-gray-500 transition-colors duration-200">
+            <span className="border-b-1 pl-1 hover:text-gray-500 transition-colors duration-200">
               A palatial English estate hits the market for just under £10m
             </span>
           </div>
         </div>
 
         <div>
-          <h2 className="text-[24px] font-medium underline hover:text-gray-500 transition-colors duration-200">
+          <h2 className="text-[24px] font-medium border-b-1 hover:text-gray-500 transition-colors duration-200">
             This London home is infused with peaceful Mediterranean minimalism
           </h2>
         </div>
